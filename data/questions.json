@@ -1,0 +1,986 @@
+{
+    "foundations-01": {
+        "title": "Foundations of AI - Probability Theory",
+        "questions": [
+{
+"id": 1,
+"difficulty": "recall",
+"question": "According to the set-theoretic view of probability theory, what is the 'event space' (E)?",
+"options": [
+"The set of all elementary outcomes of an experiment.",
+"A subset of the sample space Ω, closed under complement, intersection, and union.",
+"A mapping from an event to a real number between 0 and 1.",
+"The sum of all possible outcomes in a discrete distribution."
+],
+"correct_index": 1,
+"rationale": "Slide 5 defines the event space (E) as the set of subsets of the sample space Ω that is closed under intersection (∩), union (∪), and complement (¬).",
+"distractor_analysis": {
+"0": "This describes the sample space (Ω), not the event space.",
+"1": "Correct per slide 5.",
+"2": "This describes the probability measure (P), not the event space.",
+"3": "This is a property of probability totals, not the definition of the event space."
+}
+},
+{
+"id": 2,
+"difficulty": "application",
+"question": "If you are rolling a fair six-sided die, what is the probability of the event A = {2, 4, 6} occurring based on the formulas provided in the text?",
+"options": [
+"1/6",
+"1/3",
+"1/2",
+"2/3"
+],
+"correct_index": 2,
+"rationale": "Slide 6 shows that for a die roll, P({2, 4, 6}) is calculated as P({2}) + P({4}) + P({6}) = 1/6 + 1/6 + 1/6 = 3/6 = 1/2.",
+"distractor_analysis": {
+"0": "This is the probability of a single outcome, like P({2}).",
+"1": "This would represent two outcomes (2/6), not three.",
+"2": "Correct calculation of 3/6.",
+"3": "This would represent four outcomes (4/6)."
+}
+},
+{
+"id": 3,
+"difficulty": "analysis",
+"question": "In the context of Simpson's Paradox (Slide 10), why does Drug x appear to work better for both Men and Women individually, even though Drug y might appear better in the aggregate?",
+"options": [
+"Drug y was tested on more healthy subjects than Drug x.",
+"Being male is a strong cause for both drug usage (Drug y) and higher recovery rates.",
+"The sample size for Women was too small to be statistically significant.",
+"Drug x is fundamentally flawed for male patients."
+],
+"correct_index": 1,
+"rationale": "Slide 10 explicitly states the observation: 'being a male is a strong cause for both drug usage and recovery,' which creates a confounding variable leading to the paradox.",
+"distractor_analysis": {
+"0": "The text doesn't mention 'healthy' subjects, but rather 'male' as the confounding factor.",
+"1": "Correct; males were more likely to receive Drug y and more likely to recover regardless of the drug.",
+"2": "While sample sizes differ, the text identifies the causal link of gender, not just size, as the reason for the paradox.",
+"3": "The table shows Drug x has a 91% success rate for men, the highest in the table, contradicting this."
+}
+},
+{
+"id": 4,
+"difficulty": "analysis",
+"question": "If events A and B are independent, which of the following statements about their conditional independence given C must be true according to the text?",
+"options": [
+"They are always independent given C.",
+"They are never independent given C.",
+"Independence does not necessarily imply conditional independence given C.",
+"Conditional independence given C automatically implies marginal independence."
+],
+"correct_index": 2,
+"rationale": "Slide 9 poses the question: 'If A and B are independent, are they also independent given C?' This implies that one does not automatically guarantee the other, a common concept in probability where conditioning can break or create independence.",
+"distractor_analysis": {
+"0": "Incorrect; conditioning on a common effect (C) can make independent causes dependent.",
+"1": "Incorrect; they could still be independent in some cases.",
+"2": "Correct; marginal independence and conditional independence are distinct properties.",
+"3": "Incorrect; conditional independence does not imply marginal independence."
+}
+},
+{
+"id": 5,
+"difficulty": "recall",
+"question": "Which probability distribution is characterized by the 'memoryless' property?",
+"options": [
+"Pareto distribution",
+"Poisson distribution",
+"Exponential distribution",
+"Binomial distribution"
+],
+"correct_index": 2,
+"rationale": "Slide 18 explicitly lists 'Memoryless' as a property of the Exponential distribution, defined as P(X > a + b | X > a) = P(X > b).",
+"distractor_analysis": {
+"0": "The Pareto distribution is a power-law distribution and is not memoryless.",
+"1": "The Poisson distribution is for counts per unit time; the interval between them (Exponential) is memoryless, but the distribution itself is not described as such here.",
+"2": "Correct per slide 18.",
+"3": "The Binomial distribution deals with discrete trials and is not memoryless."
+}
+},
+{
+"id": 6,
+"difficulty": "application",
+"question": "Using the 'Product Rule' from Slide 7, calculate P(A, B) if P(B|A) = 0.4 and P(A) = 0.5.",
+"options": [
+"0.1",
+"0.2",
+"0.8",
+"0.9"
+],
+"correct_index": 1,
+"rationale": "The product rule states P(A, B) = P(B|A) * P(A). Therefore, 0.4 * 0.5 = 0.2.",
+"distractor_analysis": {
+"0": "Result of an incorrect subtraction or error.",
+"1": "Correct: 0.4 * 0.5 = 0.2.",
+"2": "Incorrect: likely 0.4 / 0.5.",
+"3": "Incorrect: likely 0.4 + 0.5."
+}
+},
+{
+"id": 7,
+"difficulty": "analysis",
+"question": "What distinguishes a discrete random variable from a continuous random variable according to the text?",
+"options": [
+"A discrete variable maps outcomes to integers; a continuous variable maps to irrational numbers.",
+"A discrete variable has a countable range (M); a continuous variable has an uncountable range.",
+"Discrete variables are only used in Frequentist views, while continuous are Bayesian.",
+"Discrete variables use probability density functions (pdf); continuous variables use probability mass functions (pmf)."
+],
+"correct_index": 1,
+"rationale": "Slide 11 states: 'If M is countable, X is called discrete, otherwise continuous.'",
+"distractor_analysis": {
+"0": "Continuous variables map to the real numbers (R), not just irrationals.",
+"1": "Correct per slide 11.",
+"2": "Both views use both types of variables.",
+"3": "The text states the opposite on Slide 13: pdf is for continuous and pmf is for discrete."
+}
+},
+{
+"id": 8,
+"difficulty": "application",
+"question": "A call center expects an average of 4 calls per hour. Using the Poisson distribution formula (Slide 16), what is the correct setup to find the probability of receiving exactly 2 calls in an hour?",
+"options": [
+"P(X=2) = (4^2 * e^-4) / 2!",
+"P(X=2) = (2^4 * e^-2) / 4!",
+"P(X=2) = (1 - 0.4)^2 * 0.4",
+"P(X=2) = 2 * e^-4"
+],
+"correct_index": 0,
+"rationale": "Slide 16 gives the Poisson formula: P(X=k) = (e^-λ * λ^k) / k!. Here λ=4 and k=2.",
+"distractor_analysis": {
+"0": "Correct application of the Poisson formula.",
+"1": "Swaps the parameter λ and the value k.",
+"2": "This uses the Geometric distribution formula (Slide 16).",
+"3": "An incomplete or simplified incorrect version of the formula."
+}
+},
+{
+"id": 9,
+"difficulty": "analysis",
+"question": "Why is the Bayesian view of probability considered more flexible for modeling uncertainty in parameters compared to the Frequentist view?",
+"options": [
+"It eliminates the need for data by relying solely on prior beliefs.",
+"It treats probabilities as subjective degrees of belief that can be updated with data.",
+"It is objectively more accurate because it excludes the likelihood function.",
+"It can only be applied to events that are frequently repeatable."
+],
+"correct_index": 1,
+"rationale": "Slides 26 and 27 compare the views. The Bayesian view (Slide 27) uses 'prior beliefs... to quantify the uncertainty of parameters,' which are updated with observations.",
+"distractor_analysis": {
+"0": "Bayesian inference explicitly uses data to update priors (Slide 29).",
+"1": "Correct: Bayesianism updates 'beliefs' (Slide 27).",
+"2": "Bayesian inference requires the likelihood function (Slide 29).",
+"3": "This is a shortcoming of the Frequentist view (Slide 26)."
+}
+},
+{
+"id": 10,
+"difficulty": "analysis",
+"question": "Which property of 'exponential family distributions' is highlighted as particularly useful for Bayesian inference in Slide 29?",
+"options": [
+"They are the only distributions that can be used with MLE.",
+"They are closed under addition, simplifying the calculation of expectation.",
+"They are closed under multiplication, providing 'algebraic convenience.'",
+"They always have a mean of zero, simplifying variance calculations."
+],
+"correct_index": 2,
+"rationale": "Slide 29 states that exponential family distributions are 'typically used' and lists an 'Important property: closure under multiplication (-> algebraic convenience).'",
+"distractor_analysis": {
+"0": "MLE can be used on many distribution families.",
+"1": "The text specifies multiplication, not addition.",
+"2": "Correct per slide 29.",
+"3": "They do not always have a mean of zero."
+}
+},
+{
+"id": 11,
+"difficulty": "recall",
+"question": "How is the 'Median' defined in terms of the Quantile function according to Slide 13?",
+"options": [
+"The value where the PDF is at its maximum.",
+"The value q = 1.0 in the quantile function F^-1(q).",
+"The value of the quantile function F^-1(q) when q = 0.5.",
+"The expectation E(X) of a normal distribution."
+],
+"correct_index": 2,
+"rationale": "Slide 13 states: 'for q = 0.5, F^-1(q) is called median.'",
+"distractor_analysis": {
+"0": "This is the 'mode,' not the median.",
+"1": "This is the maximum value/bound, not the median.",
+"2": "Correct per slide 13.",
+"3": "For a symmetric normal distribution, the median equals the expectation, but the definition of the median via the quantile function is specifically q=0.5."
+}
+},
+{
+"id": 12,
+"difficulty": "application",
+"question": "If you are using Bayesian inference and your Likelihood function is a Bernoulli distribution, which distribution should you use as a 'Conjugate Prior' to ensure the posterior is in the same family?",
+"options": [
+"Gamma",
+"Dirichlet",
+"Beta",
+"Gaussian"
+],
+"correct_index": 2,
+"rationale": "The table on Slide 30 lists 'Beta' as the conjugate prior for the 'Bernoulli' likelihood.",
+"distractor_analysis": {
+"0": "Gamma is the conjugate prior for Poisson (Slide 30).",
+"1": "Dirichlet is the conjugate prior for Multinomial (Slide 30).",
+"2": "Correct per slide 30.",
+"3": "Gaussian is its own conjugate (Slide 30)."
+}
+},
+{
+"id": 13,
+"difficulty": "analysis",
+"question": "According to Slide 25, what is the 'Variance' equivalent to in terms of Covariance?",
+"options": [
+"Var(X) = Cov(X, Y)",
+"Var(X) = Cov(X, X)",
+"Var(X) = Cov(X, 1)",
+"Var(X) = [Cov(X, X)]^2"
+],
+"correct_index": 1,
+"rationale": "Slide 25 explicitly states: 'Var(X) = Cov(X, X).'",
+"distractor_analysis": {
+"0": "Cov(X, Y) is the general covariance between two different variables.",
+"1": "Correct per slide 25.",
+"2": "Covariance with a constant is 0.",
+"3": "Variance is not the square of covariance."
+}
+},
+{
+"id": 14,
+"difficulty": "application",
+"question": "If you have two independent variables Xi and Xj, what is the expectation of their product E(XiXj) based on the properties in Slide 24?",
+"options": [
+"E(Xi) + E(Xj)",
+"E(Xi) * E(Xj)",
+"E(Xi)^2",
+"Var(Xi) + Var(Xj)"
+],
+"correct_index": 1,
+"rationale": "Slide 24 states: 'E(Xi Xj) = E(Xi)E(Xj) for independent variables.'",
+"distractor_analysis": {
+"0": "This is the property for the expectation of a sum, E(Xi + Xj).",
+"1": "Correct per slide 24.",
+"2": "This only applies if Xi = Xj, which is not stated.",
+"3": "This is related to the variance of a sum of independent variables."
+}
+},
+{
+"id": 15,
+"difficulty": "recall",
+"question": "Cox's Theorem (Slide 28) states that any belief system satisfying certain conditions can be described by probability laws. Which of the following is NOT one of those conditions?",
+"options": [
+"Dependency (belief is dependent on information)",
+"Numerical comparability (belief can be represented by a real number)",
+"Consistency (different derivations must yield the same result)",
+"Stochasticity (belief must be random in nature)"
+],
+"correct_index": 3,
+"rationale": "Slide 28 lists: Dependency, Numerical comparability, Common Sense, and Consistency. 'Stochasticity' is not listed as a requirement for the belief system itself.",
+"distractor_analysis": {
+"0": "This is a required condition on slide 28.",
+"1": "This is a required condition on slide 28.",
+"2": "This is a required condition on slide 28.",
+"3": "Correct; this is not one of the four listed conditions."
+}
+},
+{
+"id": 16,
+"difficulty": "application",
+"question": "In the Gaussian Mixture Model (GMM) example on Slide 38, how are the 'membership weights' (wAi) calculated?",
+"options": [
+"By dividing the mean of A by the total mean of the mixture.",
+"By multiplying the probability of point xi given A by the prior pA, then normalizing by the total probability of xi.",
+"By taking the average of all points xi that fall within one standard deviation of A.",
+"By setting them to 1 if the point is closer to A than B, and 0 otherwise."
+],
+"correct_index": 1,
+"rationale": "Slide 38 shows the formula for wAi = P(A|xi) = [P(xi|A) * pA] / [P(xi|A)pA + P(xi|B)pB].",
+"distractor_analysis": {
+"0": "This is not the formula for membership weights.",
+"1": "Correct; this is the application of Bayes' rule to find the posterior probability of component membership.",
+"2": "GMM uses 'soft' assignments, not hard averaging within bounds.",
+"3": "This describes 'hard' clustering (like K-means), whereas EM uses 'soft' membership weights."
+}
+},
+{
+"id": 17,
+"difficulty": "analysis",
+"question": "What is the primary reason why Maximum Likelihood Estimation (MLE) is considered 'not possible' (analytically intractable) for Gaussian Mixture Models (GMMs)?",
+"options": [
+"The distributions are not continuous.",
+"The likelihood function is highly non-convex with multiple local maxima.",
+"The parameters of a GMM are always independent of the data.",
+"GMMs do not have a defined probability density function."
+],
+"correct_index": 1,
+"rationale": "Slide 36 states: 'Here, MLE is not possible; likelihood function for GMMs is highly non-convex with multiple local maxima.'",
+"distractor_analysis": {
+"0": "GMMs are continuous distributions.",
+"1": "Correct per slide 36.",
+"2": "The parameters are estimated from data, which is the whole point of MLE/EM.",
+"3": "Slide 35 explicitly defines the joint pdf for the GMM."
+}
+},
+{
+"id": 18,
+"difficulty": "application",
+"question": "If you update a Beta(a, b) prior with binomially distributed data (k1 successes, k2 failures), what is the correct updated parameter form for the Posterior distribution (Slide 31)?",
+"options": [
+"Beta(k1, k2)",
+"Beta(a + k1, b + k2)",
+"Beta(a * k1, b * k2)",
+"Beta(a - k1, b - k2)"
+],
+"correct_index": 1,
+"rationale": "Slide 31 shows the derivation resulting in a posterior with parameters B(k1 + a, k2 + b).",
+"distractor_analysis": {
+"0": "This ignores the prior beliefs (a, b).",
+"1": "Correct per slide 31.",
+"2": "The parameters are additive (acting as 'pseudo-counts'), not multiplicative.",
+"3": "New data adds to the count, it does not subtract."
+}
+},
+{
+"id": 19,
+"difficulty": "application",
+"question": "A medical study uses a Multivariate Gaussian to model height and weight. If the covariance Σij is positive, what does this suggest about the relationship between height and weight?",
+"options": [
+"Height and weight are independent.",
+"As height increases, weight tends to decrease.",
+"As height increases, weight tends to increase.",
+"Height and weight have the same mean."
+],
+"correct_index": 2,
+"rationale": "Covariance measures the joint variability. A positive covariance (Slide 23/25 context) means that the variables tend to move in the same direction.",
+"distractor_analysis": {
+"0": "Independent variables have zero covariance.",
+"1": "This would be indicated by a negative covariance.",
+"2": "Correct: positive covariance implies a positive relationship.",
+"3": "Covariance does not provide information about the means being identical."
+}
+},
+{
+"id": 20,
+"difficulty": "analysis",
+"question": "In the context of EM Generalization (Slide 39), what occurs during the 'Maximization step'?",
+"options": [
+"The hidden values z are estimated based on current parameters θ.",
+"The log-likelihood of the observed data points is calculated.",
+"A new parameter θ(t+1) is found that maximizes the expected value of the log-likelihood.",
+"The model determines if it has reached a global maximum."
+],
+"correct_index": 2,
+"rationale": "Slide 39 states the Maximization step is to 'find θ(t+1) that maximizes the expected value of log P(x, z | θ(t+1)).'",
+"distractor_analysis": {
+"0": "This happens in the Expectation step (E-step).",
+"1": "Calculation happens throughout, but 'Maximization' is specifically about updating parameters.",
+"2": "Correct per slide 39.",
+"3": "EM only guarantees a 'local maximum,' not a global one (Slide 39 note)."
+}
+},
+{
+"id": 21,
+"difficulty": "recall",
+"question": "Which distribution is used to describe the Pareto principle, where 80% of effects come from 20% of causes?",
+"options": [
+"Normal distribution",
+"Logistic distribution",
+"Pareto distribution",
+"Poisson distribution"
+],
+"correct_index": 2,
+"rationale": "Slide 19 explicitly links the Pareto distribution to the 'Pareto principle: 80% of the effects come from 20% of the causes.'",
+"distractor_analysis": {
+"0": "The Normal distribution is for central tendency, not power-law effects.",
+"1": "The Logistic distribution is for cumulative functions (Slide 20).",
+"2": "Correct per slide 19.",
+"3": "The Poisson distribution is for discrete counts of independent events."
+}
+},
+{
+"id": 22,
+"difficulty": "application",
+"question": "What is the result of the Maximum Likelihood Estimation for the parameter p of a coin tossed n times with k heads?",
+"options": [
+"p = n / k",
+"p = k / n",
+"p = (k + 1) / (n + 2)",
+"p = sqrt(k / n)"
+],
+"correct_index": 1,
+"rationale": "Slide 32 derives the MLE for a binomial trial: 'p = k / n'.",
+"distractor_analysis": {
+"0": "This is the reciprocal of the correct estimate.",
+"1": "Correct per slide 32.",
+"2": "This is a Bayesian estimate (Laplace smoothing), not the MLE derived on slide 32.",
+"3": "There is no square root in the standard MLE for p."
+}
+},
+{
+"id": 23,
+"difficulty": "analysis",
+"question": "Comparing the E-step and M-step in the EM algorithm for mixture models (Slide 37), which step is responsible for 're-estimating the parameters'?",
+"options": [
+"E-step",
+"M-step",
+"The Initialization step",
+"The Convergence step"
+],
+"correct_index": 1,
+"rationale": "Slide 37 states: '2. M-step: Re-estimate the parameters.'",
+"distractor_analysis": {
+"0": "The E-step computes the membership values (probabilities).",
+"1": "Correct per slide 37.",
+"2": "Initialization sets random values but does not re-estimate based on data.",
+"3": "Convergence is the exit condition, not a parameter-estimation step."
+}
+},
+{
+"id": 24,
+"difficulty": "application",
+"question": "If you have a random variable X representing the sum of faces when rolling two six-sided dice, what is the value of X({3, 4}) based on Slide 11?",
+"options": [
+"7",
+"12",
+"1",
+"4"
+],
+"correct_index": 0,
+"rationale": "Slide 11 gives the example: 'The sum of faces for two dice: X({a, b}) = a + b.' Thus, 3 + 4 = 7.",
+"distractor_analysis": {
+"0": "Correct: 3 + 4 = 7.",
+"1": "This is the product, not the sum.",
+"2": "This is the difference.",
+"3": "This is just one of the faces."
+}
+},
+{
+"id": 25,
+"difficulty": "analysis",
+"question": "How does the 'Evidence' term P(x1, ..., xn) function in the Bayesian inference formula on Slide 29?",
+"options": [
+"It determines the prior distribution of the parameters.",
+"It acts as a normalization constant to ensure the posterior integrates to 1.",
+"It represents the likelihood of the parameters in light of the data.",
+"It is an iterative substitute for data points."
+],
+"correct_index": 1,
+"rationale": "In Bayes' theorem (Slide 29), the denominator P(x1, ..., xn), labeled 'Evidence,' normalizes the product of the likelihood and prior so the posterior is a valid probability distribution.",
+"distractor_analysis": {
+"0": "This is P(θ).",
+"1": "Correct function of the evidence in Bayesian inference.",
+"2": "This is P(x|θ).",
+"3": "Iterative substitution is a process mentioned in the diagram, not the definition of evidence."
+}
+},
+{
+"id": 26,
+"difficulty": "recall",
+"question": "What are 'i.i.d.' random variables?",
+"options": [
+"Independent and identically distributed variables.",
+"Increasing and infinitely distributed variables.",
+"Inferred and indirectly determined variables.",
+"Independent and inconsistently distributed variables."
+],
+"correct_index": 0,
+"rationale": "Slide 11 defines i.i.d. as 'independent and identically distributed.'",
+"distractor_analysis": {
+"0": "Correct per slide 11.",
+"1": "Incorrect expansion of the acronym.",
+"2": "Incorrect expansion of the acronym.",
+"3": "The 'i' stands for identically, not inconsistently."
+}
+},
+{
+"id": 27,
+"difficulty": "application",
+"question": "If P(A) = 0.3 and P(B) = 0.4, and A and B are independent, what is P(A ∪ B) using the property on Slide 5?",
+"options": [
+"0.7",
+"0.58",
+"0.12",
+"0.1"
+],
+"correct_index": 1,
+"rationale": "Slide 5 Property 4: P(A ∪ B) = P(A) + P(B) - P(A ∩ B). Since they are independent, P(A ∩ B) = P(A)P(B) = 0.3 * 0.4 = 0.12. Thus, 0.3 + 0.4 - 0.12 = 0.58.",
+"distractor_analysis": {
+"0": "This is P(A) + P(B) without subtracting the intersection.",
+"1": "Correct: 0.7 - 0.12 = 0.58.",
+"2": "This is the intersection P(A ∩ B), not the union.",
+"3": "Incorrect result."
+}
+},
+{
+"id": 28,
+"difficulty": "analysis",
+"question": "In the derivation of MLE for a Gaussian (Slide 33), setting the derivative of the log-likelihood with respect to μ to zero directly results in μ being equal to:",
+"options": [
+"The sample variance.",
+"The sample mean (sum of xi / n).",
+"The standard deviation.",
+"The median of the samples."
+],
+"correct_index": 1,
+"rationale": "Slide 33 shows the derivation: μ_hat = (1/n) * sum(xi), which is the sample mean.",
+"distractor_analysis": {
+"0": "This is the result for the variance parameter σ^2.",
+"1": "Correct: the sample mean maximizes the likelihood of μ.",
+"2": "The derivation is for the mean, not standard deviation.",
+"3": "While mean = median in a perfect Gaussian, the MLE specifically solves for the arithmetic average."
+}
+},
+{
+"id": 29,
+"difficulty": "application",
+"question": "Which distribution would best model the waiting time between phone calls if they occur independently at a constant average rate?",
+"options": [
+"Bernoulli distribution",
+"Exponential distribution",
+"Multinomial distribution",
+"Uniform distribution"
+],
+"correct_index": 1,
+"rationale": "Slide 18 states the Exponential distribution 'Describes a process in which events occur continuously and independently at constant average rate λ... e.g., waiting time between events in a Poisson process.'",
+"distractor_analysis": {
+"0": "This is for a single success/failure trial.",
+"1": "Correct per slide 18.",
+"2": "This is for trials with more than two possible outcomes.",
+"3": "This assumes all intervals are equally likely within a range, not a constant rate process."
+}
+},
+{
+"id": 30,
+"difficulty": "analysis",
+"question": "What does Slide 39 imply about the convergence of the EM algorithm?",
+"options": [
+"It always finds the global maximum of the likelihood function.",
+"It is a stochastic process that may decrease likelihood in some steps.",
+"It monotonically approaches a local maximum.",
+"It converges in a single iteration for GMMs."
+],
+"correct_index": 2,
+"rationale": "Slide 39 explicitly states: 'Note: EM monotonically approaches local maximum.'",
+"distractor_analysis": {
+"0": "Slide 36 notes it has 'multiple local maxima,' and slide 39 confirms it only guarantees a local one.",
+"1": "EM is deterministic and 'monotonic,' meaning it never decreases likelihood.",
+"2": "Correct per slide 39.",
+"3": "EM is an iterative process (Slide 37)."
+}
+},
+{
+"id": 31,
+"difficulty": "recall",
+"question": "In Slide 35's Gaussian Mixture Model, what is the constraint on the mixing coefficients pA and pB?",
+"options": [
+"pA * pB = 1",
+"pA + pB = 1",
+"pA = pB",
+"pA^2 + pB^2 = 1"
+],
+"correct_index": 1,
+"rationale": "Slide 35 states: 'with pA + pB = 1.'",
+"distractor_analysis": {
+"0": "They must sum to 1, not multiply to 1.",
+"1": "Correct per slide 35.",
+"2": "They can be different (e.g., weights of men and women).",
+"3": "This is not the constraint for mixing coefficients."
+}
+},
+{
+"id": 32,
+"difficulty": "application",
+"question": "If you are rolling an n-sided die m times, which multivariate distribution (Slide 23) should be used to find the probability of specific outcome counts?",
+"options": [
+"Multivariate Gaussian",
+"Multinomial distribution",
+"Logistic distribution",
+"Pareto distribution"
+],
+"correct_index": 1,
+"rationale": "Slide 23 describes the Multinomial distribution as the model for 'rolling n m-sided dice.'",
+"distractor_analysis": {
+"0": "This is for continuous correlated variables.",
+"1": "Correct per slide 23.",
+"2": "This is for cumulative probabilities in classification.",
+"3": "This is a power-law distribution."
+}
+},
+{
+"id": 33,
+"difficulty": "analysis",
+"question": "Why does the Bayesian view state that prior beliefs become 'less and less relevant' over time (Slide 27)?",
+"options": [
+"Priors are mathematically deleted after ten observations.",
+"The increasing number of observations (data) overwhelms the influence of the initial prior.",
+"Bayesians eventually switch to a Frequentist approach.",
+"Data is considered more 'subjective' than the prior."
+],
+"correct_index": 1,
+"rationale": "Slide 27 states: 'With increasing number of observations, prior beliefs become less and less relevant (i.e., uncertainty is reduced).'",
+"distractor_analysis": {
+"0": "They are never deleted; their relative weight in the posterior simply decreases.",
+"1": "Correct: more data leads to the likelihood dominating the prior.",
+"2": "The framework remains Bayesian, the influence shifts.",
+"3": "Bayesianism considers priors subjective; data is the objective evidence used to update them."
+}
+},
+{
+"id": 34,
+"difficulty": "analysis",
+"question": "What is the consequence of the 'Sum Rule' in terms of marginal probability for discrete variables (Slide 12)?",
+"options": [
+"It allows you to calculate the conditional probability P(Y|X).",
+"It allows you to find P(X=xi) by summing the joint probability P(X=xi, Y=yj) over all possible values of j.",
+"It proves that X and Y are independent.",
+"It requires that all outcomes in the sample space are equally likely."
+],
+"correct_index": 1,
+"rationale": "Slide 12 shows the Sum rule: P(X=xi) = sum_j P(X=xi, Y=yj).",
+"distractor_analysis": {
+"0": "The Product Rule is used for conditional probability.",
+"1": "Correct per slide 12.",
+"2": "The Sum Rule applies even if X and Y are dependent.",
+"3": "The Sum Rule is a general rule of probability, not limited to uniform outcomes."
+}
+},
+{
+"id": 35,
+"difficulty": "recall",
+"question": "According to Slide 14, what is the Probability Mass Function (pmf) of a Bernoulli distribution with parameter p?",
+"options": [
+"f(x) = p^x * (1-p)^(1-x)",
+"f(x) = 1 / m",
+"f(x) = (e^-λ * λ^x) / x!",
+"f(x) = (1-p)^x * p"
+],
+"correct_index": 0,
+"rationale": "Slide 14 gives the Bernoulli formula: P(X=x) = f(x) = p^x(1-p)^(1-x).",
+"distractor_analysis": {
+"0": "Correct per slide 14.",
+"1": "This is the pmf for a Uniform discrete distribution.",
+"2": "This is the pmf for a Poisson distribution.",
+"3": "This is the pmf for a Geometric distribution."
+}
+},
+{
+"id": 36,
+"difficulty": "application",
+"question": "A variable follows a Pareto distribution with parameters a and b. If x is less than b, what is the value of its pdf f(x)?",
+"options": [
+"1",
+"a/b",
+"0",
+"Infinite"
+],
+"correct_index": 2,
+"rationale": "Slide 19 defines the Pareto pdf only for 'x > b.' In a standard definition of such distributions, the probability is 0 outside the defined domain.",
+"distractor_analysis": {
+"0": "The total area must be 1, but specific points are not necessarily 1.",
+"1": "This is a component of the formula for x > b.",
+"2": "Correct: the distribution is only defined for x > b.",
+"3": "The pdf is not infinite below b."
+}
+},
+{
+"id": 37,
+"difficulty": "analysis",
+"question": "In Bayesian inference (Slide 29), how is the 'Posterior' related to the 'Likelihood' and 'Prior'?",
+"options": [
+"Posterior = Likelihood + Prior",
+"Posterior ∝ Likelihood * Prior",
+"Posterior = Likelihood / Prior",
+"Posterior ∝ Likelihood / Prior"
+],
+"correct_index": 1,
+"rationale": "Slide 29 states: P(θ|x1, ..., xn) ∝ P(x1, ..., xn|θ)P(θ), which is Posterior ∝ Likelihood * Prior.",
+"distractor_analysis": {
+"0": "The relationship is multiplicative, not additive.",
+"1": "Correct per slide 29.",
+"2": "The relationship is multiplicative, not division.",
+"3": "The relationship is multiplicative, not division."
+}
+},
+{
+"id": 38,
+"difficulty": "application",
+"question": "According to the Logistic cumulative distribution function (Slide 20), as x approaches infinity, what value does F(x) approach?",
+"options": [
+"0",
+"0.5",
+"1",
+"Infinity"
+],
+"correct_index": 2,
+"rationale": "Slide 20 shows F(x) = 1 / (1 + e^-x). As x -> ∞, e^-x -> 0, so F(x) -> 1 / (1 + 0) = 1.",
+"distractor_analysis": {
+"0": "This is what happens as x approaches negative infinity.",
+"1": "This is the value at x = 0.",
+"2": "Correct: cumulative distributions always approach 1.",
+"3": "Probabilities cannot exceed 1."
+}
+},
+{
+"id": 39,
+"difficulty": "analysis",
+"question": "How does the 'Frequentist' view assess the probability of an event (Slide 26)?",
+"options": [
+"Subjectively, based on the researcher's confidence.",
+"Objectively, as the relative occurrence frequency based on a large number of trials.",
+"Using prior beliefs that are updated with new data.",
+"By calculating the volume of the event space."
+],
+"correct_index": 1,
+"rationale": "Slide 26: 'measure the probability of the event as the relative occurrence frequency of that event based on a large number of trials.'",
+"distractor_analysis": {
+"0": "This describes the Bayesian view.",
+"1": "Correct per slide 26.",
+"2": "This describes the Bayesian view.",
+"3": "This is a geometric approach, not the Frequentist definition."
+}
+},
+{
+"id": 40,
+"difficulty": "analysis",
+"question": "In the Multinomial distribution formula (Slide 23), what does the term 'n! / (k1! ... km!)' represent?",
+"options": [
+"The joint probability of the outcomes.",
+"The likelihood of the parameters p.",
+"The multinomial coefficient (number of ways to arrange the outcomes).",
+"The normalization constant for the multivariate Gaussian."
+],
+"correct_index": 2,
+"rationale": "This is the standard multinomial coefficient used to count the number of distinct ways to achieve the set of counts k1 through km.",
+"distractor_analysis": {
+"0": "The whole formula represents the joint probability, not just this term.",
+"1": "The likelihood involves the p parameters themselves.",
+"2": "Correct: it is the combinatorial coefficient.",
+"3": "Gaussian normalization involves π and the determinant of the covariance matrix."
+}
+},
+{
+"id": 41,
+"difficulty": "recall",
+"question": "What is the definition of 'Covariance' according to Slide 25?",
+"options": [
+"The square of the standard deviation.",
+"E[(Xi - E[Xi])(Xj - E[Xj])]",
+"The sum of the expectations of two variables.",
+"The mapping of an event to a number between 0 and 1."
+],
+"correct_index": 1,
+"rationale": "Slide 25 defines Cov(Xi, Xj) as E[(Xi - E[Xi])(Xj - E[Xj])].",
+"distractor_analysis": {
+"0": "This is the variance.",
+"1": "Correct per slide 25.",
+"2": "This is not covariance.",
+"3": "This is a probability measure."
+}
+},
+{
+"id": 42,
+"difficulty": "application",
+"question": "If you have a coin with p(heads)=0.8, what is the probability of seeing 'Tails' based on the Bernoulli property in Slide 5/14?",
+"options": [
+"0.8",
+"0.2",
+"1.0",
+"0.64"
+],
+"correct_index": 1,
+"rationale": "Slide 5 Property 3: P(A) + P(¬A) = 1. Since Heads and Tails are complements, 1 - 0.8 = 0.2.",
+"distractor_analysis": {
+"0": "This is the probability of heads.",
+"1": "Correct: 1 - 0.8 = 0.2.",
+"2": "Probabilities must sum to 1, but individual events are usually < 1.",
+"3": "This is p^2, not the complement."
+}
+},
+{
+"id": 43,
+"difficulty": "analysis",
+"question": "Based on Slide 3, which of the following is NOT listed as a source of uncertainty in Data Science?",
+"options": [
+"Stochasticity of data (randomness in acquisition).",
+"Stochasticity of labels.",
+"Inherent ambiguity of data samples.",
+"The deterministic nature of computer hardware."
+],
+"correct_index": 3,
+"rationale": "Slide 3 lists data stochasticity, label stochasticity, sample ambiguity, and model uncertainty (insufficient data). Computer hardware is not mentioned.",
+"distractor_analysis": {
+"0": "Listed on slide 3.",
+"1": "Listed on slide 3.",
+"2": "Listed on slide 3.",
+"3": "Correct; not mentioned as a source of uncertainty."
+}
+},
+{
+"id": 44,
+"difficulty": "analysis",
+"question": "In the 'Product Rule' for discrete random variables (Slide 12), what does P(Y=yj | X=xi) represent?",
+"options": [
+"The marginal probability of Y.",
+"The joint probability of X and Y.",
+"The conditional probability of Y given X.",
+"The sum of all outcomes of X."
+],
+"correct_index": 2,
+"rationale": "The notation P(A|B) denotes the conditional probability of A given B.",
+"distractor_analysis": {
+"0": "Marginal probability would be P(Y=yj).",
+"1": "Joint probability would be P(X=xi, Y=yj).",
+"2": "Correct: it is the conditional probability.",
+"3": "This is not what the term represents."
+}
+},
+{
+"id": 45,
+"difficulty": "recall",
+"question": "What is the Probability Density Function (pdf) for a continuous Uniform distribution over [a, b] (Slide 18)?",
+"options": [
+"f(x) = 1 / (b - a)",
+"f(x) = 1 / (a + b)",
+"f(x) = (b - a)",
+"f(x) = 1 / m"
+],
+"correct_index": 0,
+"rationale": "Slide 18 gives the uniform pdf as f(x) = 1 / (b - a).",
+"distractor_analysis": {
+"0": "Correct per slide 18.",
+"1": "The denominator must be the width of the interval (b-a).",
+"2": "This would make the area (b-a)^2, which is not 1 unless the interval is length 1.",
+"3": "This is the discrete version (Slide 14)."
+}
+},
+{
+"id": 46,
+"difficulty": "application",
+"question": "If you have a set of data points and want to estimate parameters by maximizing the 'log-likelihood function,' which method are you using?",
+"options": [
+"Bayesian Inference",
+"Maximum Likelihood Estimation (MLE)",
+"Cox's Theorem Application",
+"Simpson's Paradox Correction"
+],
+"correct_index": 1,
+"rationale": "Slide 32 states: 'Maximizing L(p; k, n) is equivalent to maximizing log L(p; k, n)... called log-likelihood function.' This is the core of MLE.",
+"distractor_analysis": {
+"0": "Bayesian inference maximizes the posterior or finds the whole distribution, not just the likelihood.",
+"1": "Correct per slide 32.",
+"2": "Cox's Theorem provides the foundation for probability laws, not a parameter estimation method.",
+"3": "Simpson's Paradox is a statistical phenomenon, not an estimation method."
+}
+},
+{
+"id": 47,
+"difficulty": "application",
+"question": "Using the 'Properties of P' (Slide 5), if P(A) = 0.6, what is P(¬A)?",
+"options": [
+"0.6",
+"0.4",
+"1.0",
+"0.0"
+],
+"correct_index": 1,
+"rationale": "Property 3 states P(A) + P(¬A) = 1. So 1 - 0.6 = 0.4.",
+"distractor_analysis": {
+"0": "A and its complement cannot have the same probability unless both are 0.5.",
+"1": "Correct: 1 - 0.6 = 0.4.",
+"2": "This is the sum, not the value of the complement.",
+"3": "This would only be true if P(A) was 1."
+}
+},
+{
+"id": 48,
+"difficulty": "application",
+"question": "In the fruit box example (Slide 8), if the probability of choosing the red box is P(B=r) = 2/5, what is the probability of choosing the blue box P(B=b)?",
+"options": [
+"2/5",
+"1/5",
+"3/5",
+"4/5"
+],
+"correct_index": 2,
+"rationale": "There are only two boxes (red and blue). The sum of their probabilities must be 1. 1 - 2/5 = 3/5.",
+"distractor_analysis": {
+"0": "This is the probability of the red box.",
+"1": "Incorrect sum.",
+"2": "Correct: 1 - 2/5 = 3/5.",
+"3": "Incorrect sum."
+}
+},
+{
+"id": 49,
+"difficulty": "application",
+"question": "What is the expectation E(X) for a Bernoulli distribution with parameter p (Slide 14/24)?",
+"options": [
+"p",
+"1-p",
+"p(1-p)",
+"p^2"
+],
+"correct_index": 0,
+"rationale": "For a Bernoulli trial, E(X) = 1P(X=1) + 0P(X=0) = 1p + 0(1-p) = p.",
+"distractor_analysis": {
+"0": "Correct: the mean of a Bernoulli trial is p.",
+"1": "This is the expectation of the failure event.",
+"2": "This is the variance, not the expectation.",
+"3": "This is not the expectation."
+}
+},
+{
+"id": 50,
+"difficulty": "analysis",
+"question": "Which of the following best describes the relationship between the Variance and Standard Deviation as shown in Slide 25?",
+"options": [
+"Variance is the square root of the Standard Deviation.",
+"Standard Deviation is the square of the Variance.",
+"Standard Deviation is the square root of the Variance.",
+"They are two unrelated measures of central tendency."
+],
+"correct_index": 2,
+"rationale": "Slide 25 states: 'StDev(X) = sqrt(Var(X)).'",
+"distractor_analysis": {
+"0": "It is the other way around.",
+"1": "It is the other way around.",
+"2": "Correct per slide 25.",
+"3": "They are directly related measures of dispersion, not central tendency."
+}
+}
+]
+    },
+    "foundations-02": {
+        "title": "Foundations of AI - Statistics",
+        "questions":
+        [
+          {
+          "id": 1,
+          "difficulty": "analysis",
+          "question": "Which of the following best describes the relationship between the Variance and Standard Deviation as shown in Slide 25?",
+          "options": [
+          "Variance is the square root of the Standard Deviation.",
+          "Standard Deviation is the square of the Variance.",
+          "Standard Deviation is the square root of the Variance.",
+          "They are two unrelated measures of central tendency."
+          ],
+          "correct_index": 2,
+          "rationale": "Slide 25 states: 'StDev(X) = sqrt(Var(X)).'",
+          "distractor_analysis": {
+          "0": "It is the other way around.",
+          "1": "It is the other way around.",
+          "2": "Correct per slide 25.",
+          "3": "They are directly related measures of dispersion, not central tendency."
+          }
+          }
+        ]
+
+}
+
+
+
+}
