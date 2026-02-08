@@ -958,26 +958,959 @@
         "title": "Foundations of AI - Statistics",
         "questions":
         [
-          {
-          "id": 1,
-          "difficulty": "analysis",
-          "question": "Which of the following best describes the relationship between the Variance and Standard Deviation as shown in Slide 25?",
-          "options": [
-          "Variance is the square root of the Standard Deviation.",
-          "Standard Deviation is the square of the Variance.",
-          "Standard Deviation is the square root of the Variance.",
-          "They are two unrelated measures of central tendency."
-          ],
-          "correct_index": 2,
-          "rationale": "Slide 25 states: 'StDev(X) = sqrt(Var(X)).'",
-          "distractor_analysis": {
-          "0": "It is the other way around.",
-          "1": "It is the other way around.",
-          "2": "Correct per slide 25.",
-          "3": "They are directly related measures of dispersion, not central tendency."
-          }
-          }
-        ]
+{
+"id": 1,
+"difficulty": "recall",
+"question": "According to the document, which sampling method is used when there is significant variance in subpopulations and the sample size should reflect the proportion of those subpopulations?",
+"options": [
+"Convenience sampling",
+"Systematic sampling",
+"Random sampling",
+"Stratified sampling"
+],
+"correct_index": 3,
+"rationale": "As shown on Page 6, stratified sampling is recommended when there is variance in subpopulations to ensure the sample reflects the subpopulation proportions accurately.",
+"distractor_analysis": {
+"0": "Convenience sampling is described as biased because it only uses easy-to-access data.",
+"1": "Systematic sampling is an ordered sampling method (every k'th element) and is also labeled as biased on Page 6.",
+"2": "Random sampling ensures every element has an equal probability of being selected but does not explicitly account for subpopulation variance proportions.",
+"3": "Correct per the definition on Page 6 regarding variance in subpopulations."
+}
+},
+{
+"id": 2,
+"difficulty": "analysis",
+"question": "Based on the formulas for empirical variance (S_em^2) and sample variance (S^2), what is the mathematical relationship between their expected values?",
+"options": [
+"E(S^2_{em}) = E(S^2)",
+"E(S^2_{em}) = [(n-1)/n] * E(S^2)",
+"E(S^2) = [(n-1)/n] * E(S^2_{em})",
+"E(S^2_{em}) = [n/(n-1)] * E(S^2)"
+],
+"correct_index": 1,
+"rationale": "Page 12 states that the empirical variance is a biased estimator where E(S^2_{em}) = ((n-1)/n) * Var(X). Since S^2 is an unbiased estimator, E(S^2) = Var(X), making the relationship E(S^2_{em}) = ((n-1)/n) * E(S^2).",
+"distractor_analysis": {
+"0": "This is incorrect because empirical variance is biased and sample variance is unbiased.",
+"1": "Correct, derived from the bias factor (n-1)/n provided on Page 12.",
+"2": "This incorrectly applies the reduction factor to the unbiased estimator.",
+"3": "This is the inverse of the correct relationship; the empirical variance is smaller on average than the true variance."
+}
+},
+{
+"id": 3,
+"difficulty": "application",
+"question": "A researcher is calculating the yearly income in a city where one resident is a multi-billionaire while the rest are middle-class. Based on Page 16, which estimator should they prioritize for a 'meaningful' understanding of the typical resident?",
+"options": [
+"Empirical Mean",
+"Empirical Median",
+"Sample Variance",
+"Maximum Likelihood Estimator"
+],
+"correct_index": 1,
+"rationale": "Page 16 provides an example where a single high outlier (income of 23,000) skews the mean to 2,158, making it 'not make any sense.' It explicitly states the Empirical median is more insightful in such cases.",
+"distractor_analysis": {
+"0": "The mean is highly sensitive to outliers, as shown in the income example on Page 16.",
+"1": "Correct; the median is robust to the extreme skewness described.",
+"2": "Variance measures spread but does not provide a measure of 'central' typicality in the presence of extreme outliers.",
+"3": "While MLE is useful, the document specifically highlights the median for this specific scenario of skewed income."
+}
+},
+{
+"id": 4,
+"difficulty": "recall",
+"question": "What is the definition of a 'Consistent Estimator' as provided in the lecture materials?",
+"options": [
+"An estimator whose expected value is equal to the true parameter value.",
+"An estimator that has the lowest variance among all other unbiased estimators.",
+"An estimator where the probability of the difference from the true parameter being greater than epsilon converges to zero as n approaches infinity.",
+"An estimator that follows a normal distribution regardless of the sample size."
+],
+"correct_index": 2,
+"rationale": "Page 11 defines a consistent estimator using the limit notation: lim n->inf P(|gamma_hat - gamma| > epsilon) = 0.",
+"distractor_analysis": {
+"0": "This is the definition of an 'Unbiased Estimator' (Page 11).",
+"1": "This is the definition of the 'Best Estimator' (Page 14).",
+"2": "Correct; this describes convergence in probability to the true parameter.",
+"3": "This describes asymptotic normality, which is a property of some estimators but not the definition of consistency."
+}
+},
+{
+"id": 5,
+"difficulty": "analysis",
+"question": "If an estimator is biased, how is its Mean Squared Error (MSE) calculated according to the document?",
+"options": [
+"MSE = Variance - Bias^2",
+"MSE = Variance + Bias",
+"MSE = Variance + Bias^2",
+"MSE = (Variance + Bias)^2"
+],
+"correct_index": 2,
+"rationale": "Page 15 explicitly derives the formula: mse(gamma_hat - gamma) = Var(gamma_hat) + Bias(gamma_hat)^2.",
+"distractor_analysis": {
+"0": "The bias squared is added, not subtracted, because errors from both variance and bias contribute to the total squared error.",
+"1": "The bias must be squared to match the units of variance and account for the direction of error.",
+"2": "Correct; this is the standard decomposition of MSE shown on Page 15.",
+"3": "This is a mathematical misinterpretation of the sum of components."
+}
+},
+{
+"id": 6,
+"difficulty": "application",
+"question": "A data scientist is using a sample of 100 observations to estimate the mean of a population with a known variance. If they want to test if the mean is different from a proposed value, which test variable 'W' should they use according to the 'Unknown mean and known variance' section?",
+"options": [
+"W = (X_bar - mu) / (s / sqrt(n))",
+"W = (X_bar - mu) * sqrt(n) / sigma",
+"W = sum(h_j - E(h_j))^2 / E(h_j)",
+"W = (X - pn) / sqrt(p(1-p)n)"
+],
+"correct_index": 1,
+"rationale": "Page 26 defines the test variable Y (or W) for a known variance as Y = ((X_bar - mu) * sqrt(n)) / sigma.",
+"distractor_analysis": {
+"0": "This uses 's' (sample standard deviation), which is for the t-test when variance is unknown (Page 33).",
+"1": "Correct; this corresponds to the Wald test for known variance on Page 26.",
+"2": "This is the formula for the Chi-Square Goodness-of-Fit test (Page 35).",
+"3": "This is the specific formula for testing the probability of heads/proportions (Page 32)."
+}
+},
+{
+"id": 7,
+"difficulty": "analysis",
+"question": "What is the primary difference between the Weak Law of Large Numbers (WLLN) and the Strong Law of Large Numbers (SLLN) based on the provided slides?",
+"options": [
+"WLLN refers to the mean, while SLLN refers to the variance.",
+"WLLN describes convergence in probability, while SLLN describes almost sure convergence.",
+"WLLN requires a normal distribution, whereas SLLN does not.",
+"WLLN applies to small samples, while SLLN only applies to n > 30."
+],
+"correct_index": 1,
+"rationale": "Page 13 defines WLLN as 'Sample average converges in probability' and SLLN as 'Sample average converges almost surely.'",
+"distractor_analysis": {
+"0": "Both laws refer to the convergence of the sample mean (empirical mean).",
+"1": "Correct; these are the technical convergence types specified on Page 13.",
+"2": "Neither law requires the underlying distribution to be normal; they apply to i.i.d. samples from any distribution with a mean.",
+"3": "Both are asymptotic laws that describe behavior as n approaches infinity."
+}
+},
+{
+"id": 8,
+"difficulty": "recall",
+"question": "In hypothesis testing, what does the 'p-value' represent according to the document?",
+"options": [
+"The probability that the null hypothesis is true.",
+"The probability of making a Type II error.",
+"The minimal significance level at which the null hypothesis H0 can be rejected.",
+"The range of values within which the true parameter lies with 95% confidence."
+],
+"correct_index": 2,
+"rationale": "Page 26 explicitly states: 'The p-value is minimal significance level at which H0 can be rejected.'",
+"distractor_analysis": {
+"0": "This is a common misconception; the p-value is the probability of the data given H0, not the probability of H0 itself.",
+"1": "The significance level alpha is related to Type I error; Type II error is not explicitly defined in these slides.",
+"2": "Correct; this is the formal definition provided on Page 26.",
+"3": "This describes a confidence interval, not a p-value."
+}
+},
+{
+"id": 9,
+"difficulty": "application",
+"question": "If you are conducting a Chi-Square independence test with a table of 4 rows and 3 columns, how many degrees of freedom should you use?",
+"options": [
+"12",
+"7",
+"6",
+"11"
+],
+"correct_index": 2,
+"rationale": "Page 37 defines the degrees of freedom for an independence test as (r - 1)(m - 1). For 4 rows (m=4) and 3 columns (r=3), this is (3-1)(4-1) = 2 * 3 = 6.",
+"distractor_analysis": {
+"0": "This is r * m, which is the total number of cells, not the degrees of freedom.",
+"1": "This is (r + m), which is irrelevant.",
+"2": "Correct based on the (r-1)(m-1) formula.",
+"3": "This is (r * m) - 1, which is used for goodness-of-fit in some contexts but not for independence tests with multiple rows/cols."
+}
+},
+{
+"id": 10,
+"difficulty": "analysis",
+"question": "How does the Central Limit Theorem (CLT) differ from the Law of Large Numbers (LLN) based on the lecture content?",
+"options": [
+"LLN describes where the sample mean goes, while CLT describes the shape of the distribution of the sample mean.",
+"LLN applies to random variables, while CLT only applies to constants.",
+"LLN requires known variance, while CLT works with unknown variance.",
+"CLT is only valid if the population is already normally distributed."
+],
+"correct_index": 0,
+"rationale": "Page 13 (LLN) shows the sample average converging to a point (the mean), while Page 19 (CLT) shows that the distribution of the sum/mean converges to the shape of a normal distribution.",
+"distractor_analysis": {
+"0": "Correct; LLN is about the value (convergence to mean), CLT is about the distribution (convergence to Normal).",
+"1": "Both apply to sequences of random variables.",
+"2": "Both generally require the existence of a mean and variance.",
+"3": "The power of the CLT is that it applies to distributions that are NOT normally distributed (see uniform example on Page 20)."
+}
+},
+{
+"id": 11,
+"difficulty": "recall",
+"question": "What is the specific value of the significance level 'alpha' typically used as an example in the slides?",
+"options": [
+"0.5",
+"0.05",
+"1.0",
+"0.95"
+],
+"correct_index": 1,
+"rationale": "Page 24 and Page 32 mention alpha is typically 0.01, 0.05, or 0.1, with 0.05 used in the specific examples.",
+"distractor_analysis": {
+"0": "0.5 is far too high for a significance level in high-stakes testing.",
+"1": "Correct; this is the standard value cited on Pages 24, 31, 32, and 35.",
+"2": "1.0 would mean rejecting the null hypothesis 100% of the time.",
+"3": "0.95 is the typical 'confidence level' (1 - alpha), not the significance level."
+}
+},
+{
+"id": 12,
+"difficulty": "application",
+"question": "You calculate a test statistic |W| = 2.15 for a two-sided Wald test at a significance level of 0.05. Using the Z-score logic from Page 31/32 (where the threshold is 1.96), what is your conclusion?",
+"options": [
+"Retain the null hypothesis H0.",
+"Reject the null hypothesis H0.",
+"The test is inconclusive.",
+"Decrease the sample size to get a better result."
+],
+"correct_index": 1,
+"rationale": "Page 31 and 32 show that for alpha=0.05, the critical value is 1.96. Since 2.15 > 1.96, the statistic falls in the critical region, leading to a rejection of H0.",
+"distractor_analysis": {
+"0": "H0 is retained only if the statistic is less than the critical value (e.g., 0.82 < 1.96 on Page 31).",
+"1": "Correct; the observed value exceeds the threshold for rejection.",
+"2": "Statistical tests provided in the document lead to a binary decision: reject or retain.",
+"3": "Decreasing sample size generally increases variance and decreases the power of the test."
+}
+},
+{
+"id": 13,
+"difficulty": "analysis",
+"question": "Why is the empirical variance estimator (S^2_{em} with denominator n) considered 'biased' while the sample variance (S^2 with denominator n-1) is 'unbiased'?",
+"options": [
+"The empirical variance assumes the population mean is known, while the sample variance uses the sample mean.",
+"The division by n in empirical variance systematically underestimates the true population variance.",
+"The sample variance is only unbiased if the data is normally distributed.",
+"Empirical variance is only used for convenience samples."
+],
+"correct_index": 1,
+"rationale": "Page 12 shows E(S^2_{em}) = [(n-1)/n] * Var(X). Because (n-1)/n is always less than 1, the empirical variance is a systematic underestimation, hence 'biased'. Dividing by n-1 corrects this.",
+"distractor_analysis": {
+"0": "While using the sample mean instead of the population mean is the source of the bias, both estimators in the slides use X_bar (Page 7).",
+"1": "Correct; the slides show the expected value is scaled down by (n-1)/n.",
+"2": "Page 12 states S^2 is an unbiased estimator of the true variance without restricting it to normal distributions.",
+"3": "The document does not link empirical variance exclusively to convenience sampling."
+}
+},
+{
+"id": 14,
+"difficulty": "recall",
+"question": "In the context of the Normal Distribution, what does the 'standard normal distribution' specifically refer to?",
+"options": [
+"Any distribution with a bell shape.",
+"A normal distribution with mean mu and variance sigma^2.",
+"A normal distribution with mean 0 and variance 1.",
+"A distribution where the mean equals the median."
+],
+"correct_index": 2,
+"rationale": "Page 18 defines the 'Standard normal distribution' as N(0,1).",
+"distractor_analysis": {
+"0": "Many distributions (like the t-distribution) are bell-shaped but not standard normal.",
+"1": "This is the general form of a normal distribution, not the standard one.",
+"2": "Correct per the definition on Page 18.",
+"3": "All symmetric distributions (including uniform) have mean equal to median, but they aren't standard normal."
+}
+},
+{
+"id": 15,
+"difficulty": "application",
+"question": "According to the 't-Test in practice' (Page 34), when comparing two prediction algorithms A and A' based on error values, what is the null hypothesis H0?",
+"options": [
+"The errors of algorithm A are less than algorithm A'.",
+"The difference in error means is zero (d_bar = 0).",
+"The variances of the two algorithms are equal.",
+"Algorithm A' is significantly better than Algorithm A."
+],
+"correct_index": 1,
+"rationale": "Page 34 states: H0: mu_e = mu_e' (the means are the same), which translates to the test statistic H0: d_bar = 0.",
+"distractor_analysis": {
+"0": "This would be an alternative hypothesis for a one-sided test.",
+"1": "Correct; the null hypothesis in this context assumes no difference between the two algorithms.",
+"2": "The t-test described on Page 34 assumes variances are unknown, but the null hypothesis specifically tests the means.",
+"3": "This is a conclusion one might reach after rejecting the null, not the null itself."
+}
+},
+{
+"id": 16,
+"difficulty": "analysis",
+"question": "Examine the 'Galton Machine' slide (Page 21). What two statistical principles does it provide empirical evidence for simultaneously?",
+"options": [
+"Bias and Consistency",
+"Mean Squared Error and Variance",
+"Central Limit Theorem and Law of Large Numbers",
+"Wald Test and t-Test"
+],
+"correct_index": 2,
+"rationale": "Page 21 explicitly states: 'Empirical evidence for the Central Limit Theorem... and for the Law of Large Numbers.'",
+"distractor_analysis": {
+"0": "These are properties of estimators, not the physical behavior of the Galton machine.",
+"1": "These are components of error, whereas the Galton machine demonstrates distribution and convergence.",
+"2": "Correct; the balls forming a bell curve represents CLT, and the accumulation at the mean represents LLN.",
+"3": "These are formal statistical tests, not the underlying theorems demonstrated by the machine."
+}
+},
+{
+"id": 17,
+"difficulty": "recall",
+"question": "Which of the following is an 'unbiased consistent' estimator for the true cumulative distribution function (CDF)?",
+"options": [
+"The empirical median",
+"The empirical distribution function",
+"The sample variance",
+"The Maximum Likelihood Estimator"
+],
+"correct_index": 1,
+"rationale": "Page 12 states: 'The empirical distribution function... is an unbiased consistent estimator of the true cumulative distribution F_X.'",
+"distractor_analysis": {
+"0": "The median is a point estimate, not an estimator for the entire distribution function.",
+"1": "Correct per Page 12.",
+"2": "Sample variance estimates variance, not the CDF.",
+"3": "MLE is a method of estimation, not the name of the specific estimator for the CDF itself."
+}
+},
+{
+"id": 18,
+"difficulty": "application",
+"question": "A life-time expectancy study of electronic devices (Page 31) results in a test statistic W = 0.82. At a threshold of 1.96 for alpha=0.05, should the hypothesis that 'devices have a life time of around 2 years' be rejected?",
+"options": [
+"Yes, because 0.82 is less than 1.96.",
+"No, because 0.82 is less than 1.96.",
+"Yes, because 0.82 is positive.",
+"No, because the significance level is too low."
+],
+"correct_index": 1,
+"rationale": "Page 31 shows for Hypothesis I: W = 0.82. Since 0.82 < 1.96, it does not fall into the critical region, so we 'retain' (do not reject) H0.",
+"distractor_analysis": {
+"0": "If a value is less than the threshold, you do NOT reject.",
+"1": "Correct; the result is not statistically significant.",
+"2": "Being positive is not a criterion for rejection; the absolute value must exceed the critical value.",
+"3": "0.05 is the standard level used; the decision is based on the statistic vs the threshold, not the level itself."
+}
+},
+{
+"id": 19,
+"difficulty": "analysis",
+"question": "According to Page 11, if an estimator is biased, what is the specific mathematical term for the 'squared bias'?",
+"options": [
+"E(gamma_hat) - gamma",
+"(E(gamma_hat) - gamma)^2",
+"E(gamma_hat^2) - gamma^2",
+"Var(gamma_hat) + gamma^2"
+],
+"correct_index": 1,
+"rationale": "Page 11 defines the squared bias as (E(gamma_hat) - gamma)^2.",
+"distractor_analysis": {
+"0": "This is the bias, not the squared bias.",
+"1": "Correct per the formula on Page 11.",
+"2": "This is not the standard definition of squared bias.",
+"3": "This is a misconstruction of the variance formula."
+}
+},
+{
+"id": 20,
+"difficulty": "recall",
+"question": "What is the characteristic of an 'unbiased' estimator?",
+"options": [
+"It always yields the true parameter with more data.",
+"Its expected value is equal to the true parameter value it estimates.",
+"It has the smallest variance among all possible estimators.",
+"It is always normally distributed."
+],
+"correct_index": 1,
+"rationale": "Page 11 states: 'An estimator gamma_hat is unbiased if its expected value E(gamma_hat) is equal to the true value of the parameter gamma.'",
+"distractor_analysis": {
+"0": "This describes 'Consistency' (Page 11).",
+"1": "Correct; this is the core definition of lack of bias.",
+"2": "This describes the 'Best Estimator' (Page 14).",
+"3": "Bias is a property of the expected value, unrelated to the shape of the estimator's distribution."
+}
+},
+{
+"id": 21,
+"difficulty": "application",
+"question": "Imagine you are applying the Central Limit Theorem example from Page 20. If you sample repeatedly from a uniform distribution and take the average of 4 variables (X1, X2, X3, X4), what shape will the resulting distribution likely resemble?",
+"options": [
+"A perfectly flat uniform distribution",
+"A sharp triangle",
+"A bell-shaped curve",
+"A skewed exponential curve"
+],
+"correct_index": 2,
+"rationale": "Page 20 shows that while n=2 produces a triangular shape, by n=4, the 'Avg of X1, X2, X3, X4' already begins to look like a bell-shaped (Normal) distribution.",
+"distractor_analysis": {
+"0": "Only the original distribution (n=1) is uniform.",
+"1": "n=2 produces a triangular shape (Page 20).",
+"2": "Correct; n=4 is enough to see the start of the bell shape according to the slide visualization.",
+"3": "The CLT dictates convergence to a symmetric normal distribution, not a skewed one."
+}
+},
+{
+"id": 22,
+"difficulty": "analysis",
+"question": "On Page 8, a question is posed: 'Does correlation of 0 imply independence?' Based on the handwritten notes and standard statistical theory, what is the answer?",
+"options": [
+"Yes, always.",
+"No, because correlation only measures linear dependency.",
+"Yes, provided the sample size is large enough.",
+"No, because correlation only applies to normal distributions."
+],
+"correct_index": 1,
+"rationale": "Page 8 notes 'no' to the question. It further explains correlation is for 'linear dependency'. Variables can be non-linearly dependent yet have zero correlation.",
+"distractor_analysis": {
+"0": "Correlation only detects linear relationships; independent variables have 0 correlation, but 0 correlation doesn't guarantee independence.",
+"1": "Correct; as noted on Page 8, it specifically measures linear dependency.",
+"2": "Sample size does not change the fact that correlation cannot detect non-linear relationships.",
+"3": "Correlation can be calculated for any distribution, but it only captures linear association."
+}
+},
+{
+"id": 23,
+"difficulty": "recall",
+"question": "What is the 'indicator function' used for in the empirical distribution function (Page 9)?",
+"options": [
+"To calculate the average of the sample.",
+"To count how many data points are less than or equal to a value x.",
+"To determine if the variance is biased.",
+"To indicate if the sample is a random sample."
+],
+"correct_index": 1,
+"rationale": "Page 9 defines the indicator function as 1 if x_i <= x and 0 otherwise. Summing these and dividing by n gives the proportion of data points below x.",
+"distractor_analysis": {
+"0": "The mean uses the values themselves, not a 0/1 indicator.",
+"1": "Correct; it 'indicates' whether a point satisfies the condition for the cumulative count.",
+"2": "The indicator function is not involved in variance bias logic.",
+"3": "The function is used on data values regardless of the sampling method."
+}
+},
+{
+"id": 24,
+"difficulty": "application",
+"question": "According to the 'Best estimators' slide (Page 14), which estimator is the 'best' (minimum variance unbiased estimator) for the true mean for many useful distributions?",
+"options": [
+"The sample variance",
+"The sample mean",
+"The empirical median",
+"The Maximum Likelihood Estimator"
+],
+"correct_index": 1,
+"rationale": "Page 14 explicitly notes: 'The sample mean is the best estimator of the true mean for many useful distributions.'",
+"distractor_analysis": {
+"0": "Sample variance estimates variance, not the mean.",
+"1": "Correct; it is the MVUE for the mean in many cases.",
+"2": "While more useful in some skewed cases (Page 16), it is not the 'best' in the sense of lowest variance for standard distributions like the Normal.",
+"3": "MLE is a category of estimator, but the specific answer 'sample mean' is explicitly stated on the slide."
+}
+},
+{
+"id": 25,
+"difficulty": "analysis",
+"question": "In the 'Unknown mean and known variance' test (Page 26), what happens to the confidence interval [X_bar - c, X_bar + c] as the sample size 'n' increases?",
+"options": [
+"The interval stays the same.",
+"The interval becomes wider.",
+"The interval becomes narrower.",
+"The interval shifts to the right."
+],
+"correct_index": 2,
+"rationale": "The formula for Y on Page 26 involves sqrt(n) in the numerator of the standardized variable. In the confidence interval formula derived from it, the term 'c' involves dividing by sqrt(n). As n increases, c decreases, narrowing the interval.",
+"distractor_analysis": {
+"0": "Standard error decreases with n, affecting the interval width.",
+"1": "A wider interval would mean less precision, which is the opposite of what more data provides.",
+"2": "Correct; more data increases precision, leading to a narrower interval.",
+"3": "The interval is centered on X_bar; it doesn't systematically shift unless the sample mean changes."
+}
+},
+{
+"id": 26,
+"difficulty": "recall",
+"question": "According to the document, which estimator is 'biased' but 'consistent'?",
+"options": [
+"The empirical mean",
+"The sample variance",
+"The empirical variance",
+"The sample covariance"
+],
+"correct_index": 2,
+"rationale": "Page 12 explicitly lists 'The empirical variance S^2_{em}... is a biased consistent estimator.'",
+"distractor_analysis": {
+"0": "Empirical mean is unbiased and consistent (Page 12).",
+"1": "Sample variance is unbiased and consistent (Page 12).",
+"2": "Correct; it has an (n-1)/n bias but converges as n grows.",
+"3": "Sample covariance is listed as unbiased and consistent (Page 12)."
+}
+},
+{
+"id": 27,
+"difficulty": "application",
+"question": "A scientist wants to check if a specific die is fair (i.e., each side has a 1/6 probability). According to Page 35, which test should they perform?",
+"options": [
+"t-Test",
+"Wald Test",
+"Chi-Square Goodness-of-Fit-Test",
+"Chi-Square Independence Test"
+],
+"correct_index": 2,
+"rationale": "Page 35 explains the Chi-Square Goodness-of-Fit-Test is used to test if a sample follows a 'proposed discrete distribution' (like a fair die).",
+"distractor_analysis": {
+"0": "t-Tests are for comparing means of continuous data (Page 33).",
+"1": "Wald tests are generally for parameter estimation/testing in normal distributions (Page 26).",
+"2": "Correct; this test compares observed frequencies to expected frequencies of a discrete distribution.",
+"3": "The independence test is for checking relationships between two categorical features (Page 37), not one distribution."
+}
+},
+{
+"id": 28,
+"difficulty": "analysis",
+"question": "Considering the 'One sided and two-sided tests' (Page 25), if a researcher's null hypothesis is H0: theta_hat <= theta_0, what kind of test are they performing?",
+"options": [
+"A two-sided test",
+"A one-sided test (right-tailed)",
+"A Chi-Square independence test",
+"A Wald test"
+],
+"correct_index": 1,
+"rationale": "Page 25 explicitly lists H0: theta_hat <= theta_0 vs H1: theta_hat > theta_0 as a 'one-sided test'.",
+"distractor_analysis": {
+"0": "A two-sided test uses '=' in the null and '!=' in the alternative (Page 25).",
+"1": "Correct; the inequality in the alternative (theta_hat > theta_0) points to one side.",
+"2": "Chi-Square is a specific distribution, not the form of the hypothesis inequality.",
+"3": "Wald is a method for generating the statistic, but 'one-sided' describes the hypothesis structure."
+}
+},
+{
+"id": 29,
+"difficulty": "recall",
+"question": "On Page 18, what is the 'Theorem' related to the standard normal distribution?",
+"options": [
+"If X ~ N(mu, sigma^2), then Y := (X - mu)/sigma ~ N(0,1).",
+"If n > 30, the distribution is always normal.",
+"The sample mean is always unbiased.",
+"p-value = alpha / 2."
+],
+"correct_index": 0,
+"rationale": "Page 18 explicitly states the theorem for standardizing a normal variable: Y := (X - mu) / sigma ~ N(0,1).",
+"distractor_analysis": {
+"0": "Correct; this is the core theorem of standardization shown on Page 18.",
+"1": "This is a rule of thumb for CLT, not the theorem shown on Page 18.",
+"2": "This is a property of an estimator, not the theorem on this specific slide.",
+"3": "This is a calculation for a two-sided test, not a theorem."
+}
+},
+{
+"id": 30,
+"difficulty": "application",
+"question": "In the 'Probability of heads' example (Page 32), the test variable Y is defined. If we are testing n = 100 tosses and H0: p = 0.5, what is the value of the denominator (standard deviation of the count) in the formula for Y?",
+"options": [
+"10",
+"50",
+"5",
+"0.25"
+],
+"correct_index": 2,
+"rationale": "The denominator in Y is sqrt(p(1-p)n). For p=0.5 and n=100, it is sqrt(0.5 * 0.5 * 100) = sqrt(0.25 * 100) = sqrt(25) = 5.",
+"distractor_analysis": {
+"0": "This is sqrt(n), but doesn't account for p(1-p).",
+"1": "This is np (the expected count), not the standard deviation.",
+"2": "Correct based on the square root of the variance np(1-p).",
+"3": "This is p(1-p), but doesn't account for n or the square root."
+}
+},
+{
+"id": 31,
+"difficulty": "analysis",
+"question": "Based on the 'Empirical median' formula on Page 9, how is the median calculated if the sample size 'n' is even?",
+"options": [
+"It is the value at index (n+1)/2.",
+"It is the average of the two middle values: (x_{n/2} + x_{(n+2)/2}) / 2.",
+"It is always zero.",
+"It is the mode of the distribution."
+],
+"correct_index": 1,
+"rationale": "Page 9 provides the formula for even n: (x_{n/2} + x_{(n+2)/2}) / 2.",
+"distractor_analysis": {
+"0": "This is the formula for an odd sample size n (Page 9).",
+"1": "Correct; it averages the two central observations in the sorted list.",
+"2": "The median depends on the data values, not a fixed constant like zero.",
+"3": "The mode is the most frequent value, which is distinct from the median."
+}
+},
+{
+"id": 32,
+"difficulty": "recall",
+"question": "What is 'skew' used to measure according to the empirical skew formula on Page 17?",
+"options": [
+"The spread of the data around the mean.",
+"The symmetry of the distribution.",
+"The consistency of the estimator.",
+"The probability of the null hypothesis."
+],
+"correct_index": 1,
+"rationale": "Page 17 shows 'Empirical skew' with diagrams for 'Negative Skew' and 'Positive Skew', which represent the asymmetry of the distribution.",
+"distractor_analysis": {
+"0": "Variance and standard deviation measure spread, not skew.",
+"1": "Correct; skew measures the 'lean' or lack of symmetry in the distribution.",
+"2": "Consistency is a property of an estimator as n increases, not a measure of a distribution's shape.",
+"3": "Skew is a descriptive statistic of data, not a result of a hypothesis test."
+}
+},
+{
+"id": 33,
+"difficulty": "application",
+"question": "Using the 'Z-score table' (Page 29), if a Z-score is 1.45, what is the area between the mean and that Z-score?",
+"options": [
+"0.4265",
+"0.0735",
+"0.5000",
+"1.4500"
+],
+"correct_index": 0,
+"rationale": "Page 29 provides an example in the header: 'for example, when Z score = 1.45 the area = 0.4265.'",
+"distractor_analysis": {
+"0": "Correct as explicitly stated in the example on Page 29.",
+"1": "This is the tail area (0.5 - 0.4265), not the area from the mean.",
+"2": "This is the area of half the entire distribution.",
+"3": "1.45 is the Z-score itself, not the area (probability)."
+}
+},
+{
+"id": 34,
+"difficulty": "analysis",
+"question": "Which statement accurately describes the relationship between the significance level alpha and the confidence level, based on Page 24?",
+"options": [
+"Alpha is the confidence level.",
+"Confidence level = 1 - alpha.",
+"Confidence level = alpha / 2.",
+"There is no mathematical relationship between them."
+],
+"correct_index": 1,
+"rationale": "Page 24 defines the significance level as 'alpha' and the confidence level as '1 - alpha'.",
+"distractor_analysis": {
+"0": "Alpha is the significance level, which is the complement of the confidence level.",
+"1": "Correct per the definitions on Page 24.",
+"2": "Alpha/2 is used for two-sided test critical regions, not the definition of confidence level.",
+"3": "They are directly related; higher confidence requires lower alpha."
+}
+},
+{
+"id": 35,
+"difficulty": "recall",
+"question": "What is the 'Chair' name of the professor who authored these slides?",
+"options": [
+"Chair of Artificial Intelligence",
+"Chair of Responsible Data Science",
+"Chair of Statistics and Munich",
+"Chair of Social Sciences"
+],
+"correct_index": 1,
+"rationale": "Page 1 identifies Prof. Gjergji Kasneci as the head of the 'Chair of Responsible Data Science'.",
+"distractor_analysis": {
+"0": "The course is 'Foundations of AI', but the chair name is specifically 'Responsible Data Science'.",
+"1": "Correct as per Page 1.",
+"2": "Munich is the location (TUM), not part of the chair name.",
+"3": "The chair is within the TUM School of Social Sciences and Technology, but the chair title is different."
+}
+},
+{
+"id": 36,
+"difficulty": "application",
+"question": "You have a sample of size n=15 and you do NOT know the population variance. Which distribution should you use for your test statistic according to Page 33?",
+"options": [
+"Normal Distribution",
+"Student's t-distribution",
+"Uniform Distribution",
+"Chi-Square Distribution"
+],
+"correct_index": 1,
+"rationale": "Page 33 states that if the variance is unknown, the variable Y 'has a Student’s t distribution with n - 1 degrees of freedom.'",
+"distractor_analysis": {
+"0": "The Normal distribution is used if the variance is known (Page 26).",
+"1": "Correct; the t-distribution accounts for the extra uncertainty of estimating variance from a small sample.",
+"2": "Uniform distribution is an example of a population type, not a test statistic distribution.",
+"3": "Chi-square is for goodness-of-fit or variance itself, not for tests of the mean with unknown variance."
+}
+},
+{
+"id": 37,
+"difficulty": "analysis",
+"question": "On Page 10, the notes discuss reliability vs. usefulness. What is the conclusion regarding a mean of 31.2 months if the standard deviation is high (approx 8.8)?",
+"options": [
+"The mean is perfectly reliable because it was calculated correctly.",
+"The mean cannot be relied upon due to the high standard deviation.",
+"The mean is only useful if it equals the median.",
+"The mean is better than the median for this data."
+],
+"correct_index": 1,
+"rationale": "The handwritten notes on Page 10 state: 'Because of the high standard deviation we know that we cannot rely on the sample data.'",
+"distractor_analysis": {
+"0": "Correctness of calculation does not guarantee reliability for inference if variance is too high.",
+"1": "Correct; high variance makes the point estimate of the mean less trustworthy.",
+"2": "Usefulness is a separate question about what the data describes, not just its equality to the median.",
+"3": "The notes suggest that if it followed an exponential distribution (implied by high variance/outliers), the mean might not be trusted."
+}
+},
+{
+"id": 38,
+"difficulty": "recall",
+"question": "In the 'Chi-Square Goodness-of-Fit-Test' (Page 35), what does 'E(h_j)' represent?",
+"options": [
+"The observed frequency of class c_j.",
+"The absolute error of the test.",
+"The expected frequency of class c_j according to the proposed distribution.",
+"The total number of samples n."
+],
+"correct_index": 2,
+"rationale": "Page 35 defines E(h_j) as 'the expected frequency of class c_j according to the proposed distribution.'",
+"distractor_analysis": {
+"0": "The observed frequency is h_j, not E(h_j).",
+"1": "The error is the difference h_j - E(h_j).",
+"2": "Correct; it is the theoretical count if the null hypothesis were true.",
+"3": "n is the sum of all h_j."
+}
+},
+
+  {
+    "id": 39,
+    "difficulty": "application",
+    "question": "In the IQ test example provided on Page 23, if the sample mean is found to be 115 and the null hypothesis is H0: μ = 100, what is the primary logical step required to make a decision?",
+    "options": [
+      "Determine if it is mathematically possible for a student to have an IQ of 115.",
+      "Evaluate how likely it is to observe a sample mean of 115 if the true population mean is indeed 100.",
+      "Accept that the null hypothesis is false because 115 is numerically greater than 100.",
+      "Immediately reject the null hypothesis because the sample size of 8 is too small for the test to be valid."
+    ],
+    "correct_index": 1,
+    "rationale": "Page 23 explicitly outlines this logic: after establishing H0: μ = 100 and observing a sample mean of 115, the question posed is 'Is this likely given μ = 100? If yes retain H0 else reject.' This represents the core of hypothesis testing.",
+    "distractor_analysis": {
+      "0": "The test is about the probability of the sample mean occurring by chance, not the possibility of individual data points.",
+      "1": "Correct; this follows the decision-making logic shown in the diagram on Page 23.",
+      "2": "A numerical difference does not automatically mean the hypothesis is false; we must determine if the difference is statistically significant.",
+      "3": "While sample size affects power, the example on Page 23 proceeds with the test logic rather than using n=8 as a reason for immediate dismissal."
+    }
+  },
+
+{
+"id": 40,
+"difficulty": "analysis",
+"question": "According to the 'Best estimators' slide (Page 14), in what specific situation is the sample variance the 'best' estimator of the true variance?",
+"options": [
+"For all possible data distributions.",
+"Only for very large sample sizes (n > 1000).",
+"For normally distributed data.",
+"When the mean is already known."
+],
+"correct_index": 2,
+"rationale": "Page 14 explicitly notes: 'The sample variance is the best estimator of the true variance for normally distributed data.'",
+"distractor_analysis": {
+"0": "It is not the MVUE for all distributions (e.g., highly skewed ones).",
+"1": "The slide does not restrict 'best' status to large n; it restricts it by data distribution.",
+"2": "Correct; the property of being the 'best' (minimum variance unbiased) is specific to normal data in this context.",
+"3": "If the mean is known, a different estimator (dividing by n) is actually better, but that's beyond the scope of this slide."
+}
+},
+{
+"id": 41,
+"difficulty": "application",
+"question": "A student flips a coin 1000 times and sees the running average of heads converge to 0.5. Which law from Page 13 is being illustrated?",
+"options": [
+"Central Limit Theorem",
+"Law of Large Numbers",
+"Chi-Square Independence Test",
+"Wald Test"
+],
+"correct_index": 1,
+"rationale": "Page 13 shows a graph titled 'Law of Large Numbers' where the sample mean converges to the population mean as sample size increases.",
+"distractor_analysis": {
+"0": "CLT would be illustrated by the distribution of many such averages, not the convergence of a single running average.",
+"1": "Correct; this is the core concept of the LLN shown on Page 13.",
+"2": "This is a test for relationships, not a law of convergence.",
+"3": "Wald is a hypothesis test, not a law of large numbers."
+}
+},
+{
+"id": 42,
+"difficulty": "recall",
+"question": "In the formula for correlation 'r' on Page 8, what are 's_X' and 's_Y'?",
+"options": [
+"The sample means of X and Y.",
+"The sample standard deviations of X and Y.",
+"The number of samples in X and Y.",
+"The significance levels for X and Y."
+],
+"correct_index": 1,
+"rationale": "The correlation formula r = C_hat / (s_X * s_Y) uses the standard deviations in the denominator to normalize the covariance.",
+"distractor_analysis": {
+"0": "Means are denoted as X_bar and Y_bar.",
+"1": "Correct; these are the sample standard deviations as per standard notation in the correlation formula.",
+"2": "Sample size is n.",
+"3": "Significance level is alpha."
+}
+},
+{
+"id": 43,
+"difficulty": "analysis",
+"question": "Why is the empirical distribution function (Page 9) called 'empirical'?",
+"options": [
+"Because it is only an approximation.",
+"Because it is based on observed sample data rather than a theoretical distribution.",
+"Because it is biased.",
+"Because it was discovered by Empiricus."
+],
+"correct_index": 1,
+"rationale": "Page 9 defines the empirical distribution function based on a sample x1, ..., xn. The handwritten note says 'same as CDF but its called empirical because we use it on a [sample/example]'.",
+"distractor_analysis": {
+"0": "While it estimates the CDF, 'empirical' specifically refers to its data-driven nature.",
+"1": "Correct; 'empirical' in statistics refers to being derived from observation/experiment.",
+"2": "Page 12 actually says it is an unbiased consistent estimator.",
+"3": "This is an incorrect etymological guess."
+}
+},
+{
+"id": 44,
+"difficulty": "recall",
+"question": "What does the symbol 'Φ' (Phi) represent in the provided formulas?",
+"options": [
+"The mean of the distribution.",
+"The probability density function of a normal distribution.",
+"The cumulative distribution function (cdf) of the standard normal distribution.",
+"The variance of the sample."
+],
+"correct_index": 2,
+"rationale": "Page 18 defines 'Cumulative distribution of N(0,1): Φ(z)'.",
+"distractor_analysis": {
+"0": "Mean is mu.",
+"1": "The density function is denoted as f_X(x) (Page 18).",
+"2": "Correct; Phi is the standard notation for the CDF of N(0,1).",
+"3": "Variance is sigma^2."
+}
+},
+{
+"id": 45,
+"difficulty": "application",
+"question": "According to the 'General recipe for hypothesis testing' (Page 27), what is the first step in the process?",
+"options": [
+"Define a corresponding random variable for the test.",
+"Formulate the null hypothesis H0.",
+"Turn the variable into a N(0,1) variable.",
+"Test whether the statistics lie in the critical region."
+],
+"correct_index": 1,
+"rationale": "Page 27 lists the steps in order: '1. Formulate null hypothesis... 2. Define corresponding random variable...'",
+"distractor_analysis": {
+"0": "This is the second step.",
+"1": "Correct; you must define what you are testing first.",
+"2": "This is the third step (standardization).",
+"3": "This is the final step (decision)."
+}
+},
+{
+"id": 46,
+"difficulty": "analysis",
+"question": "Look at the 't-Test for unknown mean and unknown variance' (Page 33). What happens to the t-distribution as the degrees of freedom (n-1) increase?",
+"options": [
+"It becomes flatter and wider.",
+"It approaches the shape of the standard normal distribution.",
+"It becomes a Chi-Square distribution.",
+"It shifts away from zero."
+],
+"correct_index": 1,
+"rationale": "The graph on Page 33 shows t-distributions for n=1, n=5, and n=30. As n increases, the curve gets taller at the center and closer to the normal-like green curve (n=30).",
+"distractor_analysis": {
+"0": "It becomes taller and narrower as uncertainty in the variance estimate decreases.",
+"1": "Correct; this is a fundamental property of the t-distribution shown visually on Page 33.",
+"2": "The Chi-Square distribution is for squared sums, not the t-statistic.",
+"3": "The t-distribution is always centered at zero (for the null hypothesis mu_0)."
+}
+},
+{
+"id": 47,
+"difficulty": "recall",
+"question": "On Page 17, which property is NOT listed as a characteristic of the Maximum Likelihood Estimator (MLE)?",
+"options": [
+"Consistent",
+"Asymptotically normal",
+"Asymptotically optimal",
+"Always unbiased"
+],
+"correct_index": 3,
+"rationale": "Page 17 lists consistent, asymptotically normal, and asymptotically optimal. It does not state that MLE is always unbiased (it often is not in small samples).",
+"distractor_analysis": {
+"0": "Consistency is explicitly listed on Page 17.",
+"1": "Asymptotic normality is explicitly listed on Page 17.",
+"2": "Asymptotic optimality is explicitly listed on Page 17.",
+"3": "Correct; MLE is often biased, although it becomes 'asymptotically unbiased' (consistent)."
+}
+},
+{
+"id": 48,
+"difficulty": "application",
+"question": "In the 'Chi-Square independence test' table (Page 37), what value does 'n' represent in the bottom-right corner?",
+"options": [
+"The total number of columns.",
+"The total number of rows.",
+"The total number of observations in the sample.",
+"The number of degrees of freedom."
+],
+"correct_index": 2,
+"rationale": "In the contingency table on Page 37, 'Sum' labels are on both the row and column margins, and 'n' is the grand total sum of all cell frequencies.",
+"distractor_analysis": {
+"0": "The number of columns is r.",
+"1": "The number of rows is m.",
+"2": "Correct; n represents the total sample size across all categories.",
+"3": "Degrees of freedom is (r-1)(m-1)."
+}
+},
+{
+"id": 49,
+"difficulty": "analysis",
+"question": "Referring to the 'Wald Test' (Page 30), why is the test variable 'W' described as 'approximately N(0,1)-distributed'?",
+"options": [
+"Because the population must be normal.",
+"Due to the Law of Large Numbers.",
+"Due to the Central Limit Theorem applied to the growth of sample size.",
+"Because the standard error is always 1."
+],
+"correct_index": 2,
+"rationale": "Page 30 states: 'W is approximately N(0,1)-distributed... for growing sample size.' This convergence of a sample mean statistic to normal is the Central Limit Theorem.",
+"distractor_analysis": {
+"0": "The CLT allows the test statistic to be normal even if the population is not, as long as n is large.",
+"1": "LLN explains convergence to the mean, not the shape of the distribution.",
+"2": "Correct; the CLT is why we can use Z-scores for sample means when n is large.",
+"3": "Standard error (s) varies with the data; it is not a constant 1."
+}
+},
+{
+"id": 50,
+"difficulty": "recall",
+"question": "What is the primary goal of hypothesis testing according to Page 22?",
+"options": [
+"To prove that the alternative hypothesis is true.",
+"To calculate the exact value of the population mean.",
+"Falsification of a hypothesis by lack of statistical evidence.",
+"To ensure the sample size is larger than 30."
+],
+"correct_index": 2,
+"rationale": "Page 22 explicitly states: 'Goal: Falsification of hypothesis by lack of statistical evidence.'",
+"distractor_analysis": {
+"0": "Science usually aims to falsify nulls rather than 'prove' alternatives.",
+"1": "Estimation (not testing) calculates the mean.",
+"2": "Correct as per the lecture slides definition.",
+"3": "n > 30 is a condition for some tests, not the goal of testing itself."
+}
+}
+]
 
 }
 
