@@ -4018,5 +4018,3021 @@
         }
       }
     ]
+  },
+  "foundations-05": {
+    "title": "Foundations of AI - Regression",
+    "questions": [
+  {
+    "id": 1,
+    "topic": "Regression Fundamentals",
+    "difficulty": "recall",
+    "question": "In the context of regression methods, what is the primary objective when finding a 'best-fitting curve' for a set of data points?",
+    "options": [
+      "To exactly interpolate every given data point in the sample",
+      "To minimize the discrepancy between the unknown function and the observed values",
+      "To maximize the distance between the residuals and the regression function",
+      "To eliminate the presence of Gaussian noise from the original dataset"
+    ],
+    "correct_index": 1,
+    "rationale": "Regression aims to find a function that best approximates the underlying trend of data that has been perturbed by noise, minimizing the error between predictions and observations.",
+    "distractor_analysis": {
+      "0": "Interpolation is about passing through every point, which leads to overfitting in noisy data.",
+      "1": "Correct. This is the definition of finding the 'best fit' curve.",
+      "2": "We want to minimize residuals, not maximize the distance from the function.",
+      "3": "Noise is inherent; we cannot eliminate it from the original data, only model around it."
+    }
+  },
+  {
+    "id": 2,
+    "topic": "Residuals",
+    "difficulty": "application",
+    "question": "If a regression model yields a residual (epsilon) of zero for a specific observation, what does this imply about that data point?",
+    "options": [
+      "The point is an outlier that the model is ignoring",
+      "The noise at that point was significantly higher than the Gaussian average",
+      "The model's prediction for that instance perfectly matches the observed target value",
+      "The feature vector for that point contains only zero values"
+    ],
+    "correct_index": 2,
+    "rationale": "Residuals are defined as the difference between the actual observed value and the predicted value. A zero residual means no error.",
+    "distractor_analysis": {
+      "0": "Outliers typically result in very large residuals.",
+      "1": "Higher noise would likely lead to a larger residual if the model is smooth.",
+      "2": "Correct. Residual = Target - Prediction; zero means they are equal.",
+      "3": "The feature values do not determine the residual; the accuracy of the prediction does."
+    }
+  },
+  {
+    "id": 3,
+    "topic": "Error Functions",
+    "difficulty": "analysis",
+    "question": "What do Sum-of-Squares Error (SSE), Mean Squared Error (MSE), and Root-Mean-Square Error (RMSE) fundamentally have in common?",
+    "options": [
+      "They all treat positive and negative errors with the same magnitude of penalty",
+      "They all provide error values in the same unit as the target variable",
+      "They all decrease linearly as the number of observations (n) increases",
+      "They all remain unaffected by the presence of large outliers"
+    ],
+    "correct_index": 0,
+    "rationale": "All three are based on squaring the residuals, which ensures that negative and positive differences are treated as positive penalties.",
+    "distractor_analysis": {
+      "0": "Correct. Squaring removes the sign, making -5 and +5 error equal.",
+      "1": "SSE and MSE use squared units; only RMSE returns to the original unit.",
+      "2": "SSE typically increases with n, while MSE and RMSE average it out.",
+      "3": "Squared errors are highly sensitive to outliers because the squaring amplifies large differences."
+    }
+  },
+  {
+    "id": 4,
+    "topic": "Coefficient of Determination",
+    "difficulty": "recall",
+    "question": "The Coefficient of Determination (R²) is used to evaluate model quality. What does it represent on a variance basis?",
+    "options": [
+      "The ratio of feature variance to noise variance",
+      "How well the observed outcomes are replicated by the model compared to the mean",
+      "The absolute average distance of points from the regression line",
+      "The probability that the next data point will fall on the regression line"
+    ],
+    "correct_index": 1,
+    "rationale": "R² measures the proportion of variance in the dependent variable that is predictable from the independent variable(s) relative to a baseline mean model.",
+    "distractor_analysis": {
+      "0": "This describes a signal-to-noise ratio, not R².",
+      "1": "Correct. It compares the model's residuals to the total sum of squares (variance from the mean).",
+      "2": "This describes Mean Absolute Error (MAE).",
+      "3": "R² is a summary statistic of fit, not a predictive probability of exact intersection."
+    }
+  },
+  {
+    "id": 5,
+    "topic": "Univariate Linear Regression",
+    "difficulty": "application",
+    "question": "In a univariate linear regression model (g = w0 + w1h + epsilon), what happens to the regression line if the slope coefficient w1 is zero?",
+    "options": [
+      "The line becomes vertical, passing through the mean of h",
+      "The line becomes a horizontal constant at the value of the intercept w0",
+      "The model predicts a value of zero for all inputs regardless of h",
+      "The residuals are eliminated because the model is perfectly flat"
+    ],
+    "correct_index": 1,
+    "rationale": "If w1 (the slope) is zero, the term w1h disappears, leaving g = w0, which is a horizontal line.",
+    "distractor_analysis": {
+      "0": "A vertical line would mean an undefined slope, not zero.",
+      "1": "Correct. No change in h affects g, so it stays at the intercept.",
+      "2": "This only happens if w0 is also zero.",
+      "3": "Residuals would actually likely increase if there is any relationship between h and g."
+    }
+  },
+  {
+    "id": 6,
+    "topic": "Multivariate Linear Regression",
+    "difficulty": "analysis",
+    "question": "In the general form of multivariate linear regression (t = Xw + epsilon), how does the 'X' matrix change as we add more features for each observation?",
+    "options": [
+      "The number of rows increases, representing a larger sample size",
+      "The number of columns increases, where each column represents a new feature",
+      "The matrix becomes a vector to simplify the dot product with w",
+      "The matrix values are normalized to ensure the noise vector remains constant"
+    ],
+    "correct_index": 1,
+    "rationale": "In the matrix X (n x m), n is the number of observations and m is the number of features. Adding features adds columns.",
+    "distractor_analysis": {
+      "0": "Adding observations increases rows, not adding features.",
+      "1": "Correct. Each feature is represented by a column in the design matrix.",
+      "2": "X must remain a matrix to handle multiple features and observations simultaneously.",
+      "3": "While normalization is common, it is not an inherent structural change caused by adding features."
+    }
+  },
+  {
+    "id": 7,
+    "topic": "Correlation between Features",
+    "difficulty": "analysis",
+    "question": "According to the slides, what is a consequence of having highly correlated features in a dataset for multivariate regression?",
+    "options": [
+      "The sample provides much less information about the true underlying function",
+      "The model becomes computationally simpler because it can ignore redundant features",
+      "The R² value automatically reaches 1.0 due to feature synergy",
+      "The residuals are guaranteed to follow a non-Gaussian distribution"
+    ],
+    "correct_index": 0,
+    "rationale": "When features are highly correlated, it is difficult for the model to distinguish their individual contributions, leading to numerical instability and less information gain.",
+    "distractor_analysis": {
+      "0": "Correct. Redundancy leads to 'thin' data coverage in the feature space.",
+      "1": "Correlation often makes the solution more sensitive and unstable (ill-conditioned), not simpler.",
+      "2": "Correlation does not guarantee high accuracy; it can actually mask errors.",
+      "3": "Noise distribution is an assumption of the data generation process, not a result of feature correlation."
+    }
+  },
+  {
+    "id": 8,
+    "topic": "Regularization Logic",
+    "difficulty": "application",
+    "question": "Why would an instructional designer describe regularization as 'making training a little bit harder'?",
+    "options": [
+      "It requires more computational power to calculate the gradient",
+      "It adds a penalty term that prevents the model from perfectly fitting the training data",
+      "It increases the amount of noise in the training set to test model robustness",
+      "It forces the use of a smaller dataset to prevent the model from seeing too many patterns"
+    ],
+    "correct_index": 1,
+    "rationale": "Regularization adds a constraint (the norm of the weights) to the loss function, preventing the model from chasing every small variance in the training data.",
+    "distractor_analysis": {
+      "0": "The math is slightly more complex, but the 'hardness' refers to the optimization constraint.",
+      "1": "Correct. The model must balance low error with small weight magnitudes.",
+      "2": "Regularization does not add noise; it constrains the model's reaction to existing noise.",
+      "3": "Regularization allows you to use all your data while still preventing overfitting."
+    }
+  },
+  {
+    "id": 9,
+    "topic": "Ridge vs Lasso",
+    "difficulty": "analysis",
+    "question": "Comparing Ridge (L2) and Lasso (L1) regularization, what is the specific effect of Lasso on the weight vector (w)?",
+    "options": [
+      "It shrinks all weights equally toward zero without ever reaching it",
+      "It favors 'sparser' solutions by setting some weight coefficients exactly to zero",
+      "It increases the weights of the most important features to counteract noise",
+      "It is less sensitive to the regularization parameter (lambda) than Ridge"
+    ],
+    "correct_index": 1,
+    "rationale": "Lasso's diamond-shaped constraint space often intersects the loss contours at the axes, resulting in zero-valued coefficients.",
+    "distractor_analysis": {
+      "0": "This describes Ridge (L2), which shrinks weights asymptotically.",
+      "1": "Correct. Sparser solutions are the hallmark of L1 regularization.",
+      "2": "Regularization always penalizes weight magnitude; it never encourages growth.",
+      "3": "The slides explicitly state Lasso is more sensitive to the choice of lambda."
+    }
+  },
+  {
+    "id": 10,
+    "topic": "Polynomial Curve Fitting",
+    "difficulty": "application",
+    "question": "If you increase the degree 'M' of a polynomial curve fitting model while keeping the dataset size 'N' small, what is the most likely outcome?",
+    "options": [
+      "The model will achieve a better generalization to new, unseen data",
+      "The model will experience 'overfitting', capturing noise as if it were a true pattern",
+      "The R² value will decrease significantly on the training set",
+      "The basis functions will become linearly dependent, preventing a solution"
+    ],
+    "correct_index": 1,
+    "rationale": "High degree polynomials have high flexibility. With small N, the model uses this flexibility to pass through noisy points, which is overfitting.",
+    "distractor_analysis": {
+      "0": "Overfitted models generalize poorly.",
+      "1": "Correct. This is the classic trade-off shown in the slides (M=9 vs M=3).",
+      "2": "R² on the training set usually increases (it fits the noise), even if the model is bad.",
+      "3": "Basis functions remain independent, but the model becomes poorly conditioned."
+    }
+  },
+  {
+    "id": 11,
+    "topic": "Stochastic Gradient Descent (SGD)",
+    "difficulty": "recall",
+    "question": "What is the primary difference between standard Gradient Descent and Stochastic Gradient Descent (SGD) in the context of the training data used per step?",
+    "options": [
+      "SGD uses the entire dataset to compute one gradient update",
+      "SGD approximates the gradient using only one or a small subset of data points",
+      "SGD only updates the intercept w0 and ignores the slope coefficients",
+      "SGD requires the loss function to be non-differentiable"
+    ],
+    "correct_index": 1,
+    "rationale": "SGD updates parameters per data point (or minibatch) rather than calculating the average gradient of the whole dataset.",
+    "distractor_analysis": {
+      "0": "This is Batch Gradient Descent.",
+      "1": "Correct. The slide shows the approximation symbol (≈) using one point (xi, ti).",
+      "2": "SGD updates all parameters in the weight vector w.",
+      "3": "Gradient descent requires differentiability to calculate the gradient."
+    }
+  },
+  {
+    "id": 12,
+    "topic": "SGD Hyperparameters",
+    "difficulty": "application",
+    "question": "In the optimization landscape, how does a 'Big learning rate' typically manifest in the loss curve over time?",
+    "options": [
+      "The loss decreases very slowly and smoothly toward the global minimum",
+      "The loss may oscillate or even increase, as the updates 'overshoot' the minimum",
+      "The loss curve becomes perfectly flat because the updates are too large to be registered",
+      "The loss reaches the minimum instantly but then remains stuck there forever"
+    ],
+    "correct_index": 1,
+    "rationale": "A high learning rate creates large steps. If the step size is larger than the 'valley' of the loss function, the model jumps over the minimum to a higher error point.",
+    "distractor_analysis": {
+      "0": "This describes a 'Small learning rate'.",
+      "1": "Correct. Overshooting leads to oscillation or divergence.",
+      "2": "The curve would be erratic, not flat.",
+      "3": "Instant convergence is rare, and high rates usually prevent staying at the minimum."
+    }
+  },
+  {
+    "id": 13,
+    "topic": "Forward Step-wise Regression",
+    "difficulty": "recall",
+    "question": "What is the core logic behind 'Step 2' in Forward Step-wise Regression?",
+    "options": [
+      "To restart the training from scratch using a different basis function",
+      "To fit a second simple model to the 'residuals' (errors) of the first model",
+      "To multiply the weights of the first model by the weights of the second",
+      "To remove the most important feature from the first step to test robustness"
+    ],
+    "correct_index": 1,
+    "rationale": "Forward step-wise regression is additive. Each new step attempts to explain the error left behind by the previous steps.",
+    "distractor_analysis": {
+      "0": "It builds upon the previous step, it doesn't restart.",
+      "1": "Correct. The target for step 2 is (ti - y1).",
+      "2": "Models are added, not multiplied.",
+      "3": "Features are added in this method, not removed (that would be backward elimination)."
+    }
+  },
+  {
+    "id": 14,
+    "topic": "Regression Use Cases",
+    "difficulty": "application",
+    "question": "In which of the following scenarios is a regression method most appropriate?",
+    "options": [
+      "Classifying an image as either a 'dog' or a 'cat'",
+      "Predicting the exact price of a house based on its square footage and location",
+      "Clustering a set of customers into groups based on shopping habits",
+      "Sorting a list of names into alphabetical order"
+    ],
+    "correct_index": 1,
+    "rationale": "Regression is used for predicting continuous, scalar output values (target variables).",
+    "distractor_analysis": {
+      "0": "This is classification (discrete labels).",
+      "1": "Correct. Price is a continuous numeric target.",
+      "2": "This is unsupervised clustering.",
+      "3": "This is a basic algorithmic sorting task, not a statistical learning problem."
+    }
+  },
+  {
+    "id": 15,
+    "topic": "Multivariate Least Squares",
+    "difficulty": "analysis",
+    "question": "When solving multivariate least squares, the solution involves (XTX)⁻¹. What is a geometric function of this term according to the slides?",
+    "options": [
+      "It projects the noise vector onto a higher dimensional space",
+      "It decorrelates, centers, and normalizes the features",
+      "It calculates the probability of the target variable being Gaussian",
+      "It maximizes the distance between the training and testing sets"
+    ],
+    "correct_index": 1,
+    "rationale": "The inverse of the covariance matrix (related to XTX) effectively 'whitens' the data, removing correlations and scaling the features.",
+    "distractor_analysis": {
+      "0": "It relates to the projection of t onto the column space of X, not the noise vector alone.",
+      "1": "Correct. This is a key insight from the 'General solution' slide.",
+      "2": "Gaussianity is an assumption, not something calculated by this matrix.",
+      "3": "The solution only focuses on the training set (X and t)."
+    }
+  },
+  {
+    "id": 16,
+    "topic": "Regression Terminology",
+    "difficulty": "recall",
+    "question": "In the terminology provided, what does 'x_i' represent?",
+    "options": [
+      "The scalar target variable or label",
+      "The input variables or features",
+      "The regression function itself",
+      "The standard deviation of the noise"
+    ],
+    "correct_index": 1,
+    "rationale": "The slides define x_i as the input variable, often called a feature, independent variable, or regressor.",
+    "distractor_analysis": {
+      "0": "This is 't_i'.",
+      "1": "Correct.",
+      "2": "This is 'f' or 'y'.",
+      "3": "This is usually 'sigma'."
+    }
+  },
+  {
+    "id": 17,
+    "topic": "Polynomial Curve Fitting",
+    "difficulty": "analysis",
+    "question": "Comparing M=0 and M=9 in polynomial curve fitting for a sine wave (as shown in slides), why is M=0 often considered a poor model?",
+    "options": [
+      "It is too flexible and overfits the noise at every point",
+      "It represents a constant value and fails to capture any of the data's periodicity",
+      "It creates a vertical line that cannot be solved via least squares",
+      "It requires too much data (N=100) to reach a stable solution"
+    ],
+    "correct_index": 1,
+    "rationale": "A degree M=0 polynomial is a horizontal line. It has zero flexibility (high bias), making it 'underfit' a periodic sine wave.",
+    "distractor_analysis": {
+      "0": "This describes high M (like M=9).",
+      "1": "Correct. It is a simple flat line (w0) which cannot follow a curve.",
+      "2": "A degree 0 polynomial is a horizontal line, not vertical.",
+      "3": "Actually, it is very stable with little data; it's just inaccurate."
+    }
+  },
+  {
+    "id": 18,
+    "topic": "Basis Functions",
+    "difficulty": "recall",
+    "question": "How do Gaussian basis functions differ from Polynomial basis functions in their sensitivity to changes in input 'x'?",
+    "options": [
+      "Polynomial functions only affect nearby points, while Gaussian functions affect all points",
+      "Gaussian functions only affect nearby points, while Polynomial functions affect all points",
+      "Both are globally sensitive and change identical amounts across the entire range",
+      "Polynomial functions are only used for classification, while Gaussian are for regression"
+    ],
+    "correct_index": 1,
+    "rationale": "Gaussian basis functions are 'local'—their value drops off rapidly away from their center. Polynomials (like x^n) increase globally as x increases.",
+    "distractor_analysis": {
+      "0": "This is the exact opposite of the truth.",
+      "1": "Correct. This is explicitly noted in the 'Choices for basis functions' slide.",
+      "2": "They have very different local/global behaviors.",
+      "3": "Both are widely used in regression curve fitting."
+    }
+  },
+  {
+    "id": 19,
+    "topic": "SGD and Loss Curves",
+    "difficulty": "application",
+    "question": "During training with SGD, you notice the loss curve is decreasing but extremely slowly, appearing almost flat. What is the most logical adjustment?",
+    "options": [
+      "Decrease the learning rate to prevent overshooting",
+      "Increase the learning rate to take larger steps toward the minimum",
+      "Add more features to the dataset to make the gradient steeper",
+      "Switch to Lasso regularization to eliminate noise"
+    ],
+    "correct_index": 1,
+    "rationale": "A slow, flat descent usually indicates the learning rate is too small, meaning the updates to the weights are too tiny to make progress in reasonable time.",
+    "distractor_analysis": {
+      "0": "Decreasing it would make the already slow process even slower.",
+      "1": "Correct. Larger steps are needed to 'move' down the gradient.",
+      "2": "You should fix the optimizer first before changing the data structure.",
+      "3": "Regularization helps with overfitting, not with the speed of convergence in a flat landscape."
+    }
+  },
+  {
+    "id": 20,
+    "topic": "Multivariate Factors",
+    "difficulty": "recall",
+    "question": "In the general form of multivariate linear regression, what does the weight vector 'w' represent?",
+    "options": [
+      "The noise associated with each observation",
+      "A specific weight or importance coefficient for each individual feature",
+      "The average value of all target variables in the dataset",
+      "The number of instances (n) divided by the number of features (m)"
+    ],
+    "correct_index": 1,
+    "rationale": "In the vector w, each element w_j corresponds to the coefficient assigned to the j-th feature in the prediction sum.",
+    "distractor_analysis": {
+      "0": "Noise is represented by epsilon.",
+      "1": "Correct. It defines the 'slope' for each feature dimension.",
+      "2": "This would be a single scalar value, not a vector.",
+      "3": "This is a ratio of dimensions, not the weights."
+    }
+  },
+  {
+    "id": 21,
+    "topic": "Error Function Commonalities",
+    "difficulty": "analysis",
+    "question": "If we want to minimize the likelihood of our model being skewed by a single massive outlier, why might 'squared' error functions (MSE/SSE) be problematic?",
+    "options": [
+      "They ignore large errors entirely to focus on the mean",
+      "They penalize large errors disproportionately more than small errors",
+      "They only work if the dataset contains exactly zero noise",
+      "They are computationally impossible to solve for multivariate cases"
+    ],
+    "correct_index": 1,
+    "rationale": "Because the error is squared, an outlier with a distance of 10 has a penalty of 100, while an error of 1 has a penalty of 1. This 'pulls' the model toward the outlier.",
+    "distractor_analysis": {
+      "0": "They do the opposite; they are very sensitive to large errors.",
+      "1": "Correct. Squaring 'inflates' the impact of outliers.",
+      "2": "They are specifically designed to handle noisy data.",
+      "3": "They are the standard choice for multivariate solutions (Normal Equation)."
+    }
+  },
+  {
+    "id": 22,
+    "topic": "Coefficient of Determination",
+    "difficulty": "application",
+    "question": "A researcher finds an R² value of 0.98 for Model A and 0.57 for Model B on the same dataset. What can be concluded about Model A?",
+    "options": [
+      "Model A is 98% more likely to be correct in its future predictions",
+      "Model A replicates the variance of the observed outcomes much better than Model B",
+      "Model A uses 98 features, while Model B only uses 57 features",
+      "Model A has found a linear relationship, while Model B is definitely a curve"
+    ],
+    "correct_index": 1,
+    "rationale": "R² is a measure of fit quality based on variance. Higher R² means the model explains more of the data's variability.",
+    "distractor_analysis": {
+      "0": "R² is not a probability of correctness; it's a measure of fit.",
+      "1": "Correct. This relates directly to the 'R² = 98.92% vs 57.13%' visual in the slides.",
+      "2": "R² and the number of features are not directly tied in that way.",
+      "3": "Both could be linear; one just fits the specific data much better."
+    }
+  },
+  {
+    "id": 23,
+    "topic": "Forward Step-wise Regression",
+    "difficulty": "analysis",
+    "question": "When should one stop the 'Forward Step-wise Regression' process according to the logic presented?",
+    "options": [
+      "After exactly two steps, regardless of the error",
+      "When no significant improvement in training error is made by adding another model",
+      "When the weights w1 and w2 become equal in magnitude",
+      "Only when the training error reaches exactly zero"
+    ],
+    "correct_index": 1,
+    "rationale": "The goal is to add complexity only as long as it provides a meaningful reduction in residuals.",
+    "distractor_analysis": {
+      "0": "The number of steps depends on the complexity of the data.",
+      "1": "Correct. This is the stopping criterion defined in the slides.",
+      "2": "Weight magnitudes don't determine the stopping point; error reduction does.",
+      "3": "Reaching zero error usually implies massive overfitting, not a healthy stopping point."
+    }
+  },
+  {
+    "id": 24,
+    "topic": "Univariate Linear Regression",
+    "difficulty": "recall",
+    "question": "In the height vs. weight example, what is the 'intercept' (w0) representing conceptually?",
+    "options": [
+      "The weight of an individual with zero height",
+      "The rate at which weight increases per centimeter of height",
+      "The average height of all participants in the study",
+      "The total amount of noise in the measurements"
+    ],
+    "correct_index": 0,
+    "rationale": "In y = mx + b, 'b' (or w0) is the value of y when x = 0.",
+    "distractor_analysis": {
+      "0": "Correct. Even if physically impossible, this is the mathematical intercept.",
+      "1": "This is the slope (w1).",
+      "2": "This is h-bar (the empirical mean).",
+      "3": "Noise is a separate term (epsilon), not a constant intercept."
+    }
+  },
+  {
+    "id": 25,
+    "topic": "Regularization",
+    "difficulty": "analysis",
+    "question": "According to the slides, what is a limiting case for Lp-regularization where no sparse solutions are achieved?",
+    "options": [
+      "When p is less than 1 (e.g., p=0.5)",
+      "When p is exactly 1 (Lasso)",
+      "When p is greater than 1 (e.g., p=2 or p=4)",
+      "When the learning rate is set to zero"
+    ],
+    "correct_index": 2,
+    "rationale": "Sparsity is a property of the 'sharpness' of the constraint at the axes. This only occurs when p ≤ 1.",
+    "distractor_analysis": {
+      "0": "p=0.5 actually produces extremely sparse/sharp solutions.",
+      "1": "p=1 is the Lasso, which is the most famous sparse regularizer.",
+      "2": "Correct. The 'Further considerations' slide explicitly states p > 1 yields no sparse solutions.",
+      "3": "The learning rate is an optimization parameter, not a property of the regularization function."
+    }
+  },
+  {
+    "id": 26,
+    "topic": "Effect of Correlation",
+    "difficulty": "application",
+    "question": "If features x1 and x2 are almost identical (high correlation), how does the 'learned plane' in multivariate regression behave compared to the 'true plane'?",
+    "options": [
+      "It becomes perfectly stable because the redundancy reinforces the signal",
+      "It may tilt erratically because the model cannot distinguish which feature to assign weight to",
+      "It automatically ignores one feature and assigns all weight to the other",
+      "It creates a 4D projection that simplifies back to univariate regression"
+    ],
+    "correct_index": 1,
+    "rationale": "High correlation makes the (XTX) matrix nearly singular (ill-conditioned), making the weight estimates highly sensitive to small noise fluctuations.",
+    "distractor_analysis": {
+      "0": "Redundancy in features is generally negative for model stability.",
+      "1": "Correct. This is illustrated by the 'Effect of correlation' planes in the slides.",
+      "2": "This only happens if you specifically use Lasso (L1); standard least squares will struggle.",
+      "3": "Dimensions are based on feature count; correlation doesn't change the dimensionality."
+    }
+  },
+  {
+    "id": 27,
+    "topic": "Ridge vs Lasso",
+    "difficulty": "recall",
+    "question": "Which regularization technique is described as being 'much more sensitive to the choice of lambda'?",
+    "options": [
+      "Ridge (L2)",
+      "Lasso (L1)",
+      "Polynomial Curve Fitting",
+      "Stochastic Gradient Descent"
+    ],
+    "correct_index": 1,
+    "rationale": "The slides explicitly state that 'Lasso regression is much more sensitive to the choice of lambda'.",
+    "distractor_analysis": {
+      "0": "Ridge is generally more robust to lambda variations.",
+      "1": "Correct.",
+      "2": "This is a model type, not a regularization technique.",
+      "3": "This is an optimization algorithm."
+    }
+  },
+  {
+    "id": 28,
+    "topic": "SGD Interaction",
+    "difficulty": "analysis",
+    "question": "How does a 'Small learning rate' interact with the optimization landscape compared to a 'Big learning rate'?",
+    "options": [
+      "It reaches the minimum faster but with higher final error",
+      "It follows the gradient more precisely but takes much longer to converge",
+      "It ignores the gradient entirely and moves in random directions",
+      "It only works if the loss function is perfectly linear"
+    ],
+    "correct_index": 1,
+    "rationale": "A small learning rate takes tiny, cautious steps. It is reliable but slow.",
+    "distractor_analysis": {
+      "0": "Small rates are slower by definition.",
+      "1": "Correct. This is shown in the 'Small learning rate' vs 'Big learning rate' diagrams.",
+      "2": "It still follows the gradient; it just does so slowly.",
+      "3": "It works on any differentiable surface, not just linear ones."
+    }
+  },
+  {
+    "id": 29,
+    "topic": "General Multivariate Factors",
+    "difficulty": "recall",
+    "question": "In the general form of multivariate linear regression, what is 'epsilon' defined as?",
+    "options": [
+      "The matrix of feature vectors",
+      "The noise vector",
+      "The identity matrix",
+      "The vector of target variables"
+    ],
+    "correct_index": 1,
+    "rationale": "Epsilon (ε) represents the residuals or noise vector in the equation t = Xw + ε.",
+    "distractor_analysis": {
+      "0": "This is 'X'.",
+      "1": "Correct.",
+      "2": "This is 'I'.",
+      "3": "This is 't'."
+    }
+  },
+  {
+    "id": 30,
+    "topic": "Linear Regression for Classification",
+    "difficulty": "analysis",
+    "question": "The 'Outlook' slide mentions using linear regression for classification. What is the 'goal' in this context?",
+    "options": [
+      "To find the exact weight of a fruit (e.g., a pear)",
+      "To learn a weight vector 'w*' for a decision boundary",
+      "To calculate the total volume of all apples in a dataset",
+      "To ensure that all data points fall exactly on a single line"
+    ],
+    "correct_index": 1,
+    "rationale": "For classification, we don't want to predict a continuous value but rather find a boundary that separates different classes (e.g., apples vs. pears).",
+    "distractor_analysis": {
+      "0": "Finding weight is a regression task, not classification.",
+      "1": "Correct. The goal is to define the decision boundary (w* · x = b).",
+      "2": "This is a regression/summation task.",
+      "3": "Points in classification are usually spread out in groups, not on a line."
+    }
+  },
+  {
+    "id": 31,
+    "topic": "Polynomial Curve Fitting",
+    "difficulty": "analysis",
+    "question": "When considering 'Larger sample vs Regularization', what is the primary benefit of having a larger dataset (N=100) even with a high-degree polynomial (M=9)?",
+    "options": [
+      "The model becomes simpler and reduces M automatically",
+      "The additional data points 'constrain' the model, reducing the likelihood of fitting noise",
+      "The R² value is guaranteed to decrease to zero",
+      "The noise vector 'epsilon' is completely eliminated by the large sample size"
+    ],
+    "correct_index": 1,
+    "rationale": "More data points provide a clearer signal of the underlying function, making it harder for a complex model to 'wiggle' through noise without hitting other data points.",
+    "distractor_analysis": {
+      "0": "M is a hyperparameter chosen by the user; it doesn't change itself.",
+      "1": "Correct. This is a key comparison in the 'Impact of data and regularization' slide.",
+      "2": "R² should remain high if the fit is good.",
+      "3": "Noise exists regardless of sample size; we just estimate the function better."
+    }
+  },
+  {
+    "id": 32,
+    "topic": "Error Functions",
+    "difficulty": "recall",
+    "question": "Which error function is specifically defined as the square root of the Mean Squared Error?",
+    "options": [
+      "Sum-of-squares error",
+      "Root-mean-square error (RMSE)",
+      "Coefficient of determination",
+      "Residual standard deviation"
+    ],
+    "correct_index": 1,
+    "rationale": "RMSE = sqrt(MSE). It is often preferred because it has the same units as the target variable.",
+    "distractor_analysis": {
+      "0": "SSE is the raw sum, not averaged or rooted.",
+      "1": "Correct.",
+      "2": "R² is a ratio of variances, not a direct error magnitude.",
+      "3": "While related, RMSE is the specific formula mentioned in the error functions slide."
+    }
+  },
+  {
+    "id": 33,
+    "topic": "Coefficient of Determination",
+    "difficulty": "analysis",
+    "question": "If a model has an R² value of 0, what does this imply about its predictive power?",
+    "options": [
+      "The model is perfect and has zero residuals",
+      "The model performs no better than simply predicting the mean of the data for every input",
+      "The model has exactly one outlier that is ruining the entire fit",
+      "The model is using the wrong unit of measurement for height"
+    ],
+    "correct_index": 1,
+    "rationale": "R² compares the model's error to the variance of the data (error of the mean). R² = 0 means the model error equals the total variance.",
+    "distractor_analysis": {
+      "0": "A perfect model has R² = 1.",
+      "1": "Correct. It means the features provide zero explanatory power beyond the baseline mean.",
+      "2": "A single outlier usually lowers R² but rarely brings it to exactly zero unless the dataset is tiny.",
+      "3": "R² is a dimensionless ratio; units cancel out."
+    }
+  },
+  {
+    "id": 34,
+    "topic": "Univariate Linear Regression",
+    "difficulty": "application",
+    "question": "In the provided Least-squares method for height and weight, what are we attempting to minimize?",
+    "options": [
+      "The sum of the heights of all study participants",
+      "The sum of the squared differences between observed weights and predicted weights",
+      "The number of features used in the multivariate matrix",
+      "The learning rate used in the SGD optimizer"
+    ],
+    "correct_index": 1,
+    "rationale": "The goal of least squares is to minimize the sum of the squared residuals.",
+    "distractor_analysis": {
+      "0": "Height is an input (h), not a value to be minimized.",
+      "1": "Correct. This is the definition of the cost function on slide 8.",
+      "2": "This example is univariate, so there is only one feature.",
+      "3": "The learning rate is a tool to achieve the minimum, not the value being minimized itself."
+    }
+  },
+  {
+    "id": 35,
+    "topic": "Multivariate Linear Regression",
+    "difficulty": "analysis",
+    "question": "What is the role of the identity matrix (I) in the solution for Regularized Multivariate Regression (w = (XTX + lambda I)⁻¹ XTt)?",
+    "options": [
+      "It ensures that the matrix is always invertible by adding values to the diagonal",
+      "It multiplies all target variables by 1 to prevent data loss",
+      "It converts the weight vector into a scalar value",
+      "It removes the intercept w0 from the final equation"
+    ],
+    "correct_index": 0,
+    "rationale": "Adding lambda*I to XTX is the mathematical implementation of Ridge regression. It prevents the matrix from being singular (non-invertible) if features are perfectly correlated.",
+    "distractor_analysis": {
+      "0": "Correct. This is a primary numerical benefit of Ridge regression.",
+      "1": "The identity matrix does not interact with 't' in that way in this term.",
+      "2": "w remains a vector.",
+      "3": "The intercept is typically included in the weights; the identity matrix doesn't 'remove' it."
+    }
+  },
+  {
+    "id": 36,
+    "topic": "Regularization Norms",
+    "difficulty": "recall",
+    "question": "Which regularization norm is associated with 'Ridge' regression?",
+    "options": [
+      "L1 norm (sum of absolute weights)",
+      "L2 norm (sum of squared weights)",
+      "L-infinity norm (maximum weight)",
+      "L0 norm (count of non-zero weights)"
+    ],
+    "correct_index": 1,
+    "rationale": "Ridge regression uses the L2 norm penalty.",
+    "distractor_analysis": {
+      "0": "This is Lasso.",
+      "1": "Correct.",
+      "2": "Not discussed in the context of these slides.",
+      "3": "This is the theoretical ideal for sparsity but not what Ridge uses."
+    }
+  },
+  {
+    "id": 37,
+    "topic": "Stochastic Gradient Descent",
+    "difficulty": "application",
+    "question": "In the SGD rule (w' = w - eta * grad), if the gradient is zero, what happens to the weight vector?",
+    "options": [
+      "The weight vector is reset to zero",
+      "The weight vector remains unchanged, indicating a local or global minimum has been reached",
+      "The weight vector doubles in size to try and find a new gradient",
+      "The learning rate eta automatically increases to compensate"
+    ],
+    "correct_index": 1,
+    "rationale": "If grad = 0, then w' = w - 0, so w' = w. This is the definition of a stationary point in optimization.",
+    "distractor_analysis": {
+      "0": "Only the change is zero, not the vector itself.",
+      "1": "Correct. No gradient means no direction to move.",
+      "2": "There is no 'doubling' logic in the standard SGD formula.",
+      "3": "Eta is a hyperparameter and does not self-adjust based on the gradient in the basic formula."
+    }
+  },
+  {
+    "id": 38,
+    "topic": "Forward Step-wise Regression",
+    "difficulty": "analysis",
+    "question": "Why would one prefer Forward Step-wise Regression over a single complex Multivariate Regression?",
+    "options": [
+      "It is guaranteed to be 100 times faster to compute",
+      "It allows for building a model incrementally, which can be easier to interpret and control",
+      "It uses Gaussian noise to its advantage to find better patterns",
+      "It is the only method that works for datasets with more than 10 features"
+    ],
+    "correct_index": 1,
+    "rationale": "Step-wise regression is an iterative approach that can help identify the most impactful components of a model one by one.",
+    "distractor_analysis": {
+      "0": "It is often slower because it requires multiple training steps.",
+      "1": "Correct. Incrementality provides an 'auditable' path of improvement.",
+      "2": "Noise is always a nuisance; no method 'prefers' it.",
+      "3": "Multivariate least squares handles many features efficiently via matrix math."
+    }
+  },
+  {
+    "id": 39,
+    "topic": "General Formulation",
+    "difficulty": "recall",
+    "question": "In curve fitting, what are functions like 'phi_j(x)' called?",
+    "options": [
+      "Target functions",
+      "Basis functions",
+      "Error functions",
+      "Residual functions"
+    ],
+    "correct_index": 1,
+    "rationale": "The slides explicitly identify phi_j(x) as 'basis functions'.",
+    "distractor_analysis": {
+      "0": "The target function is what we are trying to estimate (f).",
+      "1": "Correct.",
+      "2": "Error functions measure the quality (e.g., MSE).",
+      "3": "Residuals are the differences (epsilon)."
+    }
+  },
+  {
+    "id": 40,
+    "topic": "Effect of Correlation",
+    "difficulty": "analysis",
+    "question": "According to the visual 'Effect of correlation between features', a 'Blue plane' is learned by decomposing the problem into two univariate regressions. How does this compare to the 'Green plane' (multivariate)?",
+    "options": [
+      "The Blue plane is always more accurate because it is simpler",
+      "The Blue plane may fail to capture the true relationship if features are correlated, unlike the Green plane",
+      "The Green plane is only used when the data points are red dots",
+      "There is no difference between them as long as the learning rate is small"
+    ],
+    "correct_index": 1,
+    "rationale": "Univariate decomposition ignores the interactions/correlations between features that the multivariate model (Green plane) can account for.",
+    "distractor_analysis": {
+      "0": "Decomposition is usually less accurate because it loses context.",
+      "1": "Correct. This is a core point of the comparison on slide 19.",
+      "2": "The color of the dots in the diagram is just for visualization.",
+      "3": "The underlying mathematical assumptions are different; learning rate won't bridge that gap."
+    }
+  },
+  {
+    "id": 41,
+    "topic": "Lasso Regularization",
+    "difficulty": "application",
+    "question": "You are working on a genomics dataset with 10,000 features, but you suspect only 50 are actually relevant. Which technique should you use?",
+    "options": [
+      "Standard Least Squares Regression",
+      "Ridge Regularization",
+      "Lasso Regularization",
+      "Forward Step-wise Regression with M=9"
+    ],
+    "correct_index": 2,
+    "rationale": "Lasso encourages sparsity, meaning it will likely set the weights of the 9,950 irrelevant features to zero, effectively performing feature selection.",
+    "distractor_analysis": {
+      "0": "Standard least squares will overfit by trying to use all 10,000 features.",
+      "1": "Ridge will keep all features, just with small weights.",
+      "2": "Correct. Sparsity is the key here.",
+      "3": "Step-wise could work but is computationally inefficient for 10,000 features compared to Lasso."
+    }
+  },
+  {
+    "id": 42,
+    "topic": "SGD Hyperparameters",
+    "difficulty": "analysis",
+    "question": "If you are training an SGD model and the loss curve is oscillating wildly up and down, what is the 'theoretical logic' for your next move?",
+    "options": [
+      "Increase the number of features to stabilize the plane",
+      "Decrease the learning rate because the current 'steps' are jumping across the optimal valley",
+      "Switch to a polynomial model with a higher degree M",
+      "Assume the data is perfectly clean and remove all regularization"
+    ],
+    "correct_index": 1,
+    "rationale": "Oscillation is a classic sign of a learning rate that is too high, preventing the model from settling into the minimum.",
+    "distractor_analysis": {
+      "0": "More features might actually increase instability.",
+      "1": "Correct. Smaller steps allow the model to descend into the valley.",
+      "2": "Higher complexity might make oscillation worse.",
+      "3": "Wild oscillation is an optimization issue, not necessarily a noise issue."
+    }
+  },
+  {
+    "id": 43,
+    "topic": "Multivariate Solution",
+    "difficulty": "recall",
+    "question": "What is the computational complexity of computing the inverse matrix (XTX)⁻¹ in a multivariate regression?",
+    "options": [
+      "Linear: O(n)",
+      "Polynomial: O(n²m + m³)",
+      "Exponential: O(2^n)",
+      "Logarithmic: O(log n)"
+    ],
+    "correct_index": 1,
+    "rationale": "The slides explicitly mention the 'Caution' that the complexity of computing (XTX)⁻¹ is O(n²m + m³).",
+    "distractor_analysis": {
+      "0": "Matrix inversion is far more complex than linear time.",
+      "1": "Correct.",
+      "2": "It's not exponential, but it is slow for very high dimensions.",
+      "3": "Matrix operations are not logarithmic."
+    }
+  },
+  {
+    "id": 44,
+    "topic": "Regression vs Tree Models",
+    "difficulty": "analysis",
+    "question": "According to the 'Further considerations' slide, how does impurity reduction in tree models translate to regression?",
+    "options": [
+      "It is equivalent to increasing the learning rate",
+      "It translates to variance reduction",
+      "It removes all outliers from the dataset",
+      "It forces the model to be a straight line"
+    ],
+    "correct_index": 1,
+    "rationale": "In regression trees, the 'impurity' is measured by the variance of the targets in a leaf; reducing it improves the model.",
+    "distractor_analysis": {
+      "0": "These are different algorithmic concepts.",
+      "1": "Correct. This is a direct quote from the slide.",
+      "2": "Trees are sensitive to outliers; they don't remove them automatically.",
+      "3": "Trees are non-linear models; they are specifically not straight lines."
+    }
+  },
+  {
+    "id": 45,
+    "topic": "Residual Behavior",
+    "difficulty": "application",
+    "question": "If we discover that our residuals (epsilon) are NOT normally distributed (Gaussian), which fundamental assumption of Least-squares regression mentioned in the slides is violated?",
+    "options": [
+      "The assumption that features are 0-centered",
+      "The assumption that error terms are i.i.d. normally distributed errors",
+      "The assumption that the intercept w0 must be positive",
+      "The assumption that R² must always be greater than 0.5"
+    ],
+    "correct_index": 1,
+    "rationale": "The probabilistic view of least squares relies on the assumption: epsilon ~ N(0, sigma²).",
+    "distractor_analysis": {
+      "0": "Zero-centering features is a preprocessing step, not a noise assumption.",
+      "1": "Correct. This is the core 'Probabilistic view' assumption.",
+      "2": "Intercepts can be negative.",
+      "3": "R² can be any value between 0 and 1; there is no requirement for it to be > 0.5."
+    }
+  },
+  {
+    "id": 46,
+    "topic": "Polynomial Curve Fitting",
+    "difficulty": "analysis",
+    "question": "Why is 'overfitting' in high-degree polynomials (M=9) considered a failure of the model?",
+    "options": [
+      "Because the model takes too much time to compute the weights",
+      "Because the model is fitting the specific noise of the sample rather than the general trend",
+      "Because the R² value becomes 0, which is mathematically impossible",
+      "Because it makes the target variable 't' become a vector instead of a scalar"
+    ],
+    "correct_index": 1,
+    "rationale": "Overfitting captures random noise as if it were a signal, making the model useless for predicting new data where that specific noise pattern won't exist.",
+    "distractor_analysis": {
+      "0": "Overfitting is a problem of accuracy/generalization, not just speed.",
+      "1": "Correct. Noise is idiosyncratic; trends are universal.",
+      "2": "R² for overfitted models on training data is often very high (~1).",
+      "3": "The structure of the data doesn't change based on the model degree."
+    }
+  },
+  {
+    "id": 47,
+    "topic": "SGD Landscape",
+    "difficulty": "recall",
+    "question": "In the gradient descent rule, what is the purpose of the 'orthogonal unit vectors' (e_i)?",
+    "options": [
+      "They define the direction of each individual parameter change in the gradient",
+      "They are used to multiply the noise to make it Gaussian",
+      "They determine the total number of observations in the dataset",
+      "They are used to normalize the R² value to a range of 0 to 1"
+    ],
+    "correct_index": 0,
+    "rationale": "The gradient is a vector sum of partial derivatives along the axes defined by these unit vectors.",
+    "distractor_analysis": {
+      "0": "Correct. They represent the axes of the weight space.",
+      "1": "Noise is not multiplied by unit vectors.",
+      "2": "Number of observations is 'n'.",
+      "3": "R² normalization is a mathematical property, not a unit vector function."
+    }
+  },
+  {
+    "id": 48,
+    "topic": "Forward Step-wise Regression",
+    "difficulty": "application",
+    "question": "If a dataset has a very strong linear trend and almost no secondary patterns, how many steps would you expect 'Forward Step-wise Regression' to take before stopping?",
+    "options": [
+      "One step, as the first simple function will capture the majority of the relationship",
+      "Exactly 100 steps, as it must iterate through every possible weight",
+      "It will never stop because the residuals will never be exactly zero",
+      "It will take more steps than a polynomial model of degree M=9"
+    ],
+    "correct_index": 0,
+    "rationale": "If the trend is purely linear, the first step (fitting a simple linear model) will leave very small residuals, leading to no 'significant improvement' in step 2.",
+    "distractor_analysis": {
+      "0": "Correct. The stopping criterion will be met early.",
+      "1": "It stops based on improvement, not a fixed count.",
+      "2": "The stopping criterion is based on 'significant improvement', not zero error.",
+      "3": "Step-wise is often more efficient for simple data."
+    }
+  },
+  {
+    "id": 49,
+    "topic": "Error Functions",
+    "difficulty": "analysis",
+    "question": "Why does the 'Mean Squared Error' divide the sum of squared errors by 'n'?",
+    "options": [
+      "To ensure the error value is always less than 1",
+      "To make the error measure independent of the dataset size",
+      "To convert the target variable from a vector to a scalar",
+      "To remove the intercept w0 from the final error calculation"
+    ],
+    "correct_index": 1,
+    "rationale": "Dividing by 'n' calculates the average error. Without it, a larger dataset would always appear to have 'more' error than a smaller one, even if it were more accurate.",
+    "distractor_analysis": {
+      "0": "MSE can be much larger than 1.",
+      "1": "Correct. It allows for comparison between different sized datasets.",
+      "2": "Targets are already scalars in these regression contexts.",
+      "3": "W0 is part of the model that determines the error; it's not 'removed' by division."
+    }
+  },
+  {
+    "id": 50,
+    "topic": "General Logic",
+    "difficulty": "recall",
+    "question": "According to the 'Summary' slide, what does regularization help to mitigate?",
+    "options": [
+      "Underfitting",
+      "Overfitting",
+      "The number of observations (n)",
+      "The value of the intercept w0"
+    ],
+    "correct_index": 1,
+    "rationale": "The summary slide explicitly states: 'Regularization mitigates overfitting'.",
+    "distractor_analysis": {
+      "0": "Regularization can actually cause underfitting if too strong.",
+      "1": "Correct.",
+      "2": "It has no effect on the count of observations.",
+      "3": "It penalizes weights but doesn't specifically target only the intercept."
+    }
+  }
+]
+  },
+  "foundations-06": {
+    "title": "Foundations of AI - Linear Classifiers",
+    "questions":
+    [
+{
+"id": 1,
+"topic": "Linear Classifiers",
+"difficulty": "recall",
+"question": "According to the lecture, why are linear models often preferred in 'high-stakes' applications like healthcare or finance over complex black-box models?",
+"options": [
+"They inherently achieve higher accuracy on non-linear datasets.",
+"They are computationally more expensive to construct, ensuring robustness.",
+"They are easier to audit for regulatory compliance and are theoretically well-understood.",
+"They automatically eliminate the need for feature engineering."
+],
+"correct_index": 2,
+"rationale": "Slide 4 explicitly states that linear models are preferred in high-stakes applications because they are easy to audit (regulatory aspects) and theoretically well-understood.",
+"distractor_analysis": {
+"0": "Linear models usually have lower accuracy on non-linear data compared to complex models.",
+"1": "Linear models are 'cheap' to construct, not expensive.",
+"2": "Correct as per the 'Why Linear Models' slide.",
+"3": "Linear models often require more manual feature engineering than deep learning."
+}
+},
+{
+"id": 2,
+"topic": "XOR Problem",
+"difficulty": "analysis",
+"question": "A single-layer Perceptron fails to solve the XOR problem because the classes are not linearly separable. What is the fundamental geometric implication of this failure?",
+"options": [
+"The decision boundary must be a hyperplane in the input dimension.",
+"No single straight line can partition the 2D input space such that (0,1) and (1,0) are on one side while (0,0) and (1,1) are on the other.",
+"The Perceptron algorithm only works with continuous values, not Boolean features.",
+"The learning rate must be set to zero to handle Exclusive-Or logic."
+],
+"correct_index": 1,
+"rationale": "Slide 8 and 47 show that XOR data points are arranged such that a linear separator (a line in 2D) cannot separate the 'true' and 'false' outputs. The classes are intertwined.",
+"distractor_analysis": {
+"0": "This is a property of the model, not the reason why it specifically fails XOR.",
+"1": "This describes the geometric impossibility of linear separation for XOR.",
+"2": "Perceptrons can handle Boolean features (AND/OR).",
+"3": "The learning rate does not fix the fundamental lack of linear separability."
+}
+},
+{
+"id": 3,
+"topic": "Naive Bayes",
+"difficulty": "recall",
+"question": "What is the primary 'Naive' assumption in the Naive Bayes classifier that allows it to bypass the 'Curse of Dimensionality'?",
+"options": [
+"Features follow a multivariate Normal distribution.",
+"The probability of a document is independent of the class label.",
+"Features are conditionally independent given the class topic.",
+"The size of the vocabulary is assumed to be infinite."
+],
+"correct_index": 2,
+"rationale": "Slide 30 states the assumption of conditional independence between terms given the topic, which simplifies the joint probability calculation.",
+"distractor_analysis": {
+"0": "This is an assumption for Gaussian NB, but the 'Naive' part refers to independence.",
+"1": "If document and label were independent, the classifier wouldn't work.",
+"2": "This is the core definition of the Naive assumption.",
+"3": "Vocabulary size is finite (m)."
+}
+},
+{
+"id": 4,
+"topic": "Support Vector Machines",
+"difficulty": "application",
+"question": "In a hard-margin SVM, what happens to the decision boundary if we add a new training point that is far away from the existing boundary but correctly classified?",
+"options": [
+"The boundary shifts significantly to accommodate the new point.",
+"The margin width increases to maximize the distance to this new point.",
+"The boundary remains unchanged because the point is not a support vector.",
+"The SVM converts itself into a soft-margin classifier automatically."
+],
+"correct_index": 2,
+"rationale": "Slides 15-18 show that the boundary is determined solely by 'support vectors' (points on the edge of the margin). Points outside the margin do not affect the optimization.",
+"distractor_analysis": {
+"0": "Non-support vectors do not affect the hyperplane.",
+"1": "The margin is defined by the closest points, not distant ones.",
+"2": "Correct: only points on the margin determine the boundary.",
+"3": "Hard vs. soft margin is a user-defined optimization choice, not an automatic switch."
+}
+},
+{
+"id": 5,
+"topic": "Perceptron Training",
+"difficulty": "analysis",
+"question": "If the training data is NOT linearly separable, what is the guaranteed behavior of the Perceptron learning algorithm?",
+"options": [
+"It will converge to a solution that minimizes the number of misclassifications.",
+"It will oscillate indefinitely and never come to an end.",
+"It will automatically reduce the learning rate to zero.",
+"It will eventually find a non-linear kernel to separate the data."
+],
+"correct_index": 1,
+"rationale": "Theorem 1 on Slide 12 explicitly states: 'If the data is not linearly separable, the algorithm will not come to an end.'",
+"distractor_analysis": {
+"0": "The basic Perceptron does not minimize the global error; it only stops if it classifies everything correctly.",
+"1": "Correct: this is a known limitation of the convergence theorem.",
+"2": "The learning rate is typically fixed or scheduled, not auto-reduced by separability.",
+"3": "The basic Perceptron algorithm does not include a kernel trick."
+}
+},
+{
+"id": 6,
+"topic": "Kernel Trick",
+"difficulty": "application",
+"question": "How does the 'Kernel Trick' enable an SVM to find a non-linear decision boundary in the original feature space?",
+"options": [
+"By adding more layers of neurons to the model.",
+"By mapping the data into a lower-dimensional space where it becomes linear.",
+"By mapping the data into a higher-dimensional space where a linear hyperplane can separate the classes.",
+"By using a random number generator to perturb the weights during training."
+],
+"correct_index": 2,
+"rationale": "Slide 24 explains the kernel trick maps input instances to a higher-dimensional classification space (d2 > d1) to find a separating hyperplane.",
+"distractor_analysis": {
+"0": "This describes Neural Networks, not the Kernel Trick in SVMs.",
+"1": "It maps to a higher dimension, not lower.",
+"2": "Correct: non-linear in original space becomes linear in the higher-dimensional space.",
+"3": "Weight perturbation is a technique for local minima, not the kernel trick."
+}
+},
+{
+"id": 7,
+"topic": "Activation Functions",
+"difficulty": "analysis",
+"question": "What is the primary reason why non-linear activation functions (like the Sigmoid) are essential in multi-layer Neural Networks?",
+"options": [
+"Without them, the composition of multiple layers would still result in a simple linear function.",
+"They ensure that the weights of the network never exceed the range [0, 1].",
+"They allow the network to train faster by simplifying the gradient calculation.",
+"They are required to make the network 'translation invariant' across all layers."
+],
+"correct_index": 0,
+"rationale": "Slide 48 notes that cascaded linear threshold units can only produce (piece-wise) linear functions. Non-linearity is needed to represent non-linear relationships.",
+"distractor_analysis": {
+"0": "Correct: stacking linear layers is mathematically equivalent to a single linear layer.",
+"1": "Weights are not restricted to [0, 1] by the activation; the output of the sigmoid is.",
+"2": "Sigmoids can actually slow down training due to the vanishing gradient problem.",
+"3": "Translation invariance is a property of CNN architectures, not general sigmoids."
+}
+},
+{
+"id": 8,
+"topic": "Gradient Descent",
+"difficulty": "comparison",
+"question": "When comparing Batch Gradient Descent to Stochastic Gradient Descent (SGD), which statement accurately describes a trade-off mentioned in the lecture?",
+"options": [
+"SGD is guaranteed to reach the global minimum faster than Batch Gradient Descent.",
+"Batch Gradient Descent is better for massive datasets because it updates weights more frequently.",
+"SGD is an approximation that is more efficient when the training data is too large for the memory.",
+"Batch Gradient Descent uses the 'Delta Rule' while SGD uses the 'Chain Rule'."
+],
+"correct_index": 2,
+"rationale": "Slide 46 mentions SGD should be applied when training data is too large and is an approximation of Gradient Descent.",
+"distractor_analysis": {
+"0": "SGD is not guaranteed to reach the global minimum; it fluctuates around it.",
+"1": "Batch is slower on large data because it processes all samples before one update.",
+"2": "Correct: SGD handles large-scale data better by updating per-sample.",
+"3": "Both use the same fundamental calculus; the difference is in the sample size per update."
+}
+},
+{
+"id": 9,
+"topic": "Logistic Regression",
+"difficulty": "recall",
+"question": "What is the relationship between the 'Logit' function and the 'Logistic' (Sigmoid) function?",
+"options": [
+"They are identical functions used in different fields.",
+"The Logit function is the inverse of the Logistic function.",
+"The Logit function is the derivative of the Logistic function.",
+"The Logit function is the non-linear version of the Logistic function."
+],
+"correct_index": 1,
+"rationale": "Slide 51 and 52 show that the logit of probability p equals the linear combination, while the sigmoid of the linear combination gives p.",
+"distractor_analysis": {
+"0": "They have different mathematical forms.",
+"1": "Correct: Logit maps [0,1] to real numbers; Sigmoid maps real numbers to [0,1].",
+"2": "The derivative of the sigmoid is f(x)(1-f(x)).",
+"3": "Both are non-linear; this doesn't describe their relationship."
+}
+},
+{
+"id": 10,
+"topic": "Laplace Smoothing",
+"difficulty": "application",
+"question": "In the context of Naive Bayes, if a specific word in a test document never appeared in the training set for 'Topic A', what is the consequence without smoothing?",
+"options": [
+"The classifier will assign 'Topic A' a probability of 0.5 as a default.",
+"The classifier will ignore that word and calculate the probability based on others.",
+"The joint probability for 'Topic A' will become zero, regardless of other evidence.",
+"The classifier will throw a 'Curse of Dimensionality' error."
+],
+"correct_index": 2,
+"rationale": "Slides 30-31 show that if P(word|topic) is zero, the product of probabilities becomes zero. Smoothing (Laplace) is used to prevent this.",
+"distractor_analysis": {
+"0": "It doesn't default to 0.5; it calculates based on raw counts.",
+"1": "The standard product formula means the whole term becomes 0.",
+"2": "Correct: zero-frequency words zero out the entire product.",
+"3": "This is a conceptual problem with feature counts, not a software error name."
+}
+},
+{
+"id": 11,
+"topic": "Backpropagation",
+"difficulty": "recall",
+"question": "Which mathematical principle is primarily used during the 'Backpropagation' algorithm to adjust weights in a multi-layer neural network?",
+"options": [
+"The Pythagorean Theorem",
+"The Chain Rule of calculus",
+"The Law of Large Numbers",
+"Bayes' Theorem"
+],
+"correct_index": 1,
+"rationale": "Slides 55-57 describe backpropagation as calculating the influence of a node on the output error, which requires propagating derivatives through layers via the chain rule.",
+"distractor_analysis": {
+"0": "Not relevant to gradient calculation.",
+"1": "Correct: essential for finding gradients in composite functions (layers).",
+"2": "Relevant to statistics, not weight updates.",
+"3": "Relevant to generative models (Naive Bayes), not the backprop weight update rule."
+}
+},
+{
+"id": 12,
+"topic": "ANN Properties",
+"difficulty": "comparison",
+"question": "According to the 'Expressiveness of ANNs' theorems, what is the minimum number of layers required to approximate any arbitrary function to any accuracy?",
+"options": [
+"One layer (input only)",
+"Two layers",
+"Three layers",
+"At least ten layers"
+],
+"correct_index": 2,
+"rationale": "Slide 58 states: 'Any arbitrary function can be approximated to arbitrary accuracy by a network with three layers.'",
+"distractor_analysis": {
+"0": "An input layer alone does no computation.",
+"1": "Two layers can represent any Boolean function or bounded continuous function, but 'arbitrary' often implies more complexity.",
+"2": "Correct: as per the specific slide theorem provided.",
+"3": "Depth improves efficiency, but the theorem specifies three layers for the property."
+}
+},
+{
+"id": 13,
+"topic": "Soft-Margin SVM",
+"difficulty": "analysis",
+"question": "In a Soft-Margin SVM, what is the purpose of the 'slack variables' (ξ)?",
+"options": [
+"To increase the dimensionality of the input space.",
+"To allow the model to ignore outliers by permitting some classification errors.",
+"To transform the quadratic problem into a linear programming problem.",
+"To ensure that the parameter vector w is always of unit length."
+],
+"correct_index": 1,
+"rationale": "Slide 22 and 23 explain that slack variables represent real-valued errors to handle 'almost' linearly separable data.",
+"distractor_analysis": {
+"0": "Kernels increase dimensionality, not slack variables.",
+"1": "Correct: they provide a 'soft' margin that tolerates some misclassification.",
+"2": "SVM remains a quadratic programming problem.",
+"3": "This is a normalization constraint, not the role of slack."
+}
+},
+{
+"id": 14,
+"topic": "Perceptron Training",
+"difficulty": "recall",
+"question": "In the Perceptron training algorithm, when is a weight update triggered?",
+"options": [
+"After every single training instance is processed.",
+"Only when the model makes a prediction error.",
+"Only when the model predicts the correct label with low confidence.",
+"At the end of each epoch, after averaging all gradients."
+],
+"correct_index": 1,
+"rationale": "Slide 10 shows the algorithm: 'If l(xi) != sign(w' * xi) then w' <- w' + ...'. It only updates on error.",
+"distractor_analysis": {
+"0": "It only updates if the condition (error) is met.",
+"1": "Correct: the algorithm is error-driven.",
+"2": "The perceptron has no notion of 'confidence' in its basic form (hard threshold).",
+"3": "This describes Batch Gradient Descent, not the basic Perceptron algorithm."
+}
+},
+{
+"id": 15,
+"topic": "ANN Issues",
+"difficulty": "analysis",
+"question": "What is 'grokking' in the context of training artificial neural networks on small algorithmic datasets?",
+"options": [
+"A state where the network forgets all previously learned information.",
+"The process of the network failing to learn even the training data.",
+"A phenomenon where generalization beyond overfitting occurs after long training.",
+"The conversion of an ANN into a Decision Tree for better interpretability."
+],
+"correct_index": 2,
+"rationale": "Slide 60 mentions 'generalization beyond overfitting has been observed (grokking)' with a supporting link.",
+"distractor_analysis": {
+"0": "This is catastrophic forgetting.",
+"1": "This is underfitting.",
+"2": "Correct: it refers to sudden generalization long after the training error has hit zero.",
+"3": "Grokking is a training behavior, not a model conversion."
+}
+},
+{
+"id": 16,
+"topic": "RNNs and Transformers",
+"difficulty": "recall",
+"question": "What specific type of data problem are Recurrent Artificial Neural Networks (RNNs) primarily designed to solve?",
+"options": [
+"High-resolution image classification.",
+"Sequential data where the output at time 't' depends on previous inputs.",
+"Tabular data with millions of independent features.",
+"Finding the maximum margin in a binary classification task."
+],
+"correct_index": 1,
+"rationale": "Slide 61 states RNNs are 'For learning from sequences, e.g., from textual or time series data' where output at t is used as input for t+1.",
+"distractor_analysis": {
+"0": "That is the domain of CNNs.",
+"1": "Correct: RNNs handle temporal/sequential dependencies.",
+"2": "Tabular data is often handled by standard feed-forward networks or trees.",
+"3": "That is the domain of SVMs."
+}
+},
+{
+"id": 17,
+"topic": "Linear vs. Non-linear",
+"difficulty": "comparison",
+"question": "Which of the following models is inherently a 'Generative' model rather than a 'Discriminative' one?",
+"options": [
+"Support Vector Machines (SVM)",
+"Logistic Regression",
+"Naive Bayes",
+"Perceptron"
+],
+"correct_index": 2,
+"rationale": "Slide 37 explicitly labels Naive Bayes as a 'generative model' because it models the joint probability P(f, c).",
+"distractor_analysis": {
+"0": "SVM is discriminative; it models the boundary directly.",
+"1": "Logistic Regression is discriminative (Slide 49).",
+"2": "Correct: it models how the data is generated given the class.",
+"3": "Perceptron is a discriminative linear classifier."
+}
+},
+{
+"id": 18,
+"topic": "Log-odds",
+"difficulty": "analysis",
+"question": "Why is the log-odds representation useful for the Naive Bayes model in real-world text classification?",
+"options": [
+"It prevents the model from ever making a mistake on unseen words.",
+"It turns the product of probabilities into a sum, which is more numerically stable.",
+"It automatically balances the number of positive and negative training samples.",
+"It allows the model to ignore the class prior P(c)."
+],
+"correct_index": 1,
+"rationale": "Slide 34-36 show the log-odds model. Summing log-probabilities prevents underflow and is conceptually cleaner for 'adding' evidence from tokens.",
+"distractor_analysis": {
+"0": "No model is perfect on unseen data; smoothing is needed.",
+"1": "Correct: log(a*b) = log(a) + log(b), avoiding tiny numbers near zero.",
+"2": "Log-odds does not perform data resampling.",
+"3": "The prior P(c) is still included in the final term of the log-odds formula (Slide 34)."
+}
+},
+{
+"id": 19,
+"topic": "SVM Margin",
+"difficulty": "recall",
+"question": "In SVM theory, what is the mathematical relationship between the margin width and the norm of the weight vector ||w||?",
+"options": [
+"Margin width is directly proportional to ||w||.",
+"Margin width is equal to the square of ||w||.",
+"Increasing the margin width is equivalent to minimizing ||w||.",
+"The margin width is independent of ||w|| if the offset 't' is zero."
+],
+"correct_index": 2,
+"rationale": "Slide 17 states: 'Margin width: 2/||w||' and 'Increasing width <=> Minimizing ||w||'.",
+"distractor_analysis": {
+"0": "It is inversely proportional.",
+"1": "It is 2 divided by the norm, not the square.",
+"2": "Correct: this is why the SVM optimization objective is to minimize ||w||^2.",
+"3": "The norm ||w|| determines the 'scale' of the transition and thus the width."
+}
+},
+{
+"id": 20,
+"topic": "Multinomial Naive Bayes",
+"difficulty": "comparison",
+"question": "What is the primary difference between standard Naive Bayes (Bernoulli) and Multinomial Naive Bayes?",
+"options": [
+"Multinomial NB handles multiple class labels, while Bernoulli only handles two.",
+"Multinomial NB accounts for the frequency of word occurrences, while Bernoulli only tracks presence/absence.",
+"Bernoulli NB requires the Kernel Trick to work on text data.",
+"Multinomial NB is a non-linear classifier, whereas Bernoulli is linear."
+],
+"correct_index": 1,
+"rationale": "Slide 38 states: 'In the previous model, we dismissed multiple occurrences of words. Assuming that documents follow a multinomial distribution...'.",
+"distractor_analysis": {
+"0": "Both can handle multiple classes.",
+"1": "Correct: Multinomial uses word counts (frequency).",
+"2": "Neither inherently uses the kernel trick in their basic forms.",
+"3": "Both are generally considered linear classifiers in the log-space."
+}
+},
+{
+"id": 21,
+"topic": "Gradient Descent",
+"difficulty": "application",
+"question": "What happens in Gradient Descent if the learning rate (η) is set to a value that is much too large?",
+"options": [
+"The algorithm will converge to the global minimum in a single step.",
+"The weight updates will be so small that the error never changes.",
+"The algorithm may overstep the minimum and cause the error to diverge.",
+"The model will automatically switch to using the Logistic function."
+],
+"correct_index": 2,
+"rationale": "General optimization logic (Slide 42-43): The gradient indicates direction. A large step in that direction can jump over the 'valley' and climb the other side, increasing error.",
+"distractor_analysis": {
+"0": "A large rate usually leads to instability, not perfect convergence.",
+"1": "This happens when the learning rate is too small.",
+"2": "Correct: 'Overshooting' is a common issue with high learning rates.",
+"3": "Activation functions are architectural choices, not triggered by learning rates."
+}
+},
+{
+"id": 22,
+"topic": "Perceptron",
+"difficulty": "recall",
+"question": "The Perceptron was invented in 1957 by which researcher?",
+"options": [
+"T. Mitchell",
+"F. Rosenblatt",
+"P. Flach",
+"T. Joachims"
+],
+"correct_index": 1,
+"rationale": "Slide 9 explicitly credits F. Rosenblatt in 1957.",
+"distractor_analysis": {
+"0": "Mitchell is cited as a source for the Gradient Descent slides.",
+"1": "Correct.",
+"2": "Flach is cited as the source for the textbook 'Machine Learning'.",
+"3": "Joachims is cited for his work on linear SVM training time."
+}
+},
+{
+"id": 23,
+"topic": "Kernel Trick",
+"difficulty": "analysis",
+"question": "Which of the following is a 'Typical kernel function' mentioned in the slides that allows for mapping into infinite-dimensional spaces?",
+"options": [
+"The Polynomial Kernel",
+"The Gaussian (RBF) Kernel",
+"The Sigmoid Neural Kernel",
+"The Multinomial Bayes Kernel"
+],
+"correct_index": 1,
+"rationale": "Slide 24 lists the Gaussian kernel. In ML theory, the RBF kernel corresponds to an infinite-dimensional feature map.",
+"distractor_analysis": {
+"0": "Polynomial kernel maps to a finite, higher-dimensional space.",
+"1": "Correct.",
+"2": "Sigmoid activations are used in ANNs, but the Gaussian is the standard SVM example for this.",
+"3": "Not a standard term or mentioned kernel."
+}
+},
+{
+"id": 24,
+"topic": "Sigmoid Unit",
+"difficulty": "recall",
+"question": "In the Logistic Regression model, what is the specific mathematical form of the sigmoid function σ(s)?",
+"options": [
+"σ(s) = s^2 / (1 + s^2)",
+"σ(s) = 1 / (1 + e^-s)",
+"σ(s) = log(s / (1-s))",
+"σ(s) = exp(-s^2)"
+],
+"correct_index": 1,
+"rationale": "Slide 48 and 50 show the sigmoid formula clearly.",
+"distractor_analysis": {
+"0": "This is not the sigmoid function.",
+"1": "Correct.",
+"2": "This is the Logit function (inverse of sigmoid).",
+"3": "This is a Gaussian function."
+}
+},
+{
+"id": 25,
+"topic": "Support Vector Machines",
+"difficulty": "comparison",
+"question": "Comparing SVMs to Perceptrons, what is the 'additional' goal that an SVM aims for that the basic Perceptron does not?",
+"options": [
+"The Perceptron only tries to classify correctly; SVM also tries to maximize the margin.",
+"The Perceptron tries to maximize the margin; SVM only tries to classify correctly.",
+"SVM uses the Delta Rule, while the Perceptron uses the Kernel Trick.",
+"SVM is designed for Boolean logic, whereas Perceptrons are for continuous data."
+],
+"correct_index": 0,
+"rationale": "Slide 21 explicitly states: 'For the Perceptron the only goal is to classify every instance correctly. In addition, an SVM aims at maximizing the margin...'.",
+"distractor_analysis": {
+"0": "Correct: SVM is a 'Maximum-margin classifier'.",
+"1": "This is reversed.",
+"2": "Perceptrons use a simpler update; SVMs use quadratic optimization and kernels.",
+"3": "Both can handle both types of data, but Perceptrons were famously used for Boolean logic (AND/OR)."
+}
+},
+{
+"id": 26,
+"topic": "Naive Bayes",
+"difficulty": "analysis",
+"question": "How does the Naive Bayes classifier handle the 'Curse of Dimensionality' when dealing with a large vocabulary?",
+"options": [
+"By using a non-linear separator to reduce the number of features.",
+"By assuming each feature is independent, thus reducing the number of parameters to estimate from exponential to linear.",
+"By requiring that the number of training documents is greater than the vocabulary size squared.",
+"By only considering the top 10 most frequent words in every document."
+],
+"correct_index": 1,
+"rationale": "Slide 29 and 30 discuss the 'Impossible to estimate' joint probability vs. the simplified 'conditional independence' product.",
+"distractor_analysis": {
+"0": "NB is generally a linear classifier in its decision boundary.",
+"1": "Correct: independence allows us to estimate P(word_i | class) individually.",
+"2": "NB actually works well with small datasets relative to feature count.",
+"3": "While feature selection is possible, it's not the 'Naive Bayes' solution to the curse."
+}
+},
+{
+"id": 27,
+"topic": "Logistic Regression",
+"difficulty": "application",
+"question": "If you have 'sparse data' (many features with mostly zero values), what does the lecture suggest you might consider for Logistic Regression?",
+"options": [
+"Using a Perceptron instead, as it handles zeros better.",
+"Discretization of the feature domains.",
+"Removing the intercept (w0) from the model.",
+"Increasing the number of training iterations to infinity."
+],
+"correct_index": 1,
+"rationale": "Slide 54 states: 'In case of sparse data, discretization of the feature domains can be considered.'",
+"distractor_analysis": {
+"0": "Not mentioned; Perceptrons also struggle with sparsity without care.",
+"1": "Correct.",
+"2": "The intercept is usually necessary for the logit to cross zero.",
+"3": "This would likely lead to overfitting or numerical instability."
+}
+},
+{
+"id": 28,
+"topic": "ANN Theorems",
+"difficulty": "recall",
+"question": "Which type of functions can be approximated with 'arbitrary small error' by a neural network with just two layers?",
+"options": [
+"Any arbitrary discontinuous function.",
+"Every bounded continuous function.",
+"Only linear functions.",
+"Only the XOR function."
+],
+"correct_index": 1,
+"rationale": "Slide 58 states: 'Every bounded continuous function can be approximated with arbitrary small error by a network with two layers.'",
+"distractor_analysis": {
+"0": "Arbitrary functions (including discontinuous ones) require three layers according to the theorem listed.",
+"1": "Correct.",
+"2": "One layer can do linear; two layers go beyond that.",
+"3": "XOR can be done with two layers, but the theorem covers a much broader class."
+}
+},
+{
+"id": 29,
+"topic": "Perceptron training algorithm",
+"difficulty": "analysis",
+"question": "What is the 'Delta Rule' (also known as the Least-Mean-Square Rule) mentioned in the context of Stochastic Gradient Descent?",
+"options": [
+"It is the rule used to calculate the kernel matrix for SVMs.",
+"It is the weight update rule: wi = wi + η(l(x) - o(x))xi.",
+"It is the logic for deciding when to add a hidden layer to an ANN.",
+"It is the probability threshold for the Naive Bayes classifier."
+],
+"correct_index": 1,
+"rationale": "Slide 45 identifies the weight update equation as the 'Delta Rule or Least-Mean-Square Rule'.",
+"distractor_analysis": {
+"0": "Not related to kernels.",
+"1": "Correct.",
+"2": "Not related to architecture selection.",
+"3": "Not related to Bayes."
+}
+},
+{
+"id": 30,
+"topic": "Activation Functions",
+"difficulty": "recall",
+"question": "Why is the Sigmoid function considered 'easy to differentiate'?",
+"options": [
+"Its derivative is a constant value of 1.",
+"Its derivative can be expressed in terms of the function itself: σ'(s) = σ(s)(1 - σ(s)).",
+"It is a linear function, and all linear functions have simple derivatives.",
+"It does not have a derivative, which simplifies the backpropagation code."
+],
+"correct_index": 1,
+"rationale": "Slide 50 explicitly shows: '∂σ(s)/∂s = σ(s)(1 - σ(s))'.",
+"distractor_analysis": {
+"0": "That is the derivative of f(x) = x.",
+"1": "Correct.",
+"2": "It is non-linear.",
+"3": "It must be differentiable for backpropagation to work."
+}
+},
+{
+"id": 31,
+"topic": "Linear Classifiers",
+"difficulty": "comparison",
+"question": "A model is called 'translation invariant' if:",
+"options": [
+"It produces the same output regardless of the class label.",
+"It does not depend on the origin of the coordinate system.",
+"It can only be used with data that has been translated into English.",
+"It uses the same weight vector for every training instance."
+],
+"correct_index": 1,
+"rationale": "Slide 14 states: 'A geometric model is called translation invariant if it does not depend on the origin of the coordinate system.'",
+"distractor_analysis": {
+"0": "This would be a useless model.",
+"1": "Correct.",
+"2": "This is a language processing joke distractor.",
+"3": "Models always use one weight vector for the whole set, but that's not the definition of translation invariance."
+}
+},
+{
+"id": 32,
+"topic": "Naive Bayes",
+"difficulty": "analysis",
+"question": "In the Naive Bayes parameter estimation example for 'E-mails', how are the probabilities P(d|+) calculated for a document d = (0, 1, 1)?",
+"options": [
+"By adding the weights of the support vectors.",
+"By multiplying the probabilities of word absence or presence: (1 - P(a|+)) * P(b|+) * P(c|+).",
+"By finding the Euclidean distance between the document and the positive center.",
+"By taking the average of the feature values."
+],
+"correct_index": 1,
+"rationale": "Slide 33 shows the calculation: P(d|+) = (1 - 2/4) * (3/4) * (1/4). The (1 - p) corresponds to the '0' (absence) of term 'a'.",
+"distractor_analysis": {
+"0": "SVM logic.",
+"1": "Correct: product of conditional probabilities based on the feature vector.",
+"2": "Geometric classifier logic.",
+"3": "This is not how probability is estimated."
+}
+},
+{
+"id": 33,
+"topic": "SVM Soft-Margin",
+"difficulty": "comparison",
+"question": "In the SVM optimization problem, what does the parameter 'C' represent?",
+"options": [
+"The number of classes in the dataset.",
+"The speed of light in the feature space.",
+"The user-specified trade-off between margin width and classification error.",
+"The learning rate for the Perceptron algorithm."
+],
+"correct_index": 2,
+"rationale": "Slide 22 defines C as: 'user-specified trade-off between margin width and error.'",
+"distractor_analysis": {
+"0": "Usually denoted by 'k' or 'classes'.",
+"1": "Physics distractor.",
+"2": "Correct.",
+"3": "Learning rate is usually η (eta) or 'r'."
+}
+},
+{
+"id": 34,
+"topic": "ANN Common issues",
+"difficulty": "recall",
+"question": "What is a commonly cited 'issue' with Artificial Neural Networks regarding their output results?",
+"options": [
+"They are too simple to understand.",
+"Explaining the influence of an input unit on the result is difficult.",
+"They cannot handle more than two input features.",
+"They always converge to the global minimum on the first try."
+],
+"correct_index": 1,
+"rationale": "Slide 60 states: 'Explaining the input or unit influence on the produced result is difficult'.",
+"distractor_analysis": {
+"0": "They are complex 'black boxes'.",
+"1": "Correct: lack of interpretability is a major issue.",
+"2": "They can handle millions of features.",
+"3": "They often get stuck in local minima (Slide 46)."
+}
+},
+{
+"id": 35,
+"topic": "Gradient Descent",
+"difficulty": "analysis",
+"question": "What does the 'negated gradient' indicate in the context of the Gradient Descent Rule?",
+"options": [
+"The direction of the steepest ascent.",
+"The direction of the steepest descent.",
+"The point where the error is exactly zero.",
+"The total number of support vectors in the model."
+],
+"correct_index": 1,
+"rationale": "Slide 42 states: 'The negated gradient indicates the direction of the steepest descent.'",
+"distractor_analysis": {
+"0": "The gradient itself points to steepest ascent.",
+"1": "Correct: we move opposite to the gradient to minimize error.",
+"2": "It's a direction, not a specific point.",
+"3": "Not related to SVM support vectors."
+}
+},
+{
+"id": 36,
+"topic": "XOR Problem",
+"difficulty": "application",
+"question": "To resolve the XOR problem in a neural network, what architectural change is sufficient?",
+"options": [
+"Adding a second layer (a hidden layer).",
+"Increasing the learning rate to 1.0.",
+"Removing the bias (intercept) term.",
+"Using only linear activation functions."
+],
+"correct_index": 0,
+"rationale": "Slide 47 and 58 note that while a single perceptron fails, a two-layer perceptron can represent any Boolean function (including XOR).",
+"distractor_analysis": {
+"0": "Correct: hidden layers allow for non-linear decision boundaries.",
+"1": "Rate doesn't change the linear nature of the model.",
+"2": "Bias is helpful for shifting the boundary.",
+"3": "Linear functions would still fail XOR."
+}
+},
+{
+"id": 37,
+"topic": "Logit vs Logistic",
+"difficulty": "comparison",
+"question": "Which of these functions maps a probability 'P' from the range [0, 1] to the range [-∞, +∞]?",
+"options": [
+"The Logistic function",
+"The Sigmoid function",
+"The Logit function",
+"The Gaussian function"
+],
+"correct_index": 2,
+"rationale": "Slide 51 and 52: Logit(p) = log(p / (1-p)). As p approaches 0, it goes to -∞; as p approaches 1, it goes to +∞.",
+"distractor_analysis": {
+"0": "Maps real numbers to [0,1].",
+"1": "Same as Logistic.",
+"2": "Correct.",
+"3": "Maps real numbers to a bell curve."
+}
+},
+{
+"id": 38,
+"topic": "Probabilistic classifiers",
+"difficulty": "recall",
+"question": "When defining a probabilistic classifier from a linear one, what is typically used to model the class-conditional densities P(d(xi)|y)?",
+"options": [
+"A uniform distribution.",
+"A Gaussian mixture model.",
+"A discrete lookup table.",
+"A linear regression line."
+],
+"correct_index": 1,
+"rationale": "Slide 28 states: 'We can introduce a (Gaussian) mixture model: p(d(xi)|y=+) = N(...)'",
+"distractor_analysis": {
+"0": "Too simple for most real data.",
+"1": "Correct.",
+"2": "Not mentioned in the linear-to-probabilistic derivation.",
+"3": "Regression predicts values, not densities."
+}
+},
+{
+"id": 39,
+"topic": "ANN Properties",
+"difficulty": "analysis",
+"question": "In a Feed-forward ANN, why are there 'no cycles' in terms of information processing?",
+"options": [
+"To prevent the network from getting stuck in an infinite loop during a forward pass.",
+"To ensure the weights can be updated using the Perceptron rule.",
+"Because the human brain does not have any feedback loops.",
+"To ensure that the input layer is always larger than the output layer."
+],
+"correct_index": 0,
+"rationale": "Slide 55 defines Feed-forward: 'output of a node is always forwarded to the nodes in the layer above'. Logic: Cycles would make the forward computation undefined/infinite.",
+"distractor_analysis": {
+"0": "Correct: information must flow in one direction for standard matrix multiplication layers.",
+"1": "The Perceptron rule is for single layers, not necessarily related to acyclic flow.",
+"2": "False; the brain has many feedback loops.",
+"3": "Architecture size is independent of the existence of cycles."
+}
+},
+{
+"id": 40,
+"topic": "Perceptron Properties",
+"difficulty": "application",
+"question": "A Perceptron with a 'hard threshold' activation function is essentially a special case of which other model, if we replaced the threshold with a Sigmoid?",
+"options": [
+"Support Vector Machine",
+"Naive Bayes",
+"Logistic Regression",
+"Multinomial Naive Bayes"
+],
+"correct_index": 2,
+"rationale": "Slide 48 and 49 show that by using the sigmoid (logistic) function as the threshold unit, we arrive at the Logistic Regression model.",
+"distractor_analysis": {
+"0": "SVM has a different optimization goal.",
+"1": "Generative vs discriminative difference.",
+"2": "Correct: Logistic regression is a 'softened' perceptron.",
+"3": "Naive Bayes is based on counts/probabilities, not weighted sums of features."
+}
+},
+{
+"id": 41,
+"topic": "Backpropagation",
+"difficulty": "analysis",
+"question": "In the Backpropagation algorithm, what is 'forwarded' through the network first before weights are updated?",
+"options": [
+"The error gradient from the previous epoch.",
+"The training pair (xk, l(xk)) to compute the output ok.",
+"A set of random weights to reset the neurons.",
+"The inverse of the kernel matrix."
+],
+"correct_index": 1,
+"rationale": "Slide 57 algorithm: 'Forward xk through the network and compute output ok' occurs before computing delta and updating weights.",
+"distractor_analysis": {
+"0": "Gradients are calculated after the forward pass.",
+"1": "Correct: you need the prediction to find the error.",
+"2": "Weights are only randomized at initialization.",
+"3": "Not relevant to backprop."
+}
+},
+{
+"id": 42,
+"topic": "Laplace smoothing",
+"difficulty": "recall",
+"question": "What does the parameter 'α' typically represent in Laplace smoothing for Naive Bayes?",
+"options": [
+"The learning rate.",
+"The number of hidden layers.",
+"A small constant added to the counts to avoid zero probabilities.",
+"The margin width of the separator."
+],
+"correct_index": 2,
+"rationale": "Slide 31 shows the Laplace formula adding 'α' to the numerator (counts).",
+"distractor_analysis": {
+"0": "Usually η.",
+"1": "ANNS term.",
+"2": "Correct.",
+"3": "SVM term."
+}
+},
+{
+"id": 43,
+"topic": "SVM Convergence",
+"difficulty": "comparison",
+"question": "What did T. Joachims show regarding the training time of linear SVMs?",
+"options": [
+"They always take quadratic training time.",
+"They can be trained in linear time.",
+"They are impossible to train on datasets larger than 1000 samples.",
+"They require an exponential number of support vectors."
+],
+"correct_index": 1,
+"rationale": "Slide 26 states: 'T. Joachims showed linear training time for linear SVMs'.",
+"distractor_analysis": {
+"0": "SVMs in general are often quadratic, but Joachims showed a linear case.",
+"1": "Correct.",
+"2": "SVMs are very popular precisely because they scale to large data.",
+"3": "The number of support vectors is usually a small fraction of the data."
+}
+},
+{
+"id": 44,
+"topic": "Naive Bayes Classifier",
+"difficulty": "analysis",
+"question": "What does it mean for Naive Bayes to be 'robust' to irrelevant features?",
+"options": [
+"It automatically sets their weights to zero.",
+"Because of the independence assumption, irrelevant features just contribute a nearly constant factor to all classes.",
+"It uses a non-linear kernel to project them away.",
+"It only works if the irrelevant features are perfectly correlated with the relevant ones."
+],
+"correct_index": 1,
+"rationale": "Slide 39 discusses NB performance. Conceptual logic: If a feature is irrelevant, its distribution is similar across all classes, so P(irrelevant|class_A) ≈ P(irrelevant|class_B), thus cancelling out in the odds ratio.",
+"distractor_analysis": {
+"0": "This is Lasso regression behavior, not NB.",
+"1": "Correct: they don't bias the decision towards one class.",
+"2": "NB doesn't use kernels.",
+"3": "Irrelevant features are by definition not correlated with the label/class."
+}
+},
+{
+"id": 45,
+"topic": "ANN issues",
+"difficulty": "comparison",
+"question": "How can 'overfitting' in Artificial Neural Networks be mitigated according to the lecture?",
+"options": [
+"By using fewer training examples.",
+"By adding more variability to the examples in the training data.",
+"By increasing the number of parameters until they exceed the number of data points.",
+"By setting all initial weights to zero."
+],
+"correct_index": 1,
+"rationale": "Slide 60: 'Overfitting can be mitigated with more variability in the examples of the training data'.",
+"distractor_analysis": {
+"0": "Fewer examples usually increase overfitting.",
+"1": "Correct: more diverse data helps the model generalize.",
+"2": "This actually causes overfitting.",
+"3": "Zero weights prevent learning in many architectures (symmetry problem)."
+}
+},
+{
+"id": 46,
+"topic": "Sigmoid unit",
+"difficulty": "analysis",
+"question": "In the sigmoid function, as the input 's' approaches negative infinity (-∞), what does the output σ(s) approach?",
+"options": [
+"1.0",
+"0.5",
+"0.0",
+"-1.0"
+],
+"correct_index": 2,
+"rationale": "Slide 50 graph: The sigmoid function is bounded between 0 and 1. For very negative inputs, 1/(1+e^large) approaches zero.",
+"distractor_analysis": {
+"0": "This happens when s approaches +∞.",
+"1": "This happens when s = 0.",
+"2": "Correct.",
+"3": "Sigmoid never goes below 0; Tanh goes to -1."
+}
+},
+{
+"id": 47,
+"topic": "ANN Properties",
+"difficulty": "recall",
+"question": "What is the main purpose of the 'Hidden layers' in a feed-forward neural network?",
+"options": [
+"To store the class labels during training.",
+"To represent hierarchical feature representations.",
+"To provide a backup of the input data.",
+"To act as a linear separator for the output layer."
+],
+"correct_index": 1,
+"rationale": "Slide 56 shows: 'Deep neural networks learn hierarchical feature representations' across hidden layers.",
+"distractor_analysis": {
+"0": "Labels are used to calculate error, not stored in neurons.",
+"1": "Correct: early layers find edges, later layers find complex shapes.",
+"2": "Neurons store weights, not the input data itself.",
+"3": "The output layer usually handles the final separation/classification."
+}
+},
+{
+"id": 48,
+"topic": "SGD vs Gradient Descent",
+"difficulty": "analysis",
+"question": "Why is Stochastic Gradient Descent (SGD) particularly useful for very large training datasets?",
+"options": [
+"It is guaranteed to find the global minimum in one epoch.",
+"It avoids calculating the gradient for the entire dataset at once.",
+"It automatically removes noisy data points.",
+"It requires fewer weights to be stored in memory."
+],
+"correct_index": 1,
+"rationale": "Slide 46 and 44-45 comparison: GD sums error over all 'x in TrainSet' before one update. SGD updates per sample 'xi', saving memory and computation per step.",
+"distractor_analysis": {
+"0": "Not guaranteed; it's an approximation.",
+"1": "Correct: 'Batch' calculation is too heavy for millions of samples.",
+"2": "It actually incorporates the noise of individual samples into the update.",
+"3": "The number of weights (parameters) is the same for both methods."
+}
+},
+{
+"id": 49,
+"topic": "Linear separator",
+"difficulty": "recall",
+"question": "A 'separating hyperplane' is the geometric term for:",
+"options": [
+"A non-linear circle around the data.",
+"The decision boundary of a linear classifier.",
+"The path taken by the Gradient Descent algorithm.",
+"The sum of all word frequencies in a document."
+],
+"correct_index": 1,
+"rationale": "Slide 5 and 6 use 'Decision boundary (separating hyperplane)' to describe the linear division between classes.",
+"distractor_analysis": {
+"0": "Hyperplanes are linear by definition.",
+"1": "Correct.",
+"2": "That's a trajectory in weight space.",
+"3": "That's a feature value."
+}
+},
+{
+"id": 50,
+"topic": "Transformers and RNNs",
+"difficulty": "analysis",
+"question": "While RNNs process sequences step-by-step, what is a key concept mentioned in the slides (Other types of ANNs) that is often grouped with modern Autoencoders and attention-based models?",
+"options": [
+"Support Vector Regression",
+"Perceptron Learning Thresholds",
+"Attention Networks",
+"Linear Multinomial Smoothing"
+],
+"correct_index": 2,
+"rationale": "Slide 61 lists: 'Self-Organizing Maps, Autoencoders, Attention Networks,...' as modern types.",
+"distractor_analysis": {
+"0": "Regression variant of SVM.",
+"1": "1950s technology.",
+"2": "Correct: the foundation of modern transformers.",
+"3": "A hybrid distractor of Bayes and Smoothing."
+}
+}
+]
+  },
+  "foundations-07": {
+    "title": "Foundations of AI - Non-Linear Classifiers",
+    "questions": [
+{
+"id": 1,
+"topic": "RNN vs Feedforward Models",
+"difficulty": "recall",
+"question": "What is the primary architectural difference that allows Recurrent Neural Networks (RNNs) to process sequences differently than standard Feedforward Networks?",
+"options": [
+"RNNs utilize recurrent connections to pass information from one time step to the next.",
+"RNNs use multiple layers of neurons to increase the depth of the network.",
+"RNNs employ non-linear activation functions like Tanh, which Feedforward networks lack.",
+"RNNs can only process fixed-size input vectors, whereas Feedforward networks are flexible."
+],
+"correct_index": 0,
+"rationale": "RNNs are defined by their recurrent connections, allowing the hidden state at time 't' to depend on the hidden state at 't-1', creating a form of memory for sequential data.",
+"distractor_analysis": {
+"0": "Correct definition based on the slide defining RNNs via recurrent connections.",
+"1": "Depth is a feature of most deep learning models, not specific to RNN sequence processing.",
+"2": "Both architectures typically use non-linear activations.",
+"3": "The opposite is true; RNNs are designed for variable sequence lengths, while standard feedforward networks require fixed input sizes."
+}
+},
+{
+"id": 2,
+"topic": "Vanishing Gradient Problem",
+"difficulty": "application",
+"question": "In a deep RNN, if the weights associated with the recurrent connections (Wrec) are all significantly less than 1.0, what is the most likely outcome during backpropagation?",
+"options": [
+"The gradients will grow exponentially, causing the model weights to fluctuate wildly.",
+"The model will converge faster because smaller weights prevent the cost function from oscillating.",
+"The hidden state will saturate, causing the Tanh activation to output only constant values.",
+"The influence of early inputs in a long sequence will effectively disappear by the time the gradient reaches them."
+],
+"correct_index": 3,
+"rationale": "This describes the vanishing gradient problem conceptually. Multiplying small values repeatedly through the chain rule leads to gradients that approach zero for earlier time steps.",
+"distractor_analysis": {
+"0": "This describes the exploding gradient problem, not vanishing.",
+"1": "Smaller weights often prevent learning entirely rather than speeding up convergence.",
+"2": "Saturation is generally an activation function issue, not a direct consequence of small recurrent weights.",
+"3": "Correct conceptual description of the vanishing gradient problem."
+}
+},
+{
+"id": 3,
+"topic": "Long-Term Dependencies",
+"difficulty": "analysis",
+"question": "Why does the 'context vector' in a standard RNN act as a bottleneck for processing very long paragraphs?",
+"options": [
+"The context vector is only updated at the very end of the sequence, ignoring the middle tokens.",
+"The context vector requires a separate GPU memory allocation for every word in the sequence.",
+"The context vector has a fixed dimension and must compress all previous information, leading to loss of detail.",
+"The context vector can only store numerical values, but language requires symbolic representations."
+],
+"correct_index": 2,
+"rationale": "Slide 6 notes that the last hidden state is the context vector, a 'compressed encoding of the entire sequence.' Compression of long sequences into a fixed-size vector inevitably loses information.",
+"distractor_analysis": {
+"0": "The hidden state is updated at every step, but 'forgets' over time.",
+"1": "Memory allocation for the hidden state is constant across steps in an unrolled RNN.",
+"2": "Correct; fixed capacity leads to information loss as length increases.",
+"3": "All neural network components store numerical values; this isn't the specific context vector bottleneck."
+}
+},
+{
+"id": 4,
+"topic": "LSTM Gating Mechanisms",
+"difficulty": "recall",
+"question": "Which specific gate in an LSTM unit is primarily responsible for deciding which information from the previous cell state should be discarded?",
+"options": [
+"Input Gate",
+"Forget Gate",
+"Output Gate",
+"Update Gate"
+],
+"correct_index": 1,
+"rationale": "Slide 9 explicitly defines the Forget Gate as the mechanism that decides 'which info to keep' or discard from the cell state.",
+"distractor_analysis": {
+"0": "The input gate decides what to add, not what to discard.",
+"1": "Correct; its purpose is information pruning.",
+"2": "The output gate computes the hidden state, not the cell state retention.",
+"3": "The 'Update Gate' belongs to the GRU architecture."
+}
+},
+{
+"id": 5,
+"topic": "GRU vs LSTM",
+"difficulty": "analysis",
+"question": "Comparing LSTMs and GRUs, what is the primary conceptual trade-off when choosing a GRU for a sequence modeling task?",
+"options": [
+"GRUs are computationally more efficient due to a simplified architecture but may have less fine-grained control over memory.",
+"GRUs offer higher representational power because they have more gates than LSTMs.",
+"GRUs completely eliminate the vanishing gradient problem, whereas LSTMs only mitigate it.",
+"GRUs are strictly better for short sequences, while LSTMs are strictly better for long sequences."
+],
+"correct_index": 0,
+"rationale": "Slide 9 states GRUs are a 'simplified variation of LSTMs.' Simplification generally leads to fewer parameters and faster computation, at the cost of the complexity of the internal state management.",
+"distractor_analysis": {
+"0": "Correct; simplification is the primary trade-off.",
+"1": "Incorrect; GRUs have fewer gates (Reset/Update) than LSTMs (Input/Forget/Output).",
+"2": "Both mitigate the problem; neither completely eliminates it.",
+"3": "Performance is task-dependent; there is no such strict rule."
+}
+},
+{
+"id": 6,
+"topic": "Transformer: Encoder vs Decoder",
+"difficulty": "recall",
+"question": "In the context of Transformer models, how does the objective of a BERT-style model (Encoder-only) differ from a GPT-style model (Decoder-only)?",
+"options": [
+"BERT is trained to predict the next token, while GPT uses masked language modeling.",
+"BERT is designed for image processing, while GPT is designed for text generation.",
+"BERT uses masked language modeling to understand context from both directions, while GPT uses autoregressive modeling to predict the future.",
+"BERT requires more parameters than GPT to achieve the same level of accuracy."
+],
+"correct_index": 2,
+"rationale": "Slide 11 distinguishes Encoder models (BERT/Autoencoder) using 'masked language modeling' from Decoder models (GPT/Autoregressive) using 'next token prediction.'",
+"distractor_analysis": {
+"0": "The descriptions are swapped.",
+"1": "Both are primarily language models based on the Transformer architecture.",
+"2": "Correct; BERT is bidirectional (masked) and GPT is unidirectional (autoregressive).",
+"3": "Parameter count is an implementation detail, not a conceptual difference in objectives."
+}
+},
+{
+"id": 7,
+"topic": "Attention Mechanism",
+"difficulty": "application",
+"question": "If an Attention mechanism assigns a high 'importance weight' to a specific token in a sentence, what does this imply for the model's computation?",
+"options": [
+"The model will ignore all other tokens in the sentence during that time step.",
+"The representation of the current token will be more heavily influenced by that specific token's features.",
+"The model will increase the gradient clipping threshold for that specific token.",
+"The token will be moved to the front of the sequence to ensure it is processed first."
+],
+"correct_index": 1,
+"rationale": "Slide 12 explains that attention allows the model to 'focus on specific parts of the input.' This focus is achieved by weighting the contributions of input tokens to the final representation.",
+"distractor_analysis": {
+"0": "Weights are relative; other tokens still contribute unless their weights are exactly zero.",
+"1": "Correct; high weight means high influence in the weighted sum.",
+"2": "Attention weights and gradient clipping are unrelated concepts.",
+"3": "Tokens do not change physical positions in the sequence during attention calculation."
+}
+},
+{
+"id": 8,
+"topic": "Self-Attention",
+"difficulty": "analysis",
+"question": "Why is Self-Attention conceptually superior to the recurrent mechanism of RNNs for capturing dependencies in long sentences?",
+"options": [
+"RNNs process tokens in parallel, which makes it hard to link distant words.",
+"Self-Attention uses fewer weights than an RNN cell, reducing the chance of noise.",
+"RNNs can only look at the words immediately to the left, missing right-side context.",
+"Self-Attention calculates a direct relationship between any two tokens regardless of their distance in the sentence."
+],
+"correct_index": 3,
+"rationale": "Slide 12 and 13 show that attention handles long-term dependencies by 'selectively focusing.' In Self-Attention, the distance between tokens doesn't matter, whereas in RNNs, information must travel through all intermediate hidden states.",
+"distractor_analysis": {
+"0": "RNNs process tokens sequentially, not in parallel.",
+"1": "Transformers typically have significantly more parameters than standard RNNs.",
+"2": "Bidirectional RNNs can look right, but they still suffer from signal decay over distance.",
+"3": "Correct; attention provides a direct 'shortcut' across the sequence."
+}
+},
+{
+"id": 9,
+"topic": "ChatGPT: RLHF",
+"difficulty": "analysis",
+"question": "How does Reinforcement Learning with Human Feedback (RLHF) fundamentally change the model's behavior compared to standard next-token prediction?",
+"options": [
+"It shifts the model's objective from statistical likelihood to human-judged quality and helpfulness.",
+"It allows the model to learn from unlabelled data more efficiently than supervised learning.",
+"It eliminates the need for the Transformer backbone, replacing it with a reward-based system.",
+"It reduces the number of parameters the model needs to store in its memory."
+],
+"correct_index": 0,
+"rationale": "Slide 16 explains Stage 3 (RLHF) as using a 'scoring mechanism' (human) to grade responses so the model learns to 'achieve good scores' rather than just mimicking text statistics.",
+"distractor_analysis": {
+"0": "Correct; alignment with human preference vs. statistical probability.",
+"1": "RLHF requires expensive, labelled human feedback.",
+"2": "RLHF is a training method applied to the Transformer, not a replacement for it.",
+"3": "RLHF is usually applied to very large models; it doesn't reduce parameters."
+}
+},
+{
+"id": 10,
+"topic": "Distance Metrics",
+"difficulty": "recall",
+"question": "Which property of a distance metric ensures that the distance from point A to point B is always the same as the distance from point B to point A?",
+"options": [
+"Positivity",
+"Symmetry",
+"Triangle Inequality",
+"Cosine Similarity"
+],
+"correct_index": 1,
+"rationale": "Slide 18 defines symmetry as d(xi, xj) = d(xj, xi).",
+"distractor_analysis": {
+"0": "Positivity ensures non-negative distances.",
+"1": "Correct; this is the definition of symmetry.",
+"2": "Triangle Inequality concerns paths through a third point.",
+"3": "This is a similarity measure, not a distance property."
+}
+},
+{
+"id": 11,
+"topic": "Manhattan vs Euclidean Distance",
+"difficulty": "application",
+"question": "In a scenario where features are arranged in a grid-like structure (e.g., city blocks) and diagonal movement is impossible, which distance metric is most realistic?",
+"options": [
+"Euclidean Distance",
+"Mahalanobis Distance",
+"Maximum Distance",
+"Manhattan Distance"
+],
+"correct_index": 3,
+"rationale": "Slide 19 shows Manhattan distance as the sum of absolute differences, representing paths that follow axis-aligned grids (like city blocks).",
+"distractor_analysis": {
+"0": "Euclidean measures 'as the crow flies,' which assumes diagonal movement is possible.",
+"1": "Mahalanobis accounts for data distribution, not physical movement constraints.",
+"2": "Maximum distance only considers the single largest coordinate gap.",
+"3": "Correct; it follows the grid lines."
+}
+},
+{
+"id": 12,
+"topic": "k-Nearest Neighbors (k-NN)",
+"difficulty": "analysis",
+"question": "Why is k-NN considered a 'lazy' classifier, and what is its primary drawback for real-time applications with massive datasets?",
+"options": [
+"It uses very few parameters, making it less accurate than neural networks.",
+"It only looks at the 1st neighbor, making it highly sensitive to noise.",
+"It does not learn a general model during training; instead, it requires high computation time during prediction.",
+"It ignores feature importance, meaning it cannot handle categorical data."
+],
+"correct_index": 2,
+"rationale": "Slide 23 describes k-NN as 'Lazy' and 'computationally intensive' because it defers work until prediction time, comparing new inputs against all stored training instances.",
+"distractor_analysis": {
+"0": "It has no learned parameters, but 'lazy' refers to induction timing, not accuracy.",
+"1": "The 'k' can be any number; 'lazy' refers to when training happens.",
+"2": "Correct; storing data instead of learning weights makes inference slow.",
+"3": "It treats features equally by default, but this isn't the definition of 'lazy'."
+}
+},
+{
+"id": 13,
+"topic": "Decision Trees: Impurity",
+"difficulty": "recall",
+"question": "During the construction of a Decision Tree, what is the 'Best Split' intended to maximize?",
+"options": [
+"The number of leaves in the final tree.",
+"The distance between instances in different classes.",
+"The computational speed of the split algorithm.",
+"The purity gain (or information gain)."
+],
+"correct_index": 3,
+"rationale": "Slides 26 and 28 define the goal of finding the 'best split' as maximizing purity gain.",
+"distractor_analysis": {
+"0": "Maximizing leaves usually causes overfitting.",
+"1": "This is a clustering objective; trees focus on class homogeneity.",
+"2": "Speed is a constraint, but not the objective function of the split.",
+"3": "Correct; the goal is to create subsets that are as 'pure' as possible."
+}
+},
+{
+"id": 14,
+"topic": "Entropy vs Gini Index",
+"difficulty": "analysis",
+"question": "According to the slide on 'Entropy vs. Gini index,' what is a notable characteristic of the 'Square root of the Gini index'?",
+"options": [
+"It is insensitive to fluctuations in the class distribution.",
+"It is more sensitive to outliers than standard Gini.",
+"It always results in deeper trees with fewer instances per leaf.",
+"It is the only metric that can handle continuous attribute values."
+],
+"correct_index": 0,
+"rationale": "Slide 27 states that the square root of Gini 'is insensitive to fluctuations in the class distribution.'",
+"distractor_analysis": {
+"0": "Correct; direct quote from Slide 27 regarding relative impurity.",
+"1": "The slide focuses on distribution insensitivity, not outlier sensitivity.",
+"2": "Metric choice affects split points but doesn't guarantee specific depth structure.",
+"3": "All three metrics (Entropy, Gini, sqrt Gini) handle continuous values via thresholds."
+}
+},
+{
+"id": 15,
+"topic": "Decision Trees: Pruning",
+"difficulty": "application",
+"question": "If a Decision Tree perfectly classifies training data but fails on the test set, what 'Pruning' action is most appropriate?",
+"options": [
+"Add more features to the dataset to provide more context.",
+"Replace subtrees that do not significantly improve accuracy with leaf nodes.",
+"Increase the depth of the tree to capture more complex rules.",
+"Change the impurity measure from Gini to Entropy."
+],
+"correct_index": 1,
+"rationale": "Slide 39 discusses pruning as a way to 'mitigate overfitting' by removing non-productive subtrees.",
+"distractor_analysis": {
+"0": "Adding features can increase overfitting in an already complex tree.",
+"1": "Correct; this is the core of the bottom-up pruning strategy.",
+"2": "Increasing depth is the source of the overfitting problem.",
+"3": "This is unlikely to solve fundamental structural overfitting."
+}
+},
+{
+"id": 16,
+"topic": "Random Forests: Mechanism",
+"difficulty": "recall",
+"question": "What two primary sources of randomness ensure diversity in a 'Random Forest'?",
+"options": [
+"Random initial weights and random learning rates.",
+"Random depth for each tree and random impurity metrics.",
+"Bootstrapping (sampling with replacement) and random feature selection for each split.",
+"Randomly deleting trees after training and random pruning."
+],
+"correct_index": 2,
+"rationale": "Slide 33 details: 1. Bootstrapping (sampling N times with replacement) and 2. Randomly sampling features.",
+"distractor_analysis": {
+"0": "These are parameters for neural networks, not Random Forests.",
+"1": "The algorithm specifies feature sampling, not random depth or metrics.",
+"2": "Correct; these define the 'Random' in Random Forest.",
+"3": "Deletion is not part of standard induction."
+}
+},
+{
+"id": 17,
+"topic": "Random Forests vs Decision Trees",
+"difficulty": "analysis",
+"question": "Why is a Random Forest generally more robust to noise than a single Decision Tree?",
+"options": [
+"The averaging/voting of multiple diverse trees cancels out the errors of individual trees that overfit to noise.",
+"Each tree in the forest is pruned more aggressively than a single tree.",
+"Random Forests use linear decision boundaries, whereas Decision Trees are non-linear.",
+"Random Forests only use the most important feature for every tree."
+],
+"correct_index": 0,
+"rationale": "Slide 35 mentions Random Forests are 'More robust to noise.' This results from the ensemble effect where individual variances are averaged out.",
+"distractor_analysis": {
+"0": "Correct ensemble logic.",
+"1": "Slide 35 states 'No pruning is needed' for Random Forests.",
+"2": "Both models are non-linear.",
+"3": "They purposely use feature subsets to increase diversity."
+}
+},
+{
+"id": 18,
+"topic": "k-NN: Curse of Dimensionality",
+"difficulty": "analysis",
+"question": "What is the primary reason k-NN suffers from the 'curse of dimensionality'?",
+"options": [
+"The number of classes grows exponentially with the number of features.",
+"The memory required to store distance metrics exceeds GPU capacity.",
+"The labels of neighbors become correlated, leading to high bias.",
+"In high-dimensional space, data points become very sparse, making distance-based 'nearest' measures less meaningful."
+],
+"correct_index": 3,
+"rationale": "Slide 23 notes k-NN's susceptibility to the curse, where in high dimensions, distances between all points tend to converge, losing discriminative power.",
+"distractor_analysis": {
+"0": "Number of classes is independent of feature count.",
+"1": "Storage is large (O(N*D)) but not the 'logical' curse.",
+"2": "The curse is about geometric distance, not label correlation.",
+"3": "Correct conceptual explanation of high-D sparsity."
+}
+},
+{
+"id": 19,
+"topic": "RNN: Exploding Gradients",
+"difficulty": "application",
+"question": "If an RNN's loss becomes 'NaN' (Not a Number) during training, which slide-recommended technique should be applied?",
+"options": [
+"LSTM Gating",
+"Gradient Clipping",
+"Increasing sequence length",
+"Changing Tanh to ReLU"
+],
+"correct_index": 1,
+"rationale": "Slide 8 lists 'gradient clipping' as the mitigation for 'Exploding Gradient,' which causes numerical instability.",
+"distractor_analysis": {
+"0": "LSTMs help with vanishing gradients, but explosion still requires clipping.",
+"1": "Correct; it caps gradient magnitude.",
+"2": "Increasing length usually makes gradient explosion worse.",
+"3": "ReLU can exacerbate explosion as it doesn't saturate."
+}
+},
+{
+"id": 20,
+"topic": "Decision Trees: Path Interpretation",
+"difficulty": "recall",
+"question": "What feature of Decision Trees makes them valuable for regulated industries like finance?",
+"options": [
+"They are the most accurate models for all small datasets.",
+"They are immune to bias in training data.",
+"They are easy to interpret and explain, as rules can be read from paths.",
+"They can be easily parallelized on cloud infrastructure."
+],
+"correct_index": 2,
+"rationale": "Slide 32 highlights 'Easy to interpret and explain' as a key advantage.",
+"distractor_analysis": {
+"0": "Accuracy is dataset-dependent; interpretability is their unique strength.",
+"1": "No model is immune to data bias.",
+"2": "Correct; 'Explainability' is often a regulatory requirement.",
+"3": "While true, this isn't the reason they are used for 'regulation'."
+}
+},
+{
+"id": 21,
+"topic": "Cross-Attention",
+"difficulty": "recall",
+"question": "In a Transformer machine translation model, what does 'Cross-Attention' enable?",
+"options": [
+"The decoder focuses on specific parts of the source input sequence while generating the target output.",
+"Words within the generated sentence are associated with each other.",
+"The model translates two different languages in parallel.",
+"The similarity between the training and test sets is calculated."
+],
+"correct_index": 0,
+"rationale": "Slide 13 defines Cross-Attention as attention between different sequences, e.g., output vs input.",
+"distractor_analysis": {
+"0": "Correct; it links the decoding process to the encoded source.",
+"1": "This is Self-Attention.",
+"2": "Cross-attention is about inter-sequence relationships, not multi-task translation.",
+"3": "Attention is an internal mechanism, not a dataset comparison tool."
+}
+},
+{
+"id": 22,
+"topic": "Multi-head Attention",
+"difficulty": "analysis",
+"question": "What is the conceptual benefit of 'Multi-head' attention over a single head?",
+"options": [
+"It reduces memory usage by a factor equal to the head count.",
+"It allows the model to process sequences that are multiple times longer.",
+"It ensures importance weights always sum exactly to 1.0.",
+"It allows the model to jointly attend to information from different representation subspaces at different positions."
+],
+"correct_index": 3,
+"rationale": "Slide 14 states multi-head attention allows the model to 'jointly attend to information from different representation subspaces.'",
+"distractor_analysis": {
+"0": "More heads usually increase memory/compute.",
+"1": "Sequence length limits are quadratic and independent of head count.",
+"2": "Softmax ensures this even for a single head.",
+"3": "Correct; like having multiple types of 'filters' for relationships."
+}
+},
+{
+"id": 23,
+"topic": "LSTM Cell State",
+"difficulty": "analysis",
+"question": "How does the LSTM 'Cell State' conceptualize 'long-term memory' differently than a standard RNN's hidden state?",
+"options": [
+"The Cell State is reset to zero every five tokens to avoid confusion.",
+"The Cell State acts as a highway allowing information to flow with minor linear interactions, mitigating the vanishing gradient.",
+"The Cell State is only for categorical data, while the hidden state is for numerical data.",
+"The Cell State stores gradients, while the hidden state stores weights."
+],
+"correct_index": 1,
+"rationale": "Slide 9 shows the cell state as a separate line aggregating outputs, allowing long-term persistence with less interference.",
+"distractor_analysis": {
+"0": "Resets are not a standard feature; gates decide retention.",
+"1": "Correct; it provides a 'shortcut' for long-term signals.",
+"2": "Both states are numerical vectors.",
+"3": "Gradients and weights are optimization components, not internal architecture states."
+}
+},
+{
+"id": 24,
+"topic": "LLM Scale",
+"difficulty": "recall",
+"question": "According to the provided table, which model has the highest number of tunable parameters?",
+"options": [
+"GPT-3",
+"WuDao 2.0",
+"MT-NLG",
+"Gato"
+],
+"correct_index": 1,
+"rationale": "Slide 15 shows WuDao 2.0 with '1.75 trillion' parameters, the highest in the list.",
+"distractor_analysis": {
+"0": "GPT-3 has 175 billion.",
+"1": "Correct; 1.75 trillion.",
+"2": "MT-NLG has 530 billion.",
+"3": "Gato has 1.18 billion."
+}
+},
+{
+"id": 25,
+"topic": "Hierarchical Classifiers",
+"difficulty": "application",
+"question": "When building a Decision Tree, if one specific feature is a 'perfect discriminator,' where will the algorithm place it?",
+"options": [
+"At the root of the tree.",
+"In the leaf nodes.",
+"As a pruning threshold.",
+"It will be discarded to prevent overfitting."
+],
+"correct_index": 0,
+"rationale": "Slide 25 states the algorithm chooses the 'most discriminative attribute' first. A perfect discriminator provides maximum information gain and thus becomes the root.",
+"distractor_analysis": {
+"0": "Correct; top-down induction prioritizes the most useful feature.",
+"1": "Leaves represent classes, not split features.",
+"2": "Pruning is a post-construction step.",
+"3": "Discriminative features are the goal of tree construction."
+}
+},
+{
+"id": 26,
+"topic": "Continuous Attribute Splitting",
+"difficulty": "analysis",
+"question": "Why is splitting a continuous attribute (like Temperature) more 'computationally heavy' than a discrete one (like Color)?",
+"options": [
+"Continuous values require the calculation of Euclidean distance between all points.",
+"Continuous values must be converted to text strings before splitting.",
+"The model must evaluate numerous possible mid-point thresholds between sorted values.",
+"Continuous attributes cannot be used with the Gini index."
+],
+"correct_index": 2,
+"rationale": "Slide 31/32 explains that finding the optimal 'split value x' for continuous data is heavy because of the large search space of potential thresholds.",
+"distractor_analysis": {
+"0": "Distance is for k-NN; trees use impurity measures.",
+"1": "This would destroy the numerical relationship.",
+"2": "Correct; the search for the optimal threshold is exhaustive.",
+"3": "They can; one simply uses a threshold (e.g., Temp < 20)."
+}
+},
+{
+"id": 27,
+"topic": "k-NN vs Decision Trees",
+"difficulty": "analysis",
+"question": "In which scenario would k-NN likely outperform a Decision Tree?",
+"options": [
+"The dataset contains 10 million instances and requires millisecond response times.",
+"The decision boundary is highly complex/diagonal, but local neighborhoods are consistent.",
+"The user requires a set of human-readable rules.",
+"The dataset has many irrelevant features (noise)."
+],
+"correct_index": 1,
+"rationale": "k-NN captures local patterns well (Slide 23). Trees are constrained to axis-aligned splits which struggle with diagonal boundaries that distance metrics handle naturally.",
+"distractor_analysis": {
+"0": "k-NN is too slow for this due to its 'lazy' prediction (Slide 23).",
+"1": "Correct; k-NN handles complex non-axis-aligned boundaries better locally.",
+"2": "This is the strength of Trees, not k-NN.",
+"3": "k-NN is highly susceptible to noise (Slide 23)."
+}
+},
+{
+"id": 28,
+"topic": "RNN: Dynamics of Sequences",
+"difficulty": "recall",
+"question": "What does it mean for an RNN to 'capture the dynamics of sequences'?",
+"options": [
+"It uses a physics engine to calculate the motion of tokens.",
+"It can dynamically change its layer count during inference.",
+"It models temporal relationships where current state is a function of input and history.",
+"It speeds up training using dynamic learning rates."
+],
+"correct_index": 2,
+"rationale": "Slide 4 defines RNNs as capturing sequence dynamics via recurrent connections and hidden representations.",
+"distractor_analysis": {
+"0": "Nonsensical interpretation.",
+"1": "RNN architectures are static once trained.",
+"2": "Correct; 'Dynamics' refers to time-based dependencies.",
+"3": "This refers to optimizers like Adam, not the architecture."
+}
+},
+{
+"id": 29,
+"topic": "Euclidean Distance Property",
+"difficulty": "application",
+"question": "If the Euclidean distance d(x, y) = 0, what does the 'positivity' property conclude?",
+"options": [
+"x and y are perpendicular.",
+"x and y are located at the origin.",
+"x and y are identical points.",
+"x and y are in different metric spaces."
+],
+"correct_index": 2,
+"rationale": "Slide 18: 'd(xi, xj) = 0 iff xi = xj'. This is the identity of indiscernibles.",
+"distractor_analysis": {
+"0": "Perpendicularity relates to dot product, not zero distance.",
+"1": "They can be anywhere; they just must be at the same location.",
+"2": "Correct; distance is zero only for identical points.",
+"3": "Distance is only defined within the same space."
+}
+},
+{
+"id": 30,
+"topic": "Random Forests: Feature Subsets",
+"difficulty": "analysis",
+"question": "Why do Random Forests use only a random subset of 'm' features at each split?",
+"options": [
+"To decorrelate the trees, ensuring strong predictors don't dominate every single tree.",
+"To reduce the memory required to store the resulting tree.",
+"Because Information Gain only works with a small number of variables.",
+"To ensure that trees grow as deep as possible."
+],
+"correct_index": 0,
+"rationale": "Slide 33/35: By forcing trees to ignore the 'best' feature occasionally, we allow other patterns to emerge, creating a diverse ensemble that reduces bias.",
+"distractor_analysis": {
+"0": "Correct; this is the conceptual core of diversity in ensembles.",
+"1": "Secondary effect; the goal is model quality.",
+"2": "IG works with any feature count.",
+"3": "Deep trees usually signify overfitting; diversity is the goal."
+}
+},
+{
+"id": 31,
+"topic": "Triangle Inequality",
+"difficulty": "recall",
+"question": "What is the formal definition of the 'Triangle Inequality'?",
+"options": [
+"Any three points in a space must form a perfect triangle.",
+"Distance between two points is always less than or equal to the sum of distances to a third point.",
+"The square of the hypotenuse equals the sum of squares of the other sides.",
+"Distance to the origin is the average of distances between all points."
+],
+"correct_index": 1,
+"rationale": "Slide 18 defines it as d(xi, xk) <= d(xi, xj) + d(xj, xk).",
+"distractor_analysis": {
+"0": "Nonsensical definition.",
+"1": "Correct definition.",
+"2": "This is the Pythagorean theorem, a specific case of Euclidean geometry.",
+"3": "Nonsensical definition."
+}
+},
+{
+"id": 32,
+"topic": "BERT Training",
+"difficulty": "recall",
+"question": "What is the objective of BERT's 'Masked Language Modeling'?",
+"options": [
+"To generate new sentences by filling in blanks randomly.",
+"To reduce the number of tokens processed by 15%.",
+"To force the model to predict a missing word using context from both directions.",
+"To hide sensitive information during translation."
+],
+"correct_index": 2,
+"rationale": "Slide 11: BERT masks random words to make the model predict them, enabling bidirectional understanding.",
+"distractor_analysis": {
+"0": "BERT is an encoder (understanding), not a generator.",
+"1": "Masking doesn't reduce total tokens; it changes their values.",
+"2": "Correct; this is the 'Bidirectional' part of BERT.",
+"3": "Masking is a training objective, not a privacy tool."
+}
+},
+{
+"id": 33,
+"topic": "GPT vs BERT",
+"difficulty": "analysis",
+"question": "Why choose a GPT-style model over BERT for a creative writing application?",
+"options": [
+"GPT is better at understanding nuace.",
+"BERT only works with English text.",
+"BERT cannot process sentences longer than 512 tokens.",
+"GPT is an autoregressive Decoder model optimized for generating the next word."
+],
+"correct_index": 3,
+"rationale": "Slide 11 identifies GPT as 'Generative' and based on a 'Decoder' with a 'next token prediction' objective.",
+"distractor_analysis": {
+"0": "BERT is often better at 'understanding'; GPT is better at 'generating'.",
+"1": "Both are language-agnostic architectures.",
+"2": "This is an implementation limit, not the conceptual reason for the task choice.",
+"3": "Correct; its objective is specifically designed for generation."
+}
+},
+{
+"id": 34,
+"topic": "Distance vs Similarity",
+"difficulty": "application",
+"question": "If the distance d(x, y) approaches infinity, what happens to similarity in the formula 'sim(x, y) := 1 / exp(d(x,y))'?",
+"options": [
+"Similarity approaches zero.",
+"Similarity also approaches infinity.",
+"Similarity remains constant at 1.0.",
+"Similarity becomes negative."
+],
+"correct_index": 0,
+"rationale": "Slide 19: As distance grows, the denominator exp(d(x,y)) grows exponentially, causing similarity to approach zero.",
+"distractor_analysis": {
+"0": "Correct; infinite distance means no similarity.",
+"1": "Distance and similarity are inversely related.",
+"2": "Constant similarity would mean distance has no effect.",
+"3": "Similarity is bounded [0, 1]."
+}
+},
+{
+"id": 35,
+"topic": "Information Gain Calculation",
+"difficulty": "analysis",
+"question": "A dataset D is split into Partition A (all 'Yes') and Partition B (all 'No'). What is the Information Gain?",
+"options": [
+"Zero, because both classes exist in the end.",
+"Negative, because the split was too simple.",
+"It is maximized (equal to Entropy(D)), as resulting partitions have zero entropy.",
+"0.5, because the data was split in half."
+],
+"correct_index": 2,
+"rationale": "Slide 29: Gain = Entropy(D) - Weighted Partition Entropy. If partitions are pure, entropy is 0, maximizing gain.",
+"distractor_analysis": {
+"0": "Purity is the goal; this split achieved total purity.",
+"1": "IG is always non-negative.",
+"2": "Correct; gain is maximized when remaining impurity is zero.",
+"3": "Gain is measured in bits of information, not data volume ratio."
+}
+},
+{
+"id": 36,
+"topic": "k-NN Decision Regions",
+"difficulty": "recall",
+"question": "In the provided example, which distance metric results in 'non-convex' decision regions?",
+"options": [
+"Euclidean Distance",
+"Both Euclidean and Manhattan",
+"Manhattan Distance",
+"Neither; k-NN is always linear"
+],
+"correct_index": 2,
+"rationale": "Slide 21 labels Manhattan distance visualization as 'Non-convex decision regions'.",
+"distractor_analysis": {
+"0": "Labeled as 'Linear' in the specific slide example.",
+"1": "The slide distinguishes them by this property.",
+"2": "Correct; direct label from Slide 21.",
+"3": "k-NN is non-linear; it can generate complex regions."
+}
+},
+{
+"id": 37,
+"topic": "Transformer backbone",
+"difficulty": "recall",
+"question": "Is the Transformer architecture still the backbone of modern AI models?",
+"options": [
+"No; replaced by more efficient RNNs in 2023.",
+"Yes; it remains the backbone of models like GPT-4.",
+"No; modern models use completely different Hyper-Networks.",
+"Yes; but only for image processing, not text."
+],
+"correct_index": 1,
+"rationale": "Slide 10: 'Still the backbone of modern models!'",
+"distractor_analysis": {
+"0": "Transformers largely replaced RNNs.",
+"1": "Correct; as per the slide.",
+"2": "Transformers remain the dominant architecture.",
+"3": "It is dominant in both NLP and vision."
+}
+},
+{
+"id": 38,
+"topic": "RLHF: Scoring Mechanism",
+"difficulty": "application",
+"question": "If RLHF human graders favor 'politeness' over 'accuracy,' what is the likely model failure mode?",
+"options": [
+"The model will refuse to answer any questions.",
+"The model will be highly polite but may confidently provide incorrect information.",
+"The model will become too slow to answer.",
+"The model will use jargon to confuse graders."
+],
+"correct_index": 1,
+"rationale": "Slide 16: Models optimize for what is rewarded. If politeness is rewarded over truth, it will prioritize politeness.",
+"distractor_analysis": {
+"0": "It only refuses if that leads to higher rewards.",
+"1": "Correct; it optimizes for the provided scoring signal.",
+"2": "Inference speed is not a scoring objective.",
+"3": "It won't use jargon unless rewarded for it."
+}
+},
+{
+"id": 39,
+"topic": "Random Forest: Inference",
+"difficulty": "recall",
+"question": "How are results of individual trees combined in a Random Forest prediction?",
+"options": [
+"The model computes a weighted average (or majority vote) from all trees.",
+"Only the prediction from the most accurate tree is used.",
+"The results are summed and multiplied by feature count.",
+"Trees are processed sequentially, each correcting the previous one's error."
+],
+"correct_index": 0,
+"rationale": "Slide 35: 'compute weighted average from all predictions.'",
+"distractor_analysis": {
+"0": "Correct; the 'Forest' uses a collective vote.",
+"1": "Ensembles use the group, not just one expert.",
+"2": "Mathematical nonsense.",
+"3": "This describes 'Boosting,' not Random Forest (Bagging)."
+}
+},
+{
+"id": 40,
+"topic": "Transformer: Original Task",
+"difficulty": "recall",
+"question": "For what original task was the Transformer developed?",
+"options": [
+"Image Classification",
+"Playing Chess",
+"Stock Market Prediction",
+"Translation Tasks"
+],
+"correct_index": 3,
+"rationale": "Slide 10: 'Originally developed for translation tasks...'",
+"distractor_analysis": {
+"0": "Adapted for images later.",
+"1": "Not the original purpose.",
+"2": "Not the original purpose.",
+"3": "Correct; referenced in the Vaswani 2017 paper."
+}
+},
+{
+"id": 41,
+"topic": "Decision Trees: Depth vs Purity",
+"difficulty": "analysis",
+"question": "If a tree splits until 100% purity, but leaves contain only single instances, what is the problem?",
+"options": [
+"High Bias",
+"Overfitting",
+"Vanishing Gradients",
+"Underfitting"
+],
+"correct_index": 1,
+"rationale": "Slide 32: 'Danger of overfitting (e.g. high purity from few training samples).'",
+"distractor_analysis": {
+"0": "High bias means the model is too simple.",
+"1": "Correct; the tree is memorizing noise.",
+"2": "This is a neural net training issue.",
+"3": "Underfitting is when the model is not complex enough."
+}
+},
+{
+"id": 42,
+"topic": "Mahalanobis Distance",
+"difficulty": "recall",
+"question": "Which metric accounts for data correlation via a covariance matrix (Σ)?",
+"options": [
+"Mahalanobis Distance",
+"Euclidean Distance",
+"Manhattan Distance",
+"Maximum Distance"
+],
+"correct_index": 0,
+"rationale": "Slide 19 explicitly includes the covariance matrix in the Mahalanobis definition.",
+"distractor_analysis": {
+"0": "Correct; it is normalized by data distribution.",
+"1": "Assumes spherical distribution.",
+"2": "Based on absolute axis differences.",
+"3": "This is the L-infinity norm."
+}
+},
+{
+"id": 43,
+"topic": "RNN: Context Accumulation",
+"difficulty": "application",
+"question": "In an RNN processing 'A-B-C-D', which token is typically most dominant in the final state?",
+"options": [
+"Token A",
+"Token B",
+"Token C",
+"Token D"
+],
+"correct_index": 3,
+"rationale": "Due to sequential accumulation and vanishing gradients, the most recent token (D) is usually most influential in the final hidden state.",
+"distractor_analysis": {
+"0": "Information from A has to survive the most transformations.",
+"1": "Intermediate token.",
+"2": "Second most recent.",
+"3": "Correct; the most recent input before inference."
+}
+},
+{
+"id": 44,
+"topic": "Attention Mechanism: Parallelism",
+"difficulty": "analysis",
+"question": "Why are Transformers faster to train than RNNs for long sequences?",
+"options": [
+"Transformers have fewer parameters.",
+"Transformers process sequences in parallel via attention; RNNs are sequential.",
+"Transformers use less memory per token.",
+"Transformers don't use matrix multiplication."
+],
+"correct_index": 1,
+"rationale": "RNNs must process tokens one-by-one (Slide 4). Attention (Slide 12-14) allows parallel calculation of all token relationships.",
+"distractor_analysis": {
+"0": "Transformers are generally much larger.",
+"1": "Correct; parallelization is the key efficiency gain.",
+"2": "Attention has quadratic memory complexity, often using more memory.",
+"3": "Matrix multiplication is core to Transformers."
+}
+},
+{
+"id": 45,
+"topic": "Decision Trees: Categorical Performance",
+"difficulty": "recall",
+"question": "On which type of domain do Decision Trees typically show 'very good performance'?",
+"options": [
+"Continuous attributes",
+"Discrete attribute domains",
+"High-resolution image pixels",
+"Audio waveforms"
+],
+"correct_index": 1,
+"rationale": "Slide 32 lists 'Very good performance on discrete attribute domains' as a key remark.",
+"distractor_analysis": {
+"0": "Performance degrades on continuous domains.",
+"1": "Correct.",
+"2": "Trees struggle with raw high-D spatial data like pixels.",
+"3": "Raw waveforms are too complex for standard trees."
+}
+},
+{
+"id": 46,
+"topic": "k-NN: Optimal Bayes Rate",
+"difficulty": "recall",
+"question": "What is the theoretical error upper bound for k-NN relative to the Bayes error rate?",
+"options": [
+"At most twice the Bayes error rate.",
+"Always equal to the Bayes error rate.",
+"Exactly 10% higher.",
+"Unrelated to the Bayes error rate."
+],
+"correct_index": 0,
+"rationale": "Slide 23 states k-NN is almost Bayes optimal with 'twice Bayes error rate as error upper bound.'",
+"distractor_analysis": {
+"0": "Correct theoretical result cited in the slides.",
+"1": "Only true in the limit of infinite data.",
+"2": "Nonsensical.",
+"3": "The slide explicitly links them."
+}
+},
+{
+"id": 47,
+"topic": "Transformer: Attention weights",
+"difficulty": "recall",
+"question": "Which is NOT one of the three core learned weight matrices in Attention?",
+"options": [
+"Query weights (WQ)",
+"Key weights (WK)",
+"Bias weights (WB)",
+"Value weights (WV)"
+],
+"correct_index": 2,
+"rationale": "Slide 14 specifically highlights the Query, Key, and Value weights trio.",
+"distractor_analysis": {
+"0": "Part of the core trio.",
+"1": "Part of the core trio.",
+"2": "Correct; while biases exist in layers, they aren't part of the core Q/K/V conceptual definition.",
+"3": "Part of the core trio."
+}
+},
+{
+"id": 48,
+"topic": "Decision Tree: Stopping Criteria",
+"difficulty": "application",
+"question": "What is the primary stopping condition for creating a leaf in the growTree algorithm?",
+"options": [
+"The tree reaches depth 100.",
+"The data subset D is 'homogeneous'.",
+"The computer runs out of RAM.",
+"The entropy is greater than 1.0."
+],
+"correct_index": 1,
+"rationale": "Slide 25: 'If homogeneous(D)... return class of D as labeled leaf.'",
+"distractor_analysis": {
+"0": "This is an optional depth limit, not the fundamental logical condition.",
+"1": "Correct; it means no further splitting can improve purity.",
+"2": "Hardware failure.",
+"3": "High entropy requires more splitting, not less."
+}
+},
+{
+"id": 49,
+"topic": "Random Forest: Interpretability",
+"difficulty": "analysis",
+"question": "Why is a Random Forest considered a 'Black Box'?",
+"options": [
+"Weights are hidden in neural layers.",
+"It only works on dark-mode datasets.",
+"It is hard to interpret the collective logic of hundreds of voting trees.",
+"It doesn't output class probabilities."
+],
+"correct_index": 2,
+"rationale": "Slide 35 notes Random Forests are 'Difficult to interpret' because the ensemble complexity hides the simple rule-paths found in single trees.",
+"distractor_analysis": {
+"0": "Forests are tree-based, not neural.",
+"1": "Nonsensical.",
+"2": "Correct; ensemble complexity obscures simple explainability.",
+"3": "They can output probabilities based on tree vote percentages."
+}
+},
+{
+"id": 50,
+"topic": "RNN: Many-to-One",
+"difficulty": "application",
+"question": "Which task is best modeled as 'Many-to-one'?",
+"options": [
+"Machine Translation",
+"Sentiment Classification",
+"Named Entity Recognition",
+"Image Captioning"
+],
+"correct_index": 1,
+"rationale": "Slide 5 shows 'Sentiment Classification' as Many-to-one (sequence input -> single label output).",
+"distractor_analysis": {
+"0": "Many-to-many (unequal).",
+"1": "Correct; sequence of text -> sentiment score.",
+"2": "Many-to-many (equal).",
+"3": "One-to-many (image -> sequence)."
+}
+}
+]
   }
 }
